@@ -2247,3 +2247,36 @@ html.sd-modern-ui body {
         padding-bottom: max(8px, env(safe-area-inset-bottom));
     }
 }
+
+.sd-modern-ui .modern-appearance-language {
+    margin: 24px 0 0;
+    padding: 20px 0 0;
+    border-top: 1px solid rgba(var(--modern-user-color-editor-border-rgb, 148, 163, 184), .18);
+}
+.sd-modern-ui .modern-appearance-language h3 {
+    margin: 0 0 10px;
+    color: var(--modern-user-color-editor-label, #e4eaf5);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+.sd-modern-ui .modern-appearance-language-options {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 8px;
+    margin: 0 0 10px;
+}
+.sd-modern-ui .modern-appearance-drawer button.modern-appearance-language-button:not(#modern-appearance-close) {
+    min-width: 0;
+    min-height: 44px;
+    overflow-wrap: anywhere;
+}
+.sd-modern-ui .modern-appearance-drawer button.modern-appearance-language-button[aria-pressed="true"]:not(#modern-appearance-close) {
+    border-color: var(--modern-user-color-accent-300, var(--modern-user-accent-300, #a5b4fc)) !important;
+    background: var(--modern-user-color-editor-button-hover, #263958) !important;
+    color: var(--modern-user-color-editor-text, #eef2ff) !important;
+    box-shadow: inset 0 0 0 1px var(--modern-user-color-accent-300, var(--modern-user-accent-300, #a5b4fc)) !important;
+}
+.sd-modern-ui .modern-appearance-language .modern-appearance-help {
+    margin-bottom: 0;
+}

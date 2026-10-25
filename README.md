@@ -16,7 +16,8 @@
 - Оформленные уведомления, ошибки и индикатор прогресса.
 - Выделение включённых Hires, ADetailer и ControlNet, а также используемых LoRA.
 - Редактор цветов, прозрачности, теней, скруглений, шрифта и фонового изображения.
-- Предпросмотр изменений, сохранение оформления и перенос профиля между браузерами и сборками.
+- Предпросмотр изменений и общие настройки для браузеров, подключённых к одной установке WebUI.
+- Выбор English / Русский для всего интерфейса Stable Diffusion.
 - Оформленная полоса прокрутки и собственный значок вкладки браузера. При отключении темы возвращается штатная иконка.
 - Управление мышью, клавиатурой и на сенсорном экране.
 
@@ -36,7 +37,7 @@
 2. Распакуйте папку `sd-modern-ui` из архива в папку `extensions` вашей сборки. Файл `style.css` должен находиться прямо в `extensions/sd-modern-ui`, без лишней вложенной папки.
 3. Запустите WebUI и нажмите **Ctrl+F5**.
 
-При обновлении из ZIP предварительно сохраните копию старой папки и замените её целиком новой.
+При обновлении из ZIP сохраните файл `config.json` отдельно, замените папку расширения и верните этот файл на место.
 
 ### Включение и отключение
 
@@ -50,7 +51,7 @@
 
 | Действие | Результат |
 | --- | --- |
-| **Сохранить** | Сохраняет оформление для этого браузера. |
+| **Сохранить** | Записывает настройки в файл конфигурации расширения. |
 | **Отмена**, закрытие окна или **Esc** | Возвращает ранее сохранённое оформление. |
 | **Сброс** | Показывает исходное оформление. Для сохранения сброса нажмите «Сохранить». |
 | **Экспорт / Импорт** | Сохраняет профиль в JSON или открывает ранее сохранённый файл. |
@@ -65,9 +66,13 @@
 
 **Фон.** Можно выбрать PNG, JPEG или WebP, отрегулировать затемнение и размытие или убрать изображение. Исходный файл должен занимать до **8 МиБ** и содержать до **32 мегапикселей**.
 
+**Язык интерфейса.** В самом низу редактора выберите **English** или **Русский**. По умолчанию используется английский. Нажмите **Сохранить и перезагрузить**, чтобы применить выбранный язык ко всему WebUI. Отмена оставляет ранее сохранённый язык.
+
 **Перенос профиля.** Нажмите **Экспорт**, затем откройте JSON через **Импорт** в другом браузере или другой сборке. Фон включается в профиль. Импорт сначала показывает предпросмотр; нажмите **Сохранить**, чтобы применить его постоянно. Поддерживаются прежние профили редактора. Максимальный размер JSON — **3 МиБ**.
 
-Оформление хранится отдельно в каждом браузере. Сохранённый JSON пригодится для переноса или восстановления после очистки данных сайта.
+Настройки хранятся в `config.json` внутри папки `extensions/sd-modern-ui`: цвета, шрифт, фон, остальные параметры оформления и язык. Другой браузер получает их при открытии или обновлении страницы этой установки WebUI. Очистка данных браузера их не удаляет. Прежняя тема из браузера переносится автоматически, если общий конфиг ещё не настроен.
+
+Для переноса всех настроек на другой компьютер сохраните `config.json` вместе с папкой расширения. JSON-экспорт редактора также позволяет переносить отдельные профили оформления.
 
 ### Если что-то выглядит неправильно
 
@@ -76,6 +81,8 @@
 | Тема или новые элементы не появились | Проверьте переключатель темы и папку установки, перезапустите WebUI и нажмите **Ctrl+F5**. |
 | Неудачно выбраны цвета | Откройте редактор, нажмите **Сброс**, затем **Сохранить**, либо импортируйте свой профиль. |
 | Не удаётся сохранить цвет | Исправьте выделенный HEX-код или верните поле в «Авто». |
+| Сохранение в конфиг не удалось | Проверьте сообщение в редакторе, права на папку расширения и свободное место. Предпросмотр остаётся открытым. |
+| Настройки изменены в другом браузере | Экспортируйте несохранённый профиль при необходимости и обновите страницу перед дальнейшим редактированием. |
 | Оформление смешивается с другой темой | Временно отключите другое расширение оформления и обновите страницу. |
 
 ---
@@ -94,7 +101,8 @@ A dark theme for **Stable Diffusion WebUI reForge** and **Forge Neo**, with clea
 - Styled notifications, errors, and progress indicators.
 - Highlighted enabled Hires, ADetailer, and ControlNet panels, plus LoRA cards in use.
 - An editor for colors, opacity, shadows, corner radius, font, and background images.
-- Live preview, saved appearance profiles, and JSON transfer between browsers and WebUI hosts.
+- Live preview and shared settings for browsers connected to the same WebUI installation.
+- English / Russian selection for the entire Stable Diffusion interface.
 - A themed page scrollbar and browser tab icon. Turning the theme off restores the host icon.
 - Mouse, keyboard, and touch controls.
 
@@ -114,7 +122,7 @@ Buttons keep their usual actions. No additional libraries are required.
 2. Extract the `sd-modern-ui` folder into your WebUI `extensions` folder. The `style.css` file must be directly inside `extensions/sd-modern-ui`, without an extra nested folder.
 3. Start WebUI and press **Ctrl+F5**.
 
-When updating from ZIP, back up the existing folder and replace it entirely with the new one.
+When updating from ZIP, back up `config.json`, replace the extension folder, and put this file back.
 
 ### Turning the theme on or off
 
@@ -128,7 +136,7 @@ Changes appear in a live preview first:
 
 | Action | Result |
 | --- | --- |
-| **Save** | Saves the appearance for this browser. |
+| **Save** | Writes settings to the extension configuration file. |
 | **Cancel**, closing the editor, or **Esc** | Restores the previously saved appearance. |
 | **Reset** | Previews the default appearance. Click Save to keep the reset. |
 | **Export / Import** | Saves a JSON profile or opens an existing one. |
@@ -143,9 +151,13 @@ Each color has a picker, a HEX field, and a circular-arrow button to return it t
 
 **Background.** Choose PNG, JPEG, or WebP, adjust dimming and blur, or remove the image. The original file can be up to **8 MiB** and **32 megapixels**.
 
+**Interface language.** Choose **English** or **Русский** at the bottom of the editor. English is the default. Click **Save and reload** to apply the chosen language throughout WebUI. Cancel keeps the previously saved language.
+
 **Moving a profile.** Click **Export**, then open the JSON through **Import** in another browser or WebUI host. The background is included. Import shows a preview first; click **Save** to keep it. Earlier editor profiles are supported. The maximum JSON file size is **3 MiB**.
 
-Appearance settings are stored separately in each browser. Keep a JSON export to move or restore your profile after clearing site data.
+Settings are stored in `config.json` inside `extensions/sd-modern-ui`: colors, font, background, other appearance controls, and language. Another browser loads them when opening or refreshing this WebUI installation. Clearing browser data does not remove them. A previous browser theme is migrated automatically if the shared configuration has not been set up yet.
+
+To move all settings to another computer, keep `config.json` with the extension folder. The editor also supports JSON export and import for individual appearance profiles.
 
 ### Troubleshooting
 
@@ -154,4 +166,6 @@ Appearance settings are stored separately in each browser. Keep a JSON export to
 | The theme or new controls do not appear | Check the theme switch and installation folder, restart WebUI, and press **Ctrl+F5**. |
 | The chosen colors are hard to use | Open the editor, click **Reset**, then **Save**, or import a saved profile. |
 | A color cannot be saved | Correct the highlighted HEX value or return the field to Auto. |
+| The configuration cannot be saved | Check the editor message, extension folder permissions, and free disk space. Your preview remains open. |
+| Settings changed in another browser | Export your unsaved profile if needed, then refresh the page before editing further. |
 | Another theme changes the appearance | Temporarily disable the other appearance extension and refresh the page. |

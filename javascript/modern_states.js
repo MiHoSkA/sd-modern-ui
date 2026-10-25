@@ -1,6 +1,9 @@
 (() => {
     "use strict";
 
+    const INSTANCE_KEY = "sdModernUiStates";
+    const previous = window[INSTANCE_KEY];
+    if (previous && typeof previous.destroy === "function") previous.destroy();
     const SVG_NS = "http://www.w3.org/2000/svg";
     const MARK = ".modern-lora-mark";
     const states = ["txt2img", "img2img"].map(tab => ({
@@ -12,9 +15,12 @@
         force: true
     }));
     const pending = new Set();
-    const cardCache = new WeakMap();
+    let cardCache = new WeakMap();
     let promptTimer = null;
     let moduleTimer = null;
+    let disposed = false;
+    let boundRoot = null;
+    let unsubscribe = null;
 
     const appRoot = () => typeof gradioApp === "function" ? gradioApp() : document;
     const byId = id => {
@@ -24,9 +30,18 @@
     const attached = node => node && node.isConnected;
     const current = (node, id) => attached(node) ? node : byId(id);
     const translated = text => {
-        const dictionary = window.localization;
-        const value = dictionary && Object.prototype.hasOwnProperty.call(dictionary, text) ? dictionary[text] : undefined;
+        const i18n = window.sdModernUiI18n;
+        const value = i18n && typeof i18n.t === "function" ? i18n.t(text) : undefined;
         return typeof value === "string" && value.trim() ? value : text;
+    };
+    const protect = node => {
+        if (node.getAttribute("data-sd-modern-ui-i18n") !== null) return;
+        const i18n = window.sdModernUiI18n;
+        if (i18n && typeof i18n.protect === "function") i18n.protect(node);
+        else {
+            node.setAttribute("data-sd-modern-ui-i18n", "states");
+            node.setAttribute("translate", "no");
+        }
     };
     const commentMode = () => {
         let options;
@@ -111,13 +126,14 @@
     const ownsMark = node => node.nodeType === 1 && (node.matches(MARK) || !!node.closest(MARK));
     const contains = (node, selector) => node.nodeType === 1 && (node.matches(selector) || !!node.querySelector(selector));
     const queueModules = () => {
-        if (moduleTimer !== null) return;
+        if (disposed || moduleTimer !== null) return;
         moduleTimer = setTimeout(() => {
             moduleTimer = null;
             for (const state of states) updateModules(state);
         }, 0);
     };
     const queuePrompts = (state, reset = false) => {
+        if (disposed) return;
         pending.add(state);
         if (promptTimer !== null && !reset) return;
         if (promptTimer !== null) clearTimeout(promptTimer);
@@ -230,6 +246,7 @@
         return [state.positive ? state.positive.value : "", state.negative ? state.negative.value : ""];
     };
     const updateCards = state => {
+        if (disposed) return;
         const page = connectPage(state);
         if (!page) return;
         if (state.cardsDirty) {
@@ -255,6 +272,11 @@
                 continue;
             }
             if (!entry.mark) {
+                const existing = [...card.querySelectorAll(":scope > svg.modern-lora-mark")];
+                entry.mark = existing[0] || null;
+                for (const duplicate of existing.slice(1)) duplicate.remove();
+            }
+            if (!entry.mark) {
                 const mark = document.createElementNS(SVG_NS, "svg");
                 mark.setAttribute("class", "modern-lora-mark");
                 mark.setAttribute("viewBox", "0 0 24 24");
@@ -271,12 +293,14 @@
                 mark.append(title, path);
                 entry.mark = mark;
             }
+            protect(entry.mark);
             const title = entry.mark.querySelector("title");
             if (title.textContent !== label) title.textContent = label;
             if (entry.mark.parentNode !== card) card.appendChild(entry.mark);
         }
     };
     const settle = () => {
+        if (disposed) return;
         const mode = commentMode();
         const label = translated("Used in prompt");
         for (const state of states) {
@@ -288,6 +312,7 @@
         }
     };
     const onInput = event => {
+        if (disposed) return;
         const target = event.target;
         if (!target || target.nodeType !== 1) return;
         for (const state of states) {
@@ -296,12 +321,65 @@
         if (target.matches('input[type="checkbox"]')) queueModules();
     };
     const boot = () => {
+        if (disposed) return;
         const root = appRoot();
-        root.addEventListener("input", onInput, true);
-        root.addEventListener("change", onInput, true);
+        if (boundRoot !== root) {
+            if (boundRoot) {
+                boundRoot.removeEventListener("input", onInput, true);
+                boundRoot.removeEventListener("change", onInput, true);
+            }
+            boundRoot = root;
+            root.addEventListener("input", onInput, true);
+            root.addEventListener("change", onInput, true);
+        }
         settle();
     };
 
+    const destroy = () => {
+        if (disposed) return;
+        disposed = true;
+        if (promptTimer !== null) clearTimeout(promptTimer);
+        if (moduleTimer !== null) clearTimeout(moduleTimer);
+        promptTimer = null;
+        moduleTimer = null;
+        pending.clear();
+        if (unsubscribe) unsubscribe();
+        if (boundRoot) {
+            boundRoot.removeEventListener("input", onInput, true);
+            boundRoot.removeEventListener("change", onInput, true);
+        }
+        boundRoot = null;
+        document.removeEventListener("DOMContentLoaded", boot);
+        for (const state of states) {
+            if (state.controlObserver) state.controlObserver.disconnect();
+            if (state.pageObserver) state.pageObserver.disconnect();
+            for (const { card, entry } of state.cards) {
+                setClass(card, "modern-lora-active", false);
+                if (entry.mark && entry.mark.parentNode === card) entry.mark.remove();
+            }
+            const roots = [state.hires, state.detailer, state.controlRoot, ...state.units.map(unit => unit.input.closest(".input-accordion"))];
+            for (const root of roots) {
+                if (!root) continue;
+                setClass(root, "modern-module", false);
+                setClass(root, "modern-module-active", false);
+                setClass(root.querySelector(":scope > .label-wrap"), "modern-module-heading", false);
+            }
+            const tabs = byId(state.tab + "_controlnet_tabs");
+            if (tabs) tabs.querySelectorAll(":scope > .tab-nav > button.modern-unit-active").forEach(button => setClass(button, "modern-unit-active", false));
+            state.cards = [];
+            state.units = [];
+        }
+        cardCache = new WeakMap();
+        if (window[INSTANCE_KEY] === api) delete window[INSTANCE_KEY];
+    };
+    const api = { destroy };
+    window[INSTANCE_KEY] = api;
+    const i18n = window.sdModernUiI18n;
+    if (i18n && typeof i18n.subscribe === "function") unsubscribe = i18n.subscribe(settle);
+    else if (typeof window.addEventListener === "function") {
+        window.addEventListener("sd-modern-ui-language-change", settle);
+        unsubscribe = () => window.removeEventListener("sd-modern-ui-language-change", settle);
+    }
     if (typeof onUiLoaded === "function") onUiLoaded(boot);
     else if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot, { once: true });
     else boot();

@@ -1,11 +1,18 @@
 (() => {
     "use strict";
 
+    const INSTANCE_KEY = "sdModernUiIcons";
+    const previous = window[INSTANCE_KEY];
+    if (previous && typeof previous.destroy === "function") previous.destroy();
     const SVG_NS = "http://www.w3.org/2000/svg";
     const OWN_SELECTOR = ".modern-tool-icon";
     const EXCLUDED_SELECTOR = ".gradio-gallery, .forge-container, #lightboxModal, #sd_image_viewer";
-    const states = new WeakMap();
+    const states = new Map();
     let scheduled = false;
+    let frame = 0;
+    let frameIsTimeout = false;
+    let disposed = false;
+    let unsubscribe = null;
 
     const icons = {
         folder: '<path d="M3 7V5a1 1 0 0 1 1-1h5l2 2h9a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7Z"/><path d="M3 9h18"/>',
@@ -110,10 +117,11 @@
 
     const buttonSelector = [...buttonActions.keys()].map(id => `button[id="${id}"]`).join(",");
     const appRoot = () => (typeof gradioApp === "function" ? gradioApp() : document);
+    const enabled = () => !disposed && document.documentElement.classList.contains("sd-modern-ui");
 
     const translated = english => {
-        const dictionary = window.localization;
-        const value = dictionary && Object.prototype.hasOwnProperty.call(dictionary, english) ? dictionary[english] : undefined;
+        const i18n = window.sdModernUiI18n;
+        const value = i18n && typeof i18n.t === "function" ? i18n.t(english) : undefined;
         return typeof value === "string" && value.trim() ? value : english;
     };
 
@@ -130,12 +138,63 @@
 
     const updateFallback = (button, state, attribute, value) => {
         const current = attribute === "title" ? readTitle(button) : button.getAttribute(attribute);
-        if (current && current.trim() && current !== state[attribute]) return;
+        const owned = state.attributes[attribute];
+        if (state.nativeAttributes.has(attribute)) return;
+        if (owned && current !== owned.value) {
+            delete state.attributes[attribute];
+            state.nativeAttributes.add(attribute);
+            return;
+        }
+        if (!owned && current && current.trim()) {
+            state.nativeAttributes.add(attribute);
+            return;
+        }
+        if (!owned) state.attributes[attribute] = { original: current, value };
+        else owned.value = value;
         if (current !== value) {
             if (attribute === "title") writeTitle(button, value);
             else button.setAttribute(attribute, value);
         }
-        state[attribute] = value;
+    };
+
+    const protectTitle = (button, state, owned) => {
+        if (owned) {
+            if (state.protection || button.hasAttribute("data-sd-modern-ui-i18n")) return;
+            state.protection = { translate: button.getAttribute("translate") };
+            button.setAttribute("data-sd-modern-ui-i18n", "icons");
+            button.setAttribute("translate", "no");
+            return;
+        }
+        if (!state.protection) return;
+        if (button.getAttribute("data-sd-modern-ui-i18n") === "icons") button.removeAttribute("data-sd-modern-ui-i18n");
+        if (button.getAttribute("translate") === "no") {
+            if (state.protection.translate === null) button.removeAttribute("translate");
+            else button.setAttribute("translate", state.protection.translate);
+        }
+        state.protection = null;
+        if (!button.closest("[data-sd-modern-ui-i18n]") && typeof processNode === "function") processNode(button);
+    };
+
+    const releaseLabels = (button, state) => {
+        for (const [attribute, owned] of Object.entries(state.attributes)) {
+            const current = attribute === "title" ? readTitle(button) : button.getAttribute(attribute);
+            if (current === owned.value) {
+                if (attribute === "title") {
+                    if (owned.original === null) {
+                        const bridge = window.sdModernUiTooltipTitles;
+                        if (bridge && typeof bridge.set === "function") bridge.set(button, "");
+                        button.removeAttribute("title");
+                    } else writeTitle(button, owned.original);
+                } else if (owned.original === null) button.removeAttribute(attribute);
+                else button.setAttribute(attribute, owned.original);
+            }
+            delete state.attributes[attribute];
+        }
+        if (state.saveTitle) {
+            if (readTitle(button) === state.saveTitle.translated) writeTitle(button, state.saveTitle.original);
+            state.saveTitle = null;
+        }
+        protectTitle(button, state, false);
     };
 
     const translateSaveTitle = (button, state, actionName) => {
@@ -144,7 +203,7 @@
             : actionName === "archive"
                 ? "Save zip archive with images to a dedicated directory ("
                 : null;
-        if (!prefix) return;
+        if (!prefix) return false;
         const current = readTitle(button);
         const previous = state.saveTitle;
         let original;
@@ -154,11 +213,12 @@
             original = current;
         } else {
             delete state.saveTitle;
-            return;
+            return false;
         }
         const next = translated(prefix) + original.slice(prefix.length);
         state.saveTitle = { original, translated: next };
         if (current !== next) writeTitle(button, next);
+        return true;
     };
 
     let classObserver = null;
@@ -174,6 +234,7 @@
         let state = states.get(button);
         if (existing.some(icon => !ownIcons.includes(icon))) {
             if (state || ownIcons.length) {
+                if (state) releaseLabels(button, state);
                 for (const icon of ownIcons) icon.remove();
                 states.delete(button);
                 button.classList.remove("modern-icon-button");
@@ -193,7 +254,7 @@
             icon.setAttribute("aria-hidden", "true");
             icon.setAttribute("focusable", "false");
             icon.innerHTML = icons[action.icon];
-            state = { icon };
+            state = { icon, attributes: Object.create(null), nativeAttributes: new Set(), protection: null, saveTitle: null };
             states.set(button, state);
         }
         if (ownIcons.length) state.icon = ownIcons[0];
@@ -202,35 +263,71 @@
         button.dataset.modernIcon = actionName;
         if (state.icon.parentNode !== button) button.appendChild(state.icon);
         const tip = translated(action.tipEn);
-        translateSaveTitle(button, state, actionName);
-        updateFallback(button, state, "title", tip);
+        const savedTitle = translateSaveTitle(button, state, actionName);
+        if (savedTitle) {
+            delete state.attributes.title;
+            state.nativeAttributes.add("title");
+        } else updateFallback(button, state, "title", tip);
         if (!button.getAttribute("aria-labelledby")) updateFallback(button, state, "aria-label", tip);
+        else if (state.attributes["aria-label"]) {
+            const owned = state.attributes["aria-label"];
+            if (button.getAttribute("aria-label") === owned.value) {
+                if (owned.original === null) button.removeAttribute("aria-label");
+                else button.setAttribute("aria-label", owned.original);
+            }
+            delete state.attributes["aria-label"];
+        }
+        protectTitle(button, state, !!state.saveTitle || !!state.attributes.title);
     };
 
     const scan = () => {
+        if (disposed) return;
         const root = appRoot();
         if (!root || !root.querySelectorAll) return;
+        for (const [button, state] of states) {
+            if (!button.isConnected || !enabled()) {
+                releaseLabels(button, state);
+                if (state.icon.parentNode === button) state.icon.remove();
+                button.classList.remove("modern-icon-button");
+                delete button.dataset.modernIcon;
+                if (!button.isConnected) states.delete(button);
+            }
+        }
         if (!classObserver && typeof MutationObserver === "function") {
             classObserver = new MutationObserver(records => {
                 for (const record of records) {
                     const button = record.target;
-                    if (states.has(button) && button.matches(buttonSelector) && button.classList.contains("tool") && !button.classList.contains("modern-icon-button")) decorate(button);
+                    if (button === document.documentElement) { schedule(); continue; }
+                    const state = states.get(button);
+                    if (!state || !button.matches(buttonSelector)) continue;
+                    if (record.attributeName === "class") {
+                        if (enabled() && button.classList.contains("tool") && !button.classList.contains("modern-icon-button")) decorate(button);
+                    } else if (record.attributeName === "aria-labelledby") schedule();
+                    else {
+                        const current = record.attributeName === "title" ? readTitle(button) : button.getAttribute(record.attributeName);
+                        const owned = state.attributes[record.attributeName];
+                        if ((owned && current !== owned.value) || (record.attributeName === "title" && state.saveTitle && current !== state.saveTitle.translated)) schedule();
+                    }
                 }
             });
         }
         if (classObserver) classObserver.disconnect();
+        if (classObserver) classObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["class"] });
+        if (!enabled()) return;
         root.querySelectorAll(buttonSelector).forEach(button => {
             decorate(button);
-            if (classObserver && states.has(button)) classObserver.observe(button, { attributes: true, attributeFilter: ["class"] });
+            if (classObserver && states.has(button)) classObserver.observe(button, { attributes: true, attributeFilter: ["class", "title", "aria-label", "aria-labelledby"] });
         });
     };
 
     const schedule = () => {
-        if (scheduled) return;
+        if (disposed || scheduled) return;
         scheduled = true;
+        frameIsTimeout = typeof window.requestAnimationFrame !== "function";
         const raf = window.requestAnimationFrame || (callback => setTimeout(callback, 16));
-        raf(() => {
+        frame = raf(() => {
             scheduled = false;
+            frame = 0;
             scan();
         });
     };
@@ -238,6 +335,7 @@
     const isOwnNode = node => node.nodeType === 1 && !!node.closest(OWN_SELECTOR);
 
     const onMutations = mutations => {
+        if (disposed) return;
         if (!mutations) return;
         const records = Array.isArray(mutations) ? mutations : [mutations];
         for (const mutation of records) {
@@ -270,6 +368,34 @@
         }
     };
 
+    const destroy = () => {
+        if (disposed) return;
+        disposed = true;
+        if (frame) {
+            if (frameIsTimeout) clearTimeout(frame);
+            else window.cancelAnimationFrame(frame);
+        }
+        frame = 0;
+        if (classObserver) classObserver.disconnect();
+        if (unsubscribe) unsubscribe();
+        document.removeEventListener("DOMContentLoaded", schedule);
+        for (const [button, state] of states) {
+            releaseLabels(button, state);
+            if (state.icon.parentNode === button) state.icon.remove();
+            button.classList.remove("modern-icon-button");
+            delete button.dataset.modernIcon;
+        }
+        states.clear();
+        if (window[INSTANCE_KEY] === api) delete window[INSTANCE_KEY];
+    };
+    const api = { destroy };
+    window[INSTANCE_KEY] = api;
+    const i18n = window.sdModernUiI18n;
+    if (i18n && typeof i18n.subscribe === "function") unsubscribe = i18n.subscribe(schedule);
+    else if (typeof window.addEventListener === "function") {
+        window.addEventListener("sd-modern-ui-language-change", schedule);
+        unsubscribe = () => window.removeEventListener("sd-modern-ui-language-change", schedule);
+    }
     if (typeof onUiLoaded === "function") onUiLoaded(schedule);
     if (typeof onUiUpdate === "function") onUiUpdate(onMutations);
     if (typeof onOptionsChanged === "function") onOptionsChanged(schedule);

@@ -641,6 +641,12 @@
         panel.className = "modern-tooltip";
         panel.setAttribute("role", "tooltip");
         panel.setAttribute("aria-hidden", "true");
+        const i18n = window.sdModernUiI18n;
+        if (i18n && typeof i18n.protect === "function") i18n.protect(panel);
+        else {
+            panel.setAttribute("data-sd-modern-ui-i18n", "tooltip");
+            panel.setAttribute("translate", "no");
+        }
         panel.hidden = true;
         mount.appendChild(panel);
         listen(root, "pointerover", pointerOver);

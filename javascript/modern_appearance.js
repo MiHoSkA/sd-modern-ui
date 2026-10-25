@@ -4,7 +4,6 @@
     const previous = window.sdModernUiAppearance;
     if (previous && typeof previous.destroy === "function") previous.destroy();
 
-    const STORAGE_KEY = "sd-modern-ui.appearance.v1";
     const SCHEMA = "sd-modern-ui-theme";
     const MAX_SOURCE = 8 * 1024 * 1024;
     const MAX_JSON = 3 * 1024 * 1024;
@@ -1173,12 +1172,15 @@
     const USER_PROPERTIES = [...new Set([...PALETTE_KEYS.map(key => `--modern-user-accent-${key}`), "--modern-user-checkmark-image", "--modern-user-panel-opacity", "--modern-user-shadow-strength", "--modern-user-radius-scale", "--modern-user-font-family", "--modern-user-background-image", "--modern-user-background-dim", "--modern-user-background-blur", ...COLOR_MANIFEST.roles.flatMap(role => [role.cssVar, role.rgbVar, role.imageVar].filter(Boolean))])];
     const copy = settings => ({ ...settings, colors: { ...settings.colors } });
     const translate = key => {
-        const dictionary = window.localization;
-        const value = dictionary && Object.prototype.hasOwnProperty.call(dictionary, key) ? dictionary[key] : undefined;
-        return typeof value === "string" && value.trim() ? value : key;
+        const api = window.sdModernUiI18n;
+        return api && typeof api.t === "function" ? api.t(key) : key;
     };
     const failure = key => Object.assign(new Error(key), { appearanceMessage: key });
-    const format = (key, parameters = {}) => translate(key).replace(/\{(\w+)\}/g, (match, name) => Object.prototype.hasOwnProperty.call(parameters, name) ? translate(parameters[name]) : match);
+    const format = (key, parameters = {}) => {
+        const api = window.sdModernUiI18n;
+        if (api && typeof api.t === "function") return api.t(key, parameters);
+        return key.replace(/\{(\w+)\}/g, (match, name) => Object.prototype.hasOwnProperty.call(parameters, name) ? parameters[name] : match);
+    };
     const isObject = value => !!value && typeof value === "object" && !Array.isArray(value) && [Object.prototype, null].includes(Object.getPrototypeOf(value));
     const hasExactKeys = (value, keys) => isObject(value) && Object.keys(value).length === keys.length && keys.every(key => Object.prototype.hasOwnProperty.call(value, key));
     const documentFor = settings => ({ schema: SCHEMA, version: 2, settings: copy(settings) });
@@ -1327,6 +1329,7 @@
     let draft = copy(DEFAULTS);
     let opened = false;
     let busy = false;
+    let saveInFlight = false;
     let disposed = false;
     let statusKey = "";
     let statusType = "";
@@ -1372,6 +1375,11 @@
     let fontTypeTimer = 0;
     let fontPositionFrame = 0;
     let viewportFrame = 0;
+    let languageApi = null;
+    let unsubscribeLanguage = null;
+    let searchCatalogs = [];
+    const languageButtons = new Map();
+    const saveLockedControls = new Map();
     const fontOptionNodes = [];
     const colorControls = new Map();
     const colorGroups = new Map();
@@ -1390,6 +1398,55 @@
     let ready = Promise.resolve();
 
     const appRoot = () => typeof gradioApp === "function" ? gradioApp() : document;
+    const language = () => window.sdModernUiI18n && typeof window.sdModernUiI18n.getLanguage === "function" ? window.sdModernUiI18n.getLanguage() : "en";
+    const appliedLanguage = () => {
+        const api = window.sdModernUiI18n;
+        const state = api && typeof api.getState === "function" ? api.getState() : null;
+        return state && ["en", "ru"].includes(state.appliedLanguage) ? state.appliedLanguage : api && typeof api.getSavedLanguage === "function" ? api.getSavedLanguage() : "en";
+    };
+    const languagePending = () => language() !== appliedLanguage();
+    const protect = node => {
+        const api = window.sdModernUiI18n;
+        if (node && api && typeof api.protect === "function") api.protect(node);
+    };
+    const bindLanguage = () => {
+        const api = window.sdModernUiI18n || null;
+        if (api === languageApi) return;
+        if (typeof unsubscribeLanguage === "function") unsubscribeLanguage();
+        unsubscribeLanguage = null;
+        languageApi = api;
+        searchCatalogs = api && typeof api.getCatalog === "function" ? [api.getCatalog("en"), api.getCatalog("ru")] : [];
+        if (api && typeof api.subscribe === "function") unsubscribeLanguage = api.subscribe(() => schedule());
+    };
+    const searchLabels = key => [...new Set([key, translate(key), ...searchCatalogs.map(catalog => catalog && typeof catalog[key] === "string" ? catalog[key] : key)])];
+    const renderSaveLock = () => {
+        if (saveInFlight && dialog) {
+            for (const node of dialog.querySelectorAll("button, input, select, textarea")) {
+                if (!saveLockedControls.has(node)) saveLockedControls.set(node, node.disabled);
+                if (!node.disabled) node.disabled = true;
+            }
+        } else {
+            for (const [node, disabled] of saveLockedControls) if (node.isConnected) node.disabled = disabled;
+            saveLockedControls.clear();
+        }
+    };
+    const syncLanguageControls = () => {
+        const value = language();
+        for (const node of [backdrop, dialog, fontPopup, ...launchers]) if (node && node.getAttribute("lang") !== value) node.setAttribute("lang", value);
+        for (const [code, node] of languageButtons) {
+            const selected = code === value;
+            if (node.getAttribute("aria-pressed") !== String(selected)) node.setAttribute("aria-pressed", String(selected));
+            if (node.classList.contains("is-selected") !== selected) node.classList.toggle("is-selected", selected);
+            const unavailable = !window.sdModernUiI18n || typeof window.sdModernUiI18n.previewLanguage !== "function";
+            if (node.disabled !== (unavailable || saveInFlight)) node.disabled = unavailable || saveInFlight;
+        }
+        const save = dialog && dialog.querySelector("#modern-appearance-save");
+        if (save) {
+            const entries = localizations.get(save);
+            const label = entries && entries.find(entry => entry.attribute === null);
+            if (label) label.key = languagePending() ? "Save and reload" : "Save";
+        }
+    };
     const enabled = () => !disposed && typeof document !== "undefined" && document.documentElement.classList.contains("sd-modern-ui");
     const currentFocus = () => { let element = document.activeElement; while (element && element.shadowRoot && element.shadowRoot.activeElement) element = element.shadowRoot.activeElement; return element; };
     const restoreElementFocus = element => {
@@ -1950,6 +2007,7 @@
         });
         for (const role of state.roles) makeColorField(role, state.body);
         renderColorControls();
+        renderSaveLock();
     };
     const filterColorGroups = () => {
         if (!colorSearch) return;
@@ -1961,8 +2019,8 @@
         }
         let total = 0;
         for (const [key, state] of colorGroups) {
-            const groupMatch = query && !hexQuery && [state.group.key, state.group.label, translate(state.group.label)].some(value => value.toLocaleLowerCase().includes(query));
-            const matches = state.roles.filter(role => !query || invalidColors.has(role.key) || colorControls.get(role.key)?.field.contains(currentFocus()) || (hexQuery ? effectiveColor(role) === hexQuery : groupMatch || [role.key, role.label, translate(role.label)].some(value => value.toLocaleLowerCase().includes(query))));
+            const groupMatch = query && !hexQuery && [state.group.key, ...searchLabels(state.group.label)].some(value => value.toLocaleLowerCase().includes(query));
+            const matches = state.roles.filter(role => !query || invalidColors.has(role.key) || colorControls.get(role.key)?.field.contains(currentFocus()) || (hexQuery ? effectiveColor(role) === hexQuery : groupMatch || [role.key, ...searchLabels(role.label)].some(value => value.toLocaleLowerCase().includes(query))));
             const visible = matches.length > 0;
             if (state.details.hidden !== !visible) state.details.hidden = !visible;
             const protectedGroup = state.roles.some(role => invalidColors.has(role.key) || colorControls.get(role.key)?.field.contains(currentFocus()));
@@ -2059,10 +2117,11 @@
             if (remove.disabled !== !draft.backgroundImage) remove.disabled = !draft.backgroundImage;
             if (dialog.getAttribute("aria-busy") !== String(busy)) dialog.setAttribute("aria-busy", String(busy));
         }
+        renderSaveLock();
     };
     const preview = () => { revision++; renderControls(); applyAppearance(draft); if (colorSearchActive) filterColorGroups(); };
-    const close = (restoreFocus = true) => {
-        if (!opened) return;
+    const close = (restoreFocus = true, force = false) => {
+        if (!opened || (saveInFlight && !force)) return;
         closeFont();
         opened = false;
         if (viewportFrame) window.cancelAnimationFrame(viewportFrame);
@@ -2084,6 +2143,8 @@
         }
         savedOverflow = null;
         applyAppearance(saved);
+        const api = window.sdModernUiI18n;
+        if (api && typeof api.restorePreview === "function") api.restorePreview();
         if (restoreFocus && lastFocused && lastFocused.isConnected && !lastFocused.disabled && typeof lastFocused.focus === "function") restoreElementFocus(lastFocused);
         lastFocused = null;
     };
@@ -2167,18 +2228,44 @@
             if (valid()) { busy = false; renderControls(); }
         }
     };
-    const save = () => {
+    const save = async () => {
         if (!opened || busy || !enabled()) return;
         if (invalidHex()) { updateHexStatus(); return; }
         try {
             const next = validate(documentFor(draft)).settings;
             const serialized = JSON.stringify(documentFor(next));
             if (new TextEncoder().encode(serialized).length > MAX_JSON) throw failure("The JSON file must not exceed 3 MB.");
-            try { window.localStorage.setItem(STORAGE_KEY, serialized); } catch (_error) { throw failure("Appearance could not be saved. Browser storage is full or unavailable. Your preview is still open."); }
-            saved = copy(next);
-            setStatus("Appearance saved in this browser.", "success");
+            const client = window.sdModernUiConfig;
+            if (!client || typeof client.save !== "function") throw failure("Server configuration is unavailable. Restart WebUI after updating the extension.");
+            const reload = languagePending();
+            const selectedLanguage = language();
+            saveInFlight = true;
+            busy = true;
+            closeFont();
+            setStatus("Saving configuration…");
+            renderControls();
+            const response = await client.save({ theme: documentFor(next), language: selectedLanguage });
+            if (disposed) return;
+            if (!response || response.ok !== true || !response.config) throw failure("Settings could not be saved to the configuration file. Your preview is still open.");
+            saved = copy(validate(response.config.theme).settings);
+            saveInFlight = false;
+            busy = false;
+            renderSaveLock();
+            renderControls();
+            setStatus("Configuration saved.", "success");
             close();
-        } catch (error) { setStatus(error.appearanceMessage || "Appearance could not be saved.", "error"); }
+            if (reload) {
+                try { window.location.reload(); }
+                catch (_error) { setStatus("Reload the page to apply the saved language.", "error"); void open(); }
+            }
+        } catch (error) {
+            if (disposed) return;
+            saveInFlight = false;
+            busy = false;
+            renderSaveLock();
+            renderControls();
+            setStatus(error.appearanceMessage || "Settings could not be saved to the configuration file. Your preview is still open.", "error");
+        }
     };
     const exportFile = () => {
         if (!opened || busy) return;
@@ -2284,6 +2371,40 @@
         });
     };
 
+    const buildLanguage = parent => {
+        const section = element("section", "modern-appearance-language");
+        const label = element("h3", "", "Interface language");
+        label.id = "modern-appearance-language-label";
+        const choices = element("div", "modern-appearance-language-options");
+        choices.setAttribute("role", "group");
+        choices.setAttribute("aria-labelledby", label.id);
+        const choose = code => {
+            if (!opened || saveInFlight) return;
+            const api = window.sdModernUiI18n;
+            if (api && typeof api.previewLanguage === "function") api.previewLanguage(code);
+        };
+        for (const [code, caption] of [["en", "English"], ["ru", "Русский"]]) {
+            const choice = button(`modern-appearance-language-${code}`, null, "modern-appearance-language-button");
+            choice.textContent = caption;
+            choice.dataset.language = code;
+            choice.setAttribute("lang", code);
+            choice.setAttribute("aria-pressed", String(code === language()));
+            choices.appendChild(choice);
+            languageButtons.set(code, choice);
+            listen(choice, "click", () => choose(code));
+        }
+        listen(choices, "keydown", event => {
+            if (event.isComposing || event.ctrlKey || event.altKey || event.metaKey || saveInFlight || !["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+            const code = event.key === "Home" || event.key === "ArrowLeft" ? "en" : "ru";
+            event.preventDefault();
+            event.stopPropagation();
+            languageButtons.get(code).focus({ preventScroll: true });
+            choose(code);
+        });
+        section.append(label, choices, element("p", "modern-appearance-help", "The interface language changes after saving and reloading the page."));
+        parent.appendChild(section);
+    };
+
     const build = mount => {
         wallpaper = element("div");
         wallpaper.id = "modern-appearance-wallpaper";
@@ -2291,6 +2412,7 @@
         wallpaper.append(element("div", "modern-appearance-wallpaper-image"), element("div", "modern-appearance-wallpaper-shade"));
         mount.prepend(wallpaper);
         backdrop = element("div", "modern-appearance-backdrop");
+        protect(backdrop);
         backdrop.hidden = true;
         backdrop.setAttribute("aria-hidden", "true");
         dialog = element("section", "modern-appearance-drawer");
@@ -2306,7 +2428,7 @@
         exit.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg>';
         header.append(title, exit);
         const body = element("div", "modern-appearance-body");
-        body.appendChild(element("p", "modern-appearance-intro", "Changes are previewed until you save. Appearance is stored only in this browser."));
+        body.appendChild(element("p", "modern-appearance-intro", "Changes are previewed until you save. Settings are stored in the extension configuration file."));
         const previewSection = element("section", "modern-appearance-preview");
         text(previewSection, "Appearance preview", "aria-label");
         const previewCard = element("div", "modern-appearance-preview-card");
@@ -2318,7 +2440,7 @@
         buildColors(body);
         for (const key of ["panelOpacity", "shadow", "radius", "font"]) makeField(key, body);
         const background = element("section", "modern-appearance-background");
-        background.append(element("h3", "", "Background image"), element("p", "modern-appearance-help", "PNG, JPEG or WebP, up to 8 MB and 32 megapixels. The image stays in this browser."));
+        background.append(element("h3", "", "Background image"), element("p", "modern-appearance-help", "PNG, JPEG or WebP, up to 8 MB and 32 megapixels. The image is stored in the extension configuration file."));
         const actions = element("div", "modern-appearance-actions");
         const uploadButton = button("modern-appearance-background-upload", "Choose image");
         const removeButton = button("modern-appearance-background-remove", "Remove image");
@@ -2331,6 +2453,7 @@
         background.append(actions, imagePreview, imageInfo);
         for (const key of ["backgroundDim", "backgroundBlur"]) makeField(key, background);
         body.appendChild(background);
+        buildLanguage(body);
         status = element("p", "modern-appearance-status");
         status.id = "modern-appearance-status";
         status.setAttribute("role", "status");
@@ -2397,6 +2520,7 @@
     };
 
     const syncLocalization = () => {
+        syncLanguageControls();
         for (const [node, values] of localizations) {
             if (!node.isConnected) { localizations.delete(node); continue; }
             for (const value of values) {
@@ -2416,11 +2540,13 @@
         setStatus(statusKey, statusType, statusParameters);
         filterColorGroups();
         renderFont();
+        if (fontPopupOpen && !fontPositionFrame) fontPositionFrame = window.requestAnimationFrame(positionFont);
     };
     const addLauncher = (parent, id, iconOnly) => {
         let launcher = parent.querySelector(`#${id}`);
-        if (launcher) { launchers.add(launcher); return; }
+        if (launcher) { protect(launcher); launchers.add(launcher); return; }
         launcher = button(id, iconOnly ? null : "Customize appearance", "modern-appearance-launcher");
+        protect(launcher);
         if (iconOnly) {
             text(launcher, "Customize appearance", "aria-label");
             launcher.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3a9 9 0 1 0 0 18h1.2a2.3 2.3 0 0 0 1.6-3.9 1.2 1.2 0 0 1 .9-2.1H18a3 3 0 0 0 3-3c0-5-4-9-9-9Z"/><circle cx="7" cy="11" r=".8"/><circle cx="10" cy="7" r=".8"/><circle cx="15" cy="7" r=".8"/><circle cx="18" cy="11" r=".8"/></svg>';
@@ -2432,6 +2558,7 @@
     };
     function bind() {
         if (disposed || typeof document === "undefined") return;
+        bindLanguage();
         const next = appRoot();
         const mount = next && next.nodeType === 9 ? next.body : next;
         if (!mount || !mount.appendChild) return;
@@ -2443,6 +2570,7 @@
             outputs.clear();
             colorControls.clear();
             colorGroups.clear();
+            languageButtons.clear();
             searchOpenStates.clear();
             colorSearchActive = false;
             colorSearch = null;
@@ -2465,6 +2593,7 @@
             if (next !== document) listen(next, "scroll", fontScroll, { capture: true, passive: true });
             build(mount);
         }
+        protect(backdrop);
         const quick = root.querySelector("#quicksettings");
         if (quick) addLauncher(quick, "modern-appearance-quick-open", true);
         const setting = root.querySelector("#setting_sd_modern_ui_enabled");
@@ -2494,14 +2623,16 @@
     };
     const load = async () => {
         try {
-            let value;
-            try { value = window.localStorage.getItem(STORAGE_KEY); } catch (_error) { throw failure("Browser storage is unavailable. Default appearance is active."); }
-            if (value !== null) {
-                let next;
-                try { next = validate(value).settings; } catch (_error) { throw failure("Saved appearance is invalid. Default appearance is active."); }
-                saved = await normalizeSettings(next, () => !disposed);
-                draft = copy(saved);
-            }
+            const client = window.sdModernUiConfig;
+            if (!client || typeof client.get !== "function" || (typeof client.available === "function" && !client.available())) throw failure("Server configuration is unavailable. Restart WebUI after updating the extension.");
+            let config = client.get();
+            if (!config.initialized && !config.readError && typeof client.migrateLegacy === "function") config = await client.migrateLegacy(async raw => documentFor(await normalizeSettings(validate(raw).settings, () => !disposed))) || client.get();
+            if (disposed) return;
+            const next = validate(config.theme).settings;
+            saved = await normalizeSettings(next, () => !disposed);
+            draft = copy(saved);
+            if (config.readError) setStatus("The configuration file could not be read. Default appearance is active.", "error");
+            else if (config.migrationPending) setStatus("Your previous browser profile could not be copied to the configuration file. Open the editor and save it.", "error");
         } catch (error) {
             if (disposed) return;
             saved = copy(DEFAULTS);
@@ -2512,12 +2643,16 @@
     };
     const destroy = () => {
         if (disposed) return;
-        close(false);
+        close(false, true);
         invalidate();
         disposed = true;
         if (frame) window.cancelAnimationFrame(frame);
         frame = 0;
         if (observer) observer.disconnect();
+        if (typeof unsubscribeLanguage === "function") unsubscribeLanguage();
+        unsubscribeLanguage = null;
+        languageApi = null;
+        searchCatalogs = [];
         while (removers.length) removers.pop().remove();
         for (const url of [...downloadURLs]) releaseURL(url);
         for (const launcher of launchers) launcher.remove();
@@ -2529,6 +2664,8 @@
         }
         localizations.clear();
         launchers.clear();
+        languageButtons.clear();
+        saveLockedControls.clear();
     };
 
     const api = { open, close, get: () => ({ saved: copy(saved), draft: copy(draft), open: opened, busy, status: statusKey, invalidColors: [...invalidColors.keys(), ...(invalidAccent !== null ? ["accent"] : [])] }), validate, defaults: () => copy(DEFAULTS), colors: () => ({ groups: COLOR_MANIFEST.groups.map(group => ({ ...group })), roles: COLOR_MANIFEST.roles.map(role => ({ ...role })) }), destroy, ready };
