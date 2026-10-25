@@ -1,0 +1,1308 @@
+.sd-modern-ui,
+.sd-modern-ui body,
+.sd-modern-ui .gradio-container {
+    color-scheme: dark;
+    background-color: #0b1020 !important;
+
+    --modern-canvas: #0b1020;
+    --modern-surface: #121a2d;
+    --modern-surface-raised: #18233a;
+    --modern-surface-hover: #202e49;
+    --modern-input: #0e1628;
+    --modern-border: rgba(148, 163, 184, .18);
+    --modern-border-strong: rgba(129, 140, 248, .52);
+    --modern-text: #eef2ff;
+    --modern-muted: #9eacc8;
+    --modern-accent: #818cf8;
+    --modern-accent-strong: #a5b4fc;
+    --modern-focus: rgba(129, 140, 248, .34);
+    --modern-shadow-sm: 0 2px 10px rgba(2, 6, 23, .25);
+    --modern-shadow-lg: 0 18px 45px rgba(2, 6, 23, .34);
+    --modern-radius-sm: 9px;
+    --modern-radius: 14px;
+    --modern-radius-lg: 18px;
+    --modern-danger: #f87171;
+
+    --body-background-fill: #0b1020 !important;
+    --body-background-fill-dark: #0b1020 !important;
+    --body-text-color: #eef2ff !important;
+    --body-text-color-dark: #eef2ff !important;
+    --body-text-color-subdued: #9eacc8 !important;
+    --body-text-color-subdued-dark: #9eacc8 !important;
+    --background-fill-primary: #121a2d !important;
+    --background-fill-primary-dark: #121a2d !important;
+    --background-fill-secondary: #18233a !important;
+    --background-fill-secondary-dark: #18233a !important;
+    --panel-background-fill: #121a2d !important;
+    --block-background-fill: transparent !important;
+    --block-border-color: rgba(148, 163, 184, .18) !important;
+    --border-color-primary: rgba(148, 163, 184, .18) !important;
+    --border-color-primary-dark: rgba(148, 163, 184, .18) !important;
+    --border-color-accent: #818cf8 !important;
+    --border-color-accent-dark: #818cf8 !important;
+    --color-accent: #818cf8 !important;
+    --color-accent-soft: rgba(129, 140, 248, .15) !important;
+    --color-accent-soft-dark: rgba(129, 140, 248, .15) !important;
+    --input-background-fill: #0e1628 !important;
+    --input-border-color: rgba(148, 163, 184, .18) !important;
+    --input-border-color-focus: #818cf8 !important;
+    --input-placeholder-color: #687795 !important;
+    --button-primary-background-fill: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+    --button-primary-background-fill-hover: linear-gradient(135deg, #818cf8, #a78bfa) !important;
+    --button-primary-text-color: #fff !important;
+    --button-primary-text-color-hover: #fff !important;
+    --button-primary-border-color: transparent !important;
+    --button-secondary-background-fill: #18233a !important;
+    --button-secondary-background-fill-hover: #202e49 !important;
+    --button-secondary-text-color: #eef2ff !important;
+    --button-secondary-text-color-hover: #fff !important;
+    --block-title-text-color: #eef2ff !important;
+    --block-label-text-color: #eef2ff !important;
+    --block-label-text-color-dark: #eef2ff !important;
+    --neutral-50: #0e1628 !important;
+    --neutral-100: #121a2d !important;
+    --neutral-200: #18233a !important;
+    --neutral-300: #253551 !important;
+    --neutral-400: #64748b !important;
+    --neutral-500: #94a3b8 !important;
+    --neutral-600: #b4c1d6 !important;
+    --neutral-700: #d0d9e9 !important;
+    --neutral-800: #e4eaf5 !important;
+    --neutral-900: #f8fafc !important;
+    --neutral-950: #fff !important;
+    --primary-50: #eef2ff !important;
+    --primary-100: #e0e7ff !important;
+    --primary-200: #c7d2fe !important;
+    --primary-300: #a5b4fc !important;
+    --primary-400: #818cf8 !important;
+    --primary-500: #6366f1 !important;
+    --primary-600: #4f46e5 !important;
+    --primary-700: #4338ca !important;
+    --primary-800: #3730a3 !important;
+    --primary-900: #312e81 !important;
+    --checkbox-background-color: #0e1628 !important;
+    --checkbox-background-color-dark: #0e1628 !important;
+    --checkbox-background-color-focus: #172239 !important;
+    --checkbox-background-color-focus-dark: #172239 !important;
+    --checkbox-background-color-hover: #172239 !important;
+    --checkbox-background-color-hover-dark: #172239 !important;
+    --checkbox-background-color-selected: #818cf8 !important;
+    --checkbox-background-color-selected-dark: #818cf8 !important;
+    --checkbox-border-color: rgba(148, 163, 184, .18) !important;
+    --checkbox-border-color-dark: rgba(148, 163, 184, .18) !important;
+    --checkbox-border-color-focus: #818cf8 !important;
+    --checkbox-border-color-focus-dark: #818cf8 !important;
+    --checkbox-border-color-hover: rgba(165,180,252,.48) !important;
+    --checkbox-border-color-hover-dark: rgba(165,180,252,.48) !important;
+    --checkbox-border-color-selected: #818cf8 !important;
+    --checkbox-border-color-selected-dark: #818cf8 !important;
+    --checkbox-label-background-fill: #18233a !important;
+    --checkbox-label-background-fill-dark: #18233a !important;
+    --checkbox-label-background-fill-hover: #202e49 !important;
+    --checkbox-label-background-fill-hover-dark: #202e49 !important;
+    --checkbox-label-background-fill-selected: rgba(129,140,248,.20) !important;
+    --checkbox-label-background-fill-selected-dark: rgba(129,140,248,.20) !important;
+    --checkbox-label-border-color: rgba(148, 163, 184, .18) !important;
+    --checkbox-label-border-color-dark: rgba(148, 163, 184, .18) !important;
+    --checkbox-label-border-color-hover: rgba(165,180,252,.48) !important;
+    --checkbox-label-border-color-hover-dark: rgba(165,180,252,.48) !important;
+    --checkbox-label-text-color: #eef2ff !important;
+    --checkbox-label-text-color-dark: #eef2ff !important;
+    --checkbox-label-text-color-selected: #fff !important;
+    --checkbox-label-text-color-selected-dark: #fff !important;
+    --error-text-color: #f87171 !important;
+    --error-background-fill: #211a2b !important;
+    --error-background-fill-dark: #211a2b !important;
+    --error-border-color: rgba(251, 113, 133, .4) !important;
+    --error-border-color-dark: rgba(251, 113, 133, .4) !important;
+}
+
+.sd-modern-ui body,
+.sd-modern-ui .gradio-container {
+    background: radial-gradient(circle at 80% -12%, rgba(99, 102, 241, .14), transparent 32rem), #0b1020 !important;
+    color: #eef2ff !important;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif !important;
+    letter-spacing: .005em;
+}
+
+.sd-modern-ui .gradio-container {
+    max-width: 1920px !important;
+    padding: 0 18px 28px !important;
+}
+
+.sd-modern-ui .gradio-container,
+.sd-modern-ui textarea,
+.sd-modern-ui .extra-network-cards,
+.sd-modern-ui .extra-network-tree,
+.sd-modern-ui #settings > .tab-nav {
+    scrollbar-color: #475569 transparent;
+    scrollbar-width: thin;
+}
+.sd-modern-ui .gradio-container::-webkit-scrollbar,
+.sd-modern-ui textarea::-webkit-scrollbar,
+.sd-modern-ui .extra-network-cards::-webkit-scrollbar,
+.sd-modern-ui #settings > .tab-nav::-webkit-scrollbar {
+    width: 11px;
+    height: 11px;
+}
+.sd-modern-ui .gradio-container::-webkit-scrollbar-thumb,
+.sd-modern-ui textarea::-webkit-scrollbar-thumb,
+.sd-modern-ui .extra-network-cards::-webkit-scrollbar-thumb,
+.sd-modern-ui #settings > .tab-nav::-webkit-scrollbar-thumb {
+    background: #384862;
+    border: 3px solid #0b1020;
+    border-radius: 99px;
+}
+
+.sd-modern-ui ::selection {
+    background: rgba(129, 140, 248, .35);
+    color: #fff;
+}
+
+.sd-modern-ui .tabs > .tab-nav,
+.sd-modern-ui #settings > .tab-nav {
+    gap: 5px;
+    border: 1px solid rgba(148, 163, 184, .18) !important;
+    background: rgba(18, 26, 45, .82) !important;
+    border-radius: 18px !important;
+    padding: 6px !important;
+    box-shadow: 0 2px 10px rgba(2, 6, 23, .25);
+    backdrop-filter: blur(16px);
+}
+.sd-modern-ui .tabs > .tab-nav { margin: 12px 0 20px; }
+.sd-modern-ui .tabs > .tab-nav button,
+.sd-modern-ui #settings > .tab-nav button {
+    color: #9eacc8 !important;
+    border: 0 !important;
+    border-radius: 9px !important;
+    font-size: .9rem !important;
+    font-weight: 650 !important;
+    min-height: 38px;
+    transition: background .16s ease, color .16s ease !important;
+}
+.sd-modern-ui .tabs > .tab-nav button:hover,
+.sd-modern-ui #settings > .tab-nav button:hover {
+    background: #202e49 !important;
+    color: #eef2ff !important;
+}
+.sd-modern-ui .tabs > .tab-nav button.selected,
+.sd-modern-ui #settings > .tab-nav button.selected,
+.sd-modern-ui .tabs > .tab-nav button[aria-selected="true"] {
+    background: linear-gradient(135deg, rgba(99,102,241,.28), rgba(139,92,246,.24)) !important;
+    color: #fff !important;
+    box-shadow: inset 0 0 0 1px rgba(165,180,252,.25);
+}
+
+.sd-modern-ui button,
+.sd-modern-ui .gradio-button,
+.sd-modern-ui button.custom-button {
+    border: 1px solid rgba(148, 163, 184, .18) !important;
+    border-radius: 9px !important;
+    box-shadow: none !important;
+    font-weight: 650 !important;
+    color: #eef2ff;
+    transition: background .16s ease, border-color .16s ease, color .16s ease, box-shadow .16s ease !important;
+}
+.sd-modern-ui button:hover:not(:disabled),
+.sd-modern-ui .gradio-button:hover:not(:disabled) {
+    border-color: rgba(165, 180, 252, .45) !important;
+    box-shadow: 0 5px 16px rgba(2,6,23,.24) !important;
+}
+.sd-modern-ui button:disabled,
+.sd-modern-ui .gradio-button:disabled {
+    opacity: .45 !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+}
+.sd-modern-ui button:focus-visible,
+.sd-modern-ui input:focus-visible,
+.sd-modern-ui textarea:focus-visible,
+.sd-modern-ui select:focus-visible {
+    outline: 3px solid rgba(129, 140, 248, .34) !important;
+    outline-offset: 2px;
+}
+
+.sd-modern-ui input:not([type="range"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
+.sd-modern-ui textarea,
+.sd-modern-ui select {
+    color: #eef2ff !important;
+    background: #0e1628 !important;
+    border: 1px solid rgba(148, 163, 184, .18) !important;
+    border-radius: 9px !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.025) !important;
+}
+
+.sd-modern-ui .gradio-dropdown .wrap,
+.sd-modern-ui .gradio-dropdown div.wrap.wrap.wrap.wrap {
+    color: #eef2ff !important;
+    background: #0e1628 !important;
+    border: 0 !important;
+    border-radius: 9px !important;
+    box-shadow: none !important;
+}
+
+.sd-modern-ui .gradio-dropdown input:not([type="range"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
+    color: #eef2ff !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+.sd-modern-ui textarea { line-height: 1.55 !important; }
+.sd-modern-ui input::placeholder,
+.sd-modern-ui textarea::placeholder { color: #6f7e99 !important; }
+.sd-modern-ui .gradio-container label,
+.sd-modern-ui .gradio-container label span,
+.sd-modern-ui .gradio-container .label-wrap span,
+.sd-modern-ui .gradio-container .block-title,
+.sd-modern-ui .gradio-container .prose,
+.sd-modern-ui .gradio-container .prose p { color: #eef2ff !important; }
+.sd-modern-ui .gradio-container .secondary-wrap,
+.sd-modern-ui .gradio-container .settings-comment,
+.sd-modern-ui .gradio-container small { color: #9eacc8 !important; }
+
+.sd-modern-ui .gradio-dropdown ul.options {
+    background: #172239 !important;
+    border: 1px solid rgba(148, 163, 184, .18) !important;
+    border-radius: 12px !important;
+    box-shadow: 0 18px 45px rgba(2, 6, 23, .34) !important;
+    z-index: 1000 !important;
+}
+.sd-modern-ui .gradio-dropdown ul.options li.item { color: #eef2ff !important; border-radius: 7px !important; }
+.sd-modern-ui .gradio-dropdown ul.options li.item:hover,
+.sd-modern-ui .gradio-dropdown ul.options li.item.selected { background: rgba(129,140,248,.24) !important; color: #fff !important; }
+
+.sd-modern-ui #txt2img_generate,
+.sd-modern-ui #img2img_generate,
+.sd-modern-ui #extras_generate {
+    min-height: 4.3em !important;
+    border: 0 !important;
+    border-radius: 14px !important;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+    background-image: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+    color: #fff !important;
+    box-shadow: 0 10px 28px rgba(99,102,241,.28) !important;
+    letter-spacing: .035em;
+    text-transform: uppercase;
+    font-size: .93rem !important;
+}
+.sd-modern-ui #txt2img_generate:hover,
+.sd-modern-ui #img2img_generate:hover,
+.sd-modern-ui #extras_generate:hover {
+    box-shadow: 0 14px 34px rgba(124,58,237,.42) !important;
+}
+.sd-modern-ui .generate-box-compact #txt2img_generate,
+.sd-modern-ui .generate-box-compact #img2img_generate { min-height: 3.2em !important; }
+
+.sd-modern-ui .block.gradio-accordion,
+.sd-modern-ui .gradio-gallery,
+.sd-modern-ui .extra-network-tree,
+.sd-modern-ui .extra-network-cards,
+.sd-modern-ui .settings-info {
+    background: linear-gradient(145deg, rgba(24,35,58,.9), rgba(18,26,45,.94)) !important;
+    border: 1px solid rgba(148, 163, 184, .18) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 2px 10px rgba(2, 6, 23, .25) !important;
+}
+.sd-modern-ui .block.gradio-accordion { padding: 12px 14px !important; margin: 8px 0 !important; }
+.sd-modern-ui .block.gradio-accordion > label { color: #eef2ff !important; font-weight: 650; }
+.sd-modern-ui .gradio-accordion > button.label-wrap,
+.sd-modern-ui #settings .gradio-accordion > button.label-wrap {
+    min-height: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #eef2ff !important;
+    text-align: left;
+}
+.sd-modern-ui .gradio-accordion > button.label-wrap:hover:not(:disabled),
+.sd-modern-ui #settings .gradio-accordion > button.label-wrap:hover:not(:disabled) {
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+.sd-modern-ui .gradio-gallery { overflow: hidden; padding: 7px !important; }
+.sd-modern-ui .gradio-gallery > button.preview:not(.minimal) {
+    inset: 0 !important;
+    width: auto !important;
+    height: auto !important;
+}
+.sd-modern-ui .gradio-gallery > button.preview {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: inherit !important;
+    box-shadow: none !important;
+}
+.sd-modern-ui .gradio-gallery > button.preview > button.image-button {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+.sd-modern-ui .gradio-gallery > button.preview:hover:not(:disabled),
+.sd-modern-ui .gradio-gallery > button.preview > button.image-button:hover:not(:disabled) {
+    border: 0 !important;
+    box-shadow: none !important;
+}
+.sd-modern-ui .gradio-gallery .thumbnail-item { border-radius: 10px !important; overflow: hidden; border-color: transparent !important; }
+.sd-modern-ui .gradio-gallery .thumbnail-item.selected { box-shadow: 0 0 0 2px #818cf8 !important; }
+.sd-modern-ui .gradio-gallery .icon-buttons {
+    top: 8px !important;
+    right: 8px !important;
+    align-items: center;
+    gap: 6px;
+    padding: 4px;
+    border: 1px solid rgba(148, 163, 184, .28);
+    border-radius: 12px;
+    background: rgba(11, 16, 32, .94);
+    box-shadow: 0 4px 14px rgba(2, 6, 23, .35);
+}
+.sd-modern-ui .gradio-gallery .icon-buttons > a,
+.sd-modern-ui .gradio-gallery .icon-buttons > .download-button-container,
+.sd-modern-ui .gradio-gallery .icon-buttons > .not-absolute {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 !important;
+    padding: 0;
+}
+.sd-modern-ui .gradio-gallery .icon-buttons button {
+    display: inline-flex;
+    flex: 0 0 32px;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 32px !important;
+    min-width: 32px !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    margin: 0 !important;
+    padding: 6px !important;
+    border: 1px solid rgba(165, 180, 252, .38) !important;
+    border-radius: 8px !important;
+    background: #202e49 !important;
+    color: #eef2ff !important;
+    box-shadow: none !important;
+    line-height: 1;
+}
+.sd-modern-ui .gradio-gallery .icon-buttons button:hover:not(:disabled) {
+    border-color: #a5b4fc !important;
+    background: #304366 !important;
+    color: #fff !important;
+    box-shadow: 0 0 0 1px rgba(165, 180, 252, .18) !important;
+}
+.sd-modern-ui .gradio-gallery .icon-buttons button > div {
+    display: flex;
+    flex: 0 0 18px;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 18px !important;
+    height: 18px !important;
+    padding: 0 !important;
+    color: inherit !important;
+}
+.sd-modern-ui .gradio-gallery .icon-buttons button svg {
+    display: block;
+    width: 18px;
+    height: 18px;
+}
+.sd-modern-ui .gallery-item,
+.sd-modern-ui .gradio-image { border-radius: 14px !important; overflow: hidden; }
+
+.sd-modern-ui input[type="checkbox"]:not(.input-accordion-checkbox),
+.sd-modern-ui input[type="radio"] {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    flex: 0 0 16px !important;
+    width: 16px !important;
+    height: 16px !important;
+    margin: 0 8px 0 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    border: 1px solid rgba(148,163,184,.42) !important;
+    background: #0b1324 !important;
+    background-image: none !important;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.22) !important;
+    cursor: pointer !important;
+    position: relative !important;
+    clip: auto !important;
+    clip-path: none !important;
+    overflow: visible !important;
+    opacity: 1 !important;
+    accent-color: #818cf8 !important;
+}
+.sd-modern-ui input[type="checkbox"]:not(.input-accordion-checkbox) { border-radius: 5px !important; }
+.sd-modern-ui input[type="radio"] { border-radius: 50% !important; }
+.sd-modern-ui input[type="checkbox"]:not(.input-accordion-checkbox):checked {
+    background-color: #818cf8 !important;
+    border-color: #a5b4fc !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.4 8.2 6.4 11.1 12.6 4.8' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: 12px 12px !important;
+}
+.sd-modern-ui input[type="radio"]:checked {
+    background: #818cf8 !important;
+    border-color: #a5b4fc !important;
+    box-shadow: inset 0 0 0 4px #18233a !important;
+}
+.sd-modern-ui input[type="checkbox"]:focus-visible,
+.sd-modern-ui input[type="radio"]:focus-visible {
+    outline: 2px solid rgba(129, 140, 248, .34) !important;
+    outline-offset: 2px !important;
+}
+
+.sd-modern-ui .gradio-checkboxgroup,
+.sd-modern-ui .gradio-radio,
+.sd-modern-ui .gradio-checkbox {
+    background: transparent !important;
+    border-color: rgba(148, 163, 184, .18) !important;
+}
+.sd-modern-ui .gradio-checkboxgroup label,
+.sd-modern-ui .gradio-radio label,
+.sd-modern-ui .gradio-checkbox label {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 9px !important;
+    min-height: 36px !important;
+    padding: 7px 12px !important;
+    box-sizing: border-box !important;
+    border: 1px solid rgba(148, 163, 184, .18) !important;
+    border-radius: 8px !important;
+    background: #18233a !important;
+    color: #eef2ff !important;
+}
+.sd-modern-ui .gradio-checkboxgroup label:hover,
+.sd-modern-ui .gradio-radio label:hover,
+.sd-modern-ui .gradio-checkbox label:hover {
+    background: #202e49 !important;
+    border-color: rgba(165,180,252,.42) !important;
+}
+.sd-modern-ui .gradio-checkboxgroup label.selected,
+.sd-modern-ui .gradio-radio label.selected,
+.sd-modern-ui .gradio-checkbox label.selected,
+.sd-modern-ui .gradio-checkboxgroup label:has(input:checked),
+.sd-modern-ui .gradio-radio label:has(input:checked),
+.sd-modern-ui .gradio-checkbox label:has(input:checked) {
+    background: rgba(129,140,248,.20) !important;
+    border-color: rgba(129,140,248,.48) !important;
+    color: #fff !important;
+}
+
+.sd-modern-ui :is(#txt2img_seed_row, #img2img_seed_row),
+.sd-modern-ui :is(#txt2img_seed_row, #img2img_seed_row) > .form {
+    --modern-seed-control-height: 42px;
+    align-items: flex-end !important;
+    flex-wrap: nowrap !important;
+    gap: 8px !important;
+    min-width: 0 !important;
+}
+.sd-modern-ui :is(#txt2img_seed_row, #img2img_seed_row) > .form {
+    flex: 1 1 0% !important;
+}
+.sd-modern-ui :is(#txt2img_seed_row, #img2img_seed_row) > .form:has(> [id$="_subseed_show"]):not(:has([id$="_seed"])) {
+    flex: 0 0 auto !important;
+    align-self: flex-end !important;
+}
+.sd-modern-ui :is(#txt2img_seed_row, #img2img_seed_row) [id$="_seed"] {
+    flex: 1 1 0% !important;
+    min-width: 0 !important;
+}
+.sd-modern-ui :is(#txt2img_seed_row, #img2img_seed_row) [id$="_seed"] input {
+    height: var(--modern-seed-control-height) !important;
+}
+.sd-modern-ui :is(#txt2img_seed_row, #img2img_seed_row) .gradio-button.tool {
+    flex: 0 0 var(--modern-seed-control-height) !important;
+    width: var(--modern-seed-control-height) !important;
+    min-width: var(--modern-seed-control-height) !important;
+    max-width: var(--modern-seed-control-height) !important;
+    height: var(--modern-seed-control-height) !important;
+    min-height: var(--modern-seed-control-height) !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    align-self: flex-end !important;
+}
+.sd-modern-ui :is(#txt2img_seed_row, #img2img_seed_row) [id$="_subseed_show"] {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    align-self: flex-end !important;
+}
+.sd-modern-ui :is(#txt2img_seed_row, #img2img_seed_row) [id$="_subseed_show"] label {
+    width: 100% !important;
+    height: var(--modern-seed-control-height) !important;
+    min-height: var(--modern-seed-control-height) !important;
+    margin: 0 !important;
+    padding: 0 10px !important;
+    gap: 8px !important;
+    justify-content: center !important;
+    border-radius: 9px !important;
+    white-space: nowrap;
+}
+.sd-modern-ui :is(#txt2img_seed_row, #img2img_seed_row) [id$="_subseed_show"] input[type="checkbox"] {
+    margin: 0 !important;
+}
+.sd-modern-ui :is(#txt2img_seed_row, #img2img_seed_row) [id$="_subseed_show"] label > span {
+    margin: 0 !important;
+}
+
+.modern-icon-button[data-modern-icon] > .modern-tool-icon { display: none !important; }
+.sd-modern-ui button.modern-icon-button[data-modern-icon]:not([hidden]):not(.hidden) {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 38px !important;
+    min-width: 38px !important;
+    max-width: 38px !important;
+    height: 38px !important;
+    min-height: 38px !important;
+    padding: 8px !important;
+    gap: 0 !important;
+    font-size: 0 !important;
+    line-height: 1 !important;
+    white-space: nowrap;
+}
+.sd-modern-ui button.modern-icon-button[data-modern-icon] > .modern-tool-icon {
+    display: block !important;
+    flex: 0 0 18px;
+    width: 18px !important;
+    height: 18px !important;
+    color: currentColor;
+    pointer-events: none;
+}
+.sd-modern-ui .image-buttons {
+    flex-wrap: wrap !important;
+    row-gap: 8px !important;
+}
+.sd-modern-ui .image-buttons > .form {
+    flex-wrap: wrap !important;
+    row-gap: 8px !important;
+}
+.sd-modern-ui button.modern-icon-button[data-modern-icon="delete"] {
+    color: #fda4af !important;
+}
+.sd-modern-ui button.modern-icon-button[data-modern-icon="delete"]:hover:not(:disabled) {
+    border-color: rgba(251, 113, 133, .5) !important;
+    background: rgba(127, 29, 29, .24) !important;
+}
+.sd-modern-ui .gradio-button.tool { background: #18233a !important; color: #9eacc8 !important; }
+.sd-modern-ui .gradio-button.tool:hover { color: #fff !important; background: #202e49 !important; }
+.sd-modern-ui .token-counter span {
+    background: #121a2d !important;
+    border-color: rgba(129,140,248,.46) !important;
+    color: #a5b4fc !important;
+    box-shadow: 0 0 0 .22em rgba(99,102,241,.11) !important;
+}
+.sd-modern-ui .html-log .performance,
+.sd-modern-ui .html-log .performance p.time,
+.sd-modern-ui .html-log .performance p.vram { color: #9eacc8 !important; }
+
+.sd-modern-ui input[type="range"] {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    background: transparent !important;
+    height: 22px !important;
+    accent-color: #818cf8 !important;
+}
+.sd-modern-ui input[type="range"]::-webkit-slider-runnable-track {
+    height: 6px !important;
+    background: #1e2a42 !important;
+    border-radius: 99px !important;
+    border: 0 !important;
+}
+.sd-modern-ui input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    width: 16px !important;
+    height: 16px !important;
+    margin-top: -5px !important;
+    border-radius: 50% !important;
+    background: #a5b4fc !important;
+    border: 2px solid #eef2ff !important;
+    box-shadow: 0 0 0 3px rgba(129,140,248,.22) !important;
+    cursor: pointer !important;
+}
+.sd-modern-ui input[type="range"]::-moz-range-track {
+    height: 6px !important;
+    background: #1e2a42 !important;
+    border-radius: 99px !important;
+    border: 0 !important;
+}
+.sd-modern-ui input[type="range"]::-moz-range-thumb {
+    width: 16px !important;
+    height: 16px !important;
+    border-radius: 50% !important;
+    background: #a5b4fc !important;
+    border: 2px solid #eef2ff !important;
+    box-shadow: 0 0 0 3px rgba(129,140,248,.22) !important;
+    cursor: pointer !important;
+}
+
+.sd-modern-ui #settings {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+}
+.sd-modern-ui #settings > .tab-nav {
+    float: left !important;
+    display: block !important;
+    position: sticky !important;
+    top: 12px !important;
+    z-index: 20 !important;
+    width: 16em !important;
+    min-width: 16em !important;
+    max-width: 16em !important;
+    height: calc(100vh - 56px) !important;
+    max-height: calc(100vh - 56px) !important;
+    margin: 0 !important;
+    padding: 8px !important;
+    overflow-x: hidden !important;
+    overflow-y: auto !important;
+    box-sizing: border-box !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 3px !important;
+    scrollbar-gutter: stable !important;
+}
+.sd-modern-ui #settings > .tab-nav button,
+.sd-modern-ui #settings > .tab-nav button.tab-nav-button {
+    display: block !important;
+    float: none !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 36px !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 8px 11px !important;
+    box-sizing: border-box !important;
+    justify-content: flex-start !important;
+    text-align: left !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    transform: none !important;
+    border: 1px solid transparent !important;
+    border-radius: 9px !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #9eacc8 !important;
+    font-size: .88rem !important;
+    line-height: 1.35 !important;
+}
+.sd-modern-ui #settings > .tab-nav button:hover:not(:disabled) {
+    background: rgba(129,140,248,.10) !important;
+    border-color: rgba(129,140,248,.18) !important;
+    color: #eef2ff !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+.sd-modern-ui #settings > .tab-nav button.selected,
+.sd-modern-ui #settings > .tab-nav button[aria-selected="true"] {
+    background: linear-gradient(135deg, rgba(99,102,241,.34), rgba(139,92,246,.26)) !important;
+    border-color: rgba(165,180,252,.24) !important;
+    color: #fff !important;
+}
+.sd-modern-ui #settings > .tab-nav .settings-category {
+    display: block !important;
+    width: 100% !important;
+    margin: 10px 0 2px !important;
+    padding: 8px 9px 3px !important;
+    color: #9eacc8 !important;
+    font-size: .67rem !important;
+    font-weight: 700 !important;
+    letter-spacing: .08em !important;
+    text-transform: uppercase !important;
+    pointer-events: none !important;
+    user-select: none !important;
+}
+.sd-modern-ui #settings > .tabitem {
+    display: none !important;
+    float: none !important;
+    width: auto !important;
+    min-width: 0 !important;
+    margin: 0 0 0 17.5em !important;
+    padding: 2px 0 2rem !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+    border: 0 !important;
+}
+.sd-modern-ui #settings > .tabitem.selected,
+.sd-modern-ui #settings > .tabitem[role="tabpanel"].selected,
+.sd-modern-ui #settings > .tabitem[style*="display: block"] {
+    display: block !important;
+}
+.sd-modern-ui #settings > .tabitem[hidden] { display: none !important; }
+.sd-modern-ui #settings > .tabitem .gradio-column {
+    width: 100% !important;
+    max-width: none !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    flex-direction: column !important;
+}
+.sd-modern-ui #settings .settings-info { color: #9eacc8 !important; padding: 13px 15px !important; }
+.sd-modern-ui #settings_result { color: #a5b4fc !important; }
+.sd-modern-ui #settings .gradio-button,
+.sd-modern-ui #settings button {
+    color: #eef2ff !important;
+    background: #18233a !important;
+    background-image: none !important;
+    border-color: rgba(148, 163, 184, .18) !important;
+}
+.sd-modern-ui #settings .gradio-button:hover,
+.sd-modern-ui #settings button:hover { background: #202e49 !important; }
+
+.sd-modern-ui #settings_submit,
+.sd-modern-ui #settings_restart_gradio,
+.sd-modern-ui #settings_reload_ui,
+.sd-modern-ui #settings_restart,
+.sd-modern-ui #settings_reload,
+.sd-modern-ui #settings_refresh,
+.sd-modern-ui #reload_ui,
+.sd-modern-ui #restart_gradio,
+.sd-modern-ui #reload_script,
+.sd-modern-ui button[id^="settings_submit"],
+.sd-modern-ui button[id^="settings_restart"],
+.sd-modern-ui button[id^="settings_reload"],
+.sd-modern-ui button[id^="settings_refresh"],
+.sd-modern-ui button[id^="reload_ui"],
+.sd-modern-ui button[id^="restart_gradio"],
+.sd-modern-ui button[id^="reload_script"],
+.sd-modern-ui .gradio-container button[id^="settings_submit"],
+.sd-modern-ui .gradio-container button[id^="settings_restart"],
+.sd-modern-ui .gradio-container button[id^="settings_reload"],
+.sd-modern-ui .gradio-container button[id^="settings_refresh"],
+.sd-modern-ui .gradio-container button[id^="reload_ui"],
+.sd-modern-ui .gradio-container button[id^="restart_gradio"],
+.sd-modern-ui .gradio-container button[id^="reload_script"],
+html.sd-modern-ui body .gradio-container button[id^="settings_submit"],
+html.sd-modern-ui body .gradio-container button[id^="settings_restart"],
+html.sd-modern-ui body .gradio-container button[id^="settings_reload"],
+html.sd-modern-ui body .gradio-container button[id^="settings_refresh"],
+html.sd-modern-ui body .gradio-container button[id^="reload_ui"],
+html.sd-modern-ui body .gradio-container button[id^="restart_gradio"],
+html.sd-modern-ui body .gradio-container button[id^="reload_script"] {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+    background-color: #6366f1 !important;
+    background-image: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+    color: #fff !important;
+    border: 0 !important;
+    border-radius: 9px !important;
+    box-shadow: 0 6px 18px rgba(99, 102, 241, .28) !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    font-weight: 650 !important;
+    min-height: 44px !important;
+    opacity: 1 !important;
+    transition: box-shadow .16s ease, filter .16s ease !important;
+}
+
+.sd-modern-ui #settings_submit:hover,
+.sd-modern-ui #settings_restart_gradio:hover,
+.sd-modern-ui #settings_reload_ui:hover,
+.sd-modern-ui #settings_restart:hover,
+.sd-modern-ui #settings_reload:hover,
+.sd-modern-ui #settings_refresh:hover,
+.sd-modern-ui #reload_ui:hover,
+.sd-modern-ui #restart_gradio:hover,
+.sd-modern-ui #reload_script:hover,
+.sd-modern-ui button[id^="settings_submit"]:hover,
+.sd-modern-ui button[id^="settings_restart"]:hover,
+.sd-modern-ui button[id^="settings_reload"]:hover,
+.sd-modern-ui button[id^="settings_refresh"]:hover,
+.sd-modern-ui button[id^="reload_ui"]:hover,
+.sd-modern-ui button[id^="restart_gradio"]:hover,
+.sd-modern-ui button[id^="reload_script"]:hover {
+    box-shadow: 0 10px 26px rgba(124, 58, 237, .42) !important;
+    filter: brightness(1.05);
+}
+
+.sd-modern-ui .gradio-container button.primary,
+.sd-modern-ui .gradio-container button[variant="primary"],
+.sd-modern-ui .gradio-container button[variant="primary"]:hover,
+.sd-modern-ui .gradio-container button.primary:hover {
+    background-image: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+    background-color: #6366f1 !important;
+    color: #fff !important;
+    border: 0 !important;
+}
+
+.sd-modern-ui .gradio-dropdown .token,
+.sd-modern-ui .multiselect .token {
+    background: #1b2945 !important;
+    color: #eef2ff !important;
+    border: 1px solid rgba(129,140,248,.34) !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+}
+.sd-modern-ui .gradio-dropdown .token button:hover,
+.sd-modern-ui .multiselect .token button:hover,
+.sd-modern-ui .gradio-dropdown .token-remove[role="button"]:hover {
+    background: rgba(239,68,68,.18) !important;
+    color: #fecaca !important;
+}
+
+.sd-modern-ui .forge-container .forge-btn {
+    border: 0 !important;
+    border-radius: 5px !important;
+    box-shadow: none !important;
+    font-weight: 400 !important;
+}
+.sd-modern-ui .forge-container .forge-btn:hover:not(:disabled) {
+    border: 0 !important;
+    box-shadow: none !important;
+}
+:root.sd-modern-ui .forge-container input.forge-toolbar-color[type="color"] {
+    width: 20px !important;
+    height: 20px !important;
+    padding: 3px !important;
+    border: 0 !important;
+    border-radius: 50% !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.sd-modern-ui .input-accordion .input-accordion-checkbox {
+    appearance: none !important;
+    -webkit-appearance: none !important;
+    flex: 0 0 18px !important;
+    width: 18px !important;
+    height: 18px !important;
+    margin: 0 8px 0 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    border: 1px solid rgba(148,163,184,.48) !important;
+    border-radius: 50% !important;
+    background: #0b1324 !important;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,.22) !important;
+    cursor: pointer !important;
+    opacity: 1 !important;
+    clip: auto !important;
+    clip-path: none !important;
+    position: relative !important;
+    overflow: visible !important;
+}
+.sd-modern-ui .input-accordion .input-accordion-checkbox:checked {
+    border-color: #a5b4fc !important;
+    background-color: #818cf8 !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M4 9.2 7.4 12.5 14 5.8' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: 13px 13px !important;
+}
+
+.sd-modern-ui #txt2img_interrupt,
+.sd-modern-ui #txt2img_skip,
+.sd-modern-ui #img2img_interrupt,
+.sd-modern-ui #img2img_skip,
+.sd-modern-ui .generate-box-interrupt,
+.sd-modern-ui .generate-box-skip {
+    border: 1px solid rgba(148,163,184,.34) !important;
+    background: linear-gradient(180deg, #1b2942, #152138) !important;
+    background-image: linear-gradient(180deg, #1b2942, #152138) !important;
+    color: #f8fafc !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.045), 0 5px 16px rgba(2,6,23,.18) !important;
+}
+.sd-modern-ui #txt2img_interrupt:hover,
+.sd-modern-ui #txt2img_skip:hover,
+.sd-modern-ui #img2img_interrupt:hover,
+.sd-modern-ui #img2img_skip:hover {
+    background: linear-gradient(180deg, #243653, #1b2942) !important;
+    background-image: linear-gradient(180deg, #243653, #1b2942) !important;
+    border-color: rgba(165,180,252,.48) !important;
+}
+.sd-modern-ui #txt2img_interrupt,
+.sd-modern-ui #img2img_interrupt,
+.sd-modern-ui .generate-box-interrupt {
+    border-radius: 14px 0 0 14px !important;
+}
+.sd-modern-ui #txt2img_skip,
+.sd-modern-ui #img2img_skip,
+.sd-modern-ui .generate-box-skip {
+    border-radius: 0 14px 14px 0 !important;
+}
+
+.progressDiv > .modern-progress-label {
+    display: none;
+}
+
+.sd-modern-ui .progressDiv {
+    position: relative !important;
+    width: 100% !important;
+    min-height: 34px !important;
+    height: 34px !important;
+    margin: 10px 0 12px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    border: 1px solid rgba(148, 163, 184, .18) !important;
+    border-radius: 10px !important;
+    background: #0e1628 !important;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.02), 0 2px 10px rgba(2, 6, 23, .25) !important;
+}
+.sd-modern-ui .progressDiv .progress {
+    position: absolute !important;
+    inset: 0 auto 0 0 !important;
+    width: 0;
+    min-width: 0 !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    border-radius: 9px !important;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6) !important;
+    background-image: linear-gradient(90deg, #6366f1, #8b5cf6) !important;
+    color: transparent !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    white-space: nowrap !important;
+    transition: width .18s ease-out !important;
+}
+.sd-modern-ui .progressDiv .modern-progress-label {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 10 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 12px !important;
+    color: #fff !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,.72) !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    pointer-events: none !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+}
+.sd-modern-ui .progressDiv .progress:empty { background: transparent !important; }
+
+.sd-modern-ui .extra-network-pane .extra-network-tree,
+.sd-modern-ui .extra-network-pane .extra-network-cards {
+    background: #121a2d !important;
+    border-color: rgba(148, 163, 184, .18) !important;
+}
+.sd-modern-ui .extra-network-tree div.tree-list-content:hover,
+.sd-modern-ui .extra-network-tree div.tree-list-content[data-selected] { background: rgba(129,140,248,.18) !important; }
+.sd-modern-ui .extra-network-cards .card {
+    border-radius: 12px !important;
+    border: 1px solid rgba(148, 163, 184, .18) !important;
+    background: #121a2d !important;
+}
+.sd-modern-ui .extra-network-cards .card:hover {
+    border-color: #818cf8 !important;
+    box-shadow: 0 8px 24px rgba(2,6,23,.35) !important;
+}
+.sd-modern-ui .popup,
+.sd-modern-ui .modal-wrap,
+.sd-modern-ui #lightboxModal {
+    backdrop-filter: blur(9px);
+}
+.sd-modern-ui #lightboxModal { background: rgba(2, 6, 23, .88) !important; }
+.sd-modern-ui table.popup-table {
+    background: #121a2d !important;
+    color: #eef2ff !important;
+    border-color: #121a2d !important;
+}
+.sd-modern-ui .context-menu-items {
+    background: #18233a !important;
+    color: #eef2ff !important;
+    border: 1px solid rgba(148, 163, 184, .18) !important;
+    border-radius: 9px !important;
+    box-shadow: 0 18px 45px rgba(2, 6, 23, .34) !important;
+}
+.sd-modern-ui a,
+.sd-modern-ui .gradio-container .prose a { color: #a5b4fc !important; }
+.sd-modern-ui a:hover { color: #c4b5fd !important; }
+
+.sd-modern-ui #quicksettings {
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.sd-modern-ui #footer,
+.sd-modern-ui footer,
+.sd-modern-ui .gradio-container > footer,
+.sd-modern-ui .gradio-container > #footer,
+.sd-modern-ui body > footer,
+.sd-modern-ui body > #footer {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    max-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+.sd-modern-ui #footer .versions,
+.sd-modern-ui #footer .settings-comment,
+.sd-modern-ui #footer a {
+    display: none !important;
+}
+
+.sd-modern-ui .wrap > span.error {
+    max-width: calc(100% - 24px);
+    box-sizing: border-box;
+    padding: 8px 12px;
+    border: 1px solid rgba(251, 113, 133, .4) !important;
+    border-radius: 9px !important;
+    background: #211a2b !important;
+    color: #fecdd3 !important;
+    font-size: 14px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    box-shadow: 0 4px 14px rgba(2, 6, 23, .25);
+}
+.sd-modern-ui .html-log .error,
+.sd-modern-ui [id^="html_log_"] .error,
+.sd-modern-ui .wrap > div.error {
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 10px 0;
+    padding: 12px 14px;
+    border: 1px solid rgba(251, 113, 133, .3);
+    border-left: 3px solid #fb7185;
+    border-radius: 12px;
+    background: linear-gradient(145deg, #211a2b, #161a2b);
+    color: #fecdd3 !important;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.55;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    text-align: left;
+}
+.sd-modern-ui .wrap > div.error {
+    max-width: min(640px, calc(100% - 32px));
+    margin: 12px auto;
+}
+
+.sd-modern-ui .toast-wrap {
+    width: min(440px, calc(100vw - 32px)) !important;
+    max-width: calc(100vw - 32px) !important;
+    gap: 12px !important;
+}
+.sd-modern-ui .toast-body {
+    --modern-toast-accent: #a5b4fc;
+    --modern-toast-icon-fill: rgba(129, 140, 248, .14);
+    width: 100%;
+    box-sizing: border-box;
+    align-items: flex-start !important;
+    gap: 10px;
+    margin: 0 !important;
+    padding: 14px 12px 15px !important;
+    border: 1px solid rgba(148, 163, 184, .24) !important;
+    border-left: 3px solid var(--modern-toast-accent) !important;
+    border-radius: 14px !important;
+    background: linear-gradient(145deg, #18233a, #10192c) !important;
+    color: #eef2ff !important;
+    box-shadow: 0 12px 36px rgba(2, 6, 23, .5) !important;
+}
+.sd-modern-ui .toast-body.error {
+    --modern-toast-accent: #fb7185;
+    --modern-toast-icon-fill: rgba(251, 113, 133, .12);
+}
+.sd-modern-ui .toast-body.warning {
+    --modern-toast-accent: #fbbf24;
+    --modern-toast-icon-fill: rgba(251, 191, 36, .12);
+}
+.sd-modern-ui .toast-body .toast-icon {
+    flex: 0 0 32px !important;
+    width: 32px !important;
+    height: 32px !important;
+    margin: 0 !important;
+    padding: 6px !important;
+    box-sizing: border-box;
+    border-radius: 10px !important;
+    background: var(--modern-toast-icon-fill) !important;
+    color: var(--modern-toast-accent) !important;
+}
+.sd-modern-ui .toast-body .toast-icon svg {
+    width: 20px;
+    height: 20px;
+}
+.sd-modern-ui .toast-body .toast-details {
+    display: flex;
+    flex: 1 1 0%;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+    width: auto !important;
+    margin: 0 !important;
+}
+.sd-modern-ui .toast-body .toast-title {
+    color: var(--modern-toast-accent) !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    line-height: 1.5 !important;
+}
+.sd-modern-ui .toast-body .toast-text {
+    max-height: min(50vh, 24rem);
+    overflow-y: auto;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+    color: #eef2ff !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    scrollbar-width: thin;
+    scrollbar-color: #475569 transparent;
+}
+.sd-modern-ui .toast-body .toast-text a {
+    color: #c7d2fe !important;
+    text-decoration: underline;
+}
+.sd-modern-ui .toast-body .toast-close {
+    display: grid;
+    flex: 0 0 30px;
+    place-items: center;
+    align-self: flex-start;
+    width: 30px;
+    min-width: 30px;
+    height: 30px;
+    min-height: 30px;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 8px !important;
+    background: transparent !important;
+    color: #9eacc8 !important;
+    box-shadow: none !important;
+    font-size: 18px;
+    line-height: 1;
+}
+.sd-modern-ui .toast-body .toast-close:hover:not(:disabled) {
+    background: #253551 !important;
+    color: #fff !important;
+    box-shadow: none !important;
+}
+.sd-modern-ui .toast-body .timer {
+    height: 3px !important;
+    background: var(--modern-toast-accent) !important;
+    pointer-events: none;
+}
+
+.modern-tooltip,
+.modern-lora-mark { display: none !important; }
+.modern-tooltip[hidden],
+.modern-lora-mark[hidden] { display: none !important; }
+.sd-modern-ui .modern-tooltip.modern-tooltip-visible:not([hidden]) {
+    display: block !important;
+    position: fixed;
+    z-index: 2147483000;
+    box-sizing: border-box;
+    max-width: min(360px, calc(100vw - 24px));
+    max-height: calc(100vh - 24px);
+    overflow: auto;
+    padding: 10px 12px;
+    border: 1px solid rgba(165, 180, 252, .3);
+    border-radius: 10px;
+    background: #111a2c;
+    color: #eef2ff;
+    box-shadow: 0 8px 26px rgba(2, 6, 23, .46);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: left;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    pointer-events: auto;
+}
+.sd-modern-ui .modern-module.modern-module-active {
+    border-color: rgba(165, 180, 252, .54) !important;
+    box-shadow: inset 3px 0 0 #818cf8, var(--modern-shadow-sm) !important;
+}
+.sd-modern-ui .modern-module > .modern-module-heading {
+    position: relative;
+}
+.sd-modern-ui .modern-module.modern-module-active > .modern-module-heading,
+.sd-modern-ui .modern-module.modern-module-active > .modern-module-heading:hover:not(:disabled) {
+    background: rgba(129, 140, 248, .08) !important;
+}
+.sd-modern-ui :is(#txt2img_controlnet_tabs, #img2img_controlnet_tabs) > .tab-nav > button.modern-unit-active {
+    border-color: rgba(165, 180, 252, .5) !important;
+    box-shadow: inset 0 -2px 0 #a5b4fc !important;
+}
+.sd-modern-ui .extra-network-cards .card.modern-lora-active {
+    border-color: #a5b4fc !important;
+    box-shadow: 0 0 0 2px rgba(129, 140, 248, .5), 0 5px 18px rgba(2, 6, 23, .3) !important;
+}
+.sd-modern-ui .extra-network-cards .card.modern-lora-active > .modern-lora-mark:not([hidden]) {
+    display: block !important;
+    position: absolute;
+    z-index: 2;
+    top: 8px;
+    left: 8px;
+    box-sizing: border-box;
+    width: 24px;
+    height: 24px;
+    padding: 4px;
+    border: 1px solid rgba(224, 231, 255, .65);
+    border-radius: 9px;
+    background: #4f46e5;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(2, 6, 23, .45);
+    pointer-events: none;
+}
+
+@media (max-width: 760px) {
+    .sd-modern-ui .gradio-container { padding: 0 10px 18px !important; }
+    .sd-modern-ui .tabs > .tab-nav { overflow-x: auto; flex-wrap: nowrap !important; border-radius: 12px !important; }
+    .sd-modern-ui .tabs > .tab-nav button { white-space: nowrap; flex: 0 0 auto; }
+    .sd-modern-ui #settings { display: block !important; }
+    .sd-modern-ui #settings > .tab-nav {
+        position: static !important;
+        float: none !important;
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        height: auto !important;
+        max-height: 48vh !important;
+        display: flex !important;
+        flex-direction: row !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+    }
+    .sd-modern-ui #settings > .tab-nav .settings-category { display: none !important; }
+    .sd-modern-ui #settings > .tab-nav button {
+        display: block !important;
+        width: auto !important;
+        min-width: max-content !important;
+        white-space: nowrap !important;
+    }
+    .sd-modern-ui #settings > .tabitem,
+    .sd-modern-ui #settings > .tabitem.selected,
+    .sd-modern-ui #settings > .tabitem[role="tabpanel"] {
+        width: 100% !important;
+        margin: 12px 0 0 !important;
+        padding: 12px 0 2rem !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sd-modern-ui *,
+    .sd-modern-ui *::before,
+    .sd-modern-ui *::after {
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+    }
+}
