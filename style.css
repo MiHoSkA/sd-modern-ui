@@ -2,126 +2,126 @@
 .sd-modern-ui body,
 .sd-modern-ui .gradio-container {
     color-scheme: dark;
-    background-color: #0b1020 !important;
+    background-color: var(--modern-user-color-canvas, #0b1020) !important;
 
-    --modern-canvas: #0b1020;
-    --modern-surface: #121a2d;
-    --modern-surface-raised: #18233a;
-    --modern-surface-hover: #202e49;
-    --modern-input: #0e1628;
-    --modern-border: rgba(148, 163, 184, .18);
-    --modern-border-strong: rgba(129, 140, 248, .52);
-    --modern-text: #eef2ff;
-    --modern-muted: #9eacc8;
-    --modern-accent: #818cf8;
-    --modern-accent-strong: #a5b4fc;
-    --modern-focus: rgba(129, 140, 248, .34);
-    --modern-shadow-sm: 0 2px 10px rgba(2, 6, 23, .25);
-    --modern-shadow-lg: 0 18px 45px rgba(2, 6, 23, .34);
-    --modern-radius-sm: 9px;
-    --modern-radius: 14px;
-    --modern-radius-lg: 18px;
-    --modern-danger: #f87171;
+    --modern-canvas: var(--modern-user-color-canvas, #0b1020);
+    --modern-surface: rgba(var(--modern-user-color-panel-rgb, 18, 26, 45), var(--modern-user-panel-opacity, 1));
+    --modern-surface-raised: rgba(var(--modern-user-color-panel-raised-rgb, 24, 35, 58), var(--modern-user-panel-opacity, 1));
+    --modern-surface-hover: rgba(var(--modern-user-color-panel-hover-rgb, 32, 46, 73), var(--modern-user-panel-opacity, 1));
+    --modern-input: var(--modern-user-color-input, #0e1628);
+    --modern-border: rgba(var(--modern-user-color-border-rgb, 148, 163, 184), .18);
+    --modern-border-strong: rgba(var(--modern-user-color-accent-400-rgb, var(--modern-user-accent-rgb, 129, 140, 248)), .52);
+    --modern-text: var(--modern-user-color-text, #eef2ff);
+    --modern-muted: var(--modern-user-color-text-muted, #9eacc8);
+    --modern-accent: var(--modern-user-color-accent-400, var(--modern-user-accent-400, #818cf8));
+    --modern-accent-strong: var(--modern-user-color-accent-300, var(--modern-user-accent-300, #a5b4fc));
+    --modern-focus: rgba(var(--modern-user-color-accent-400-rgb, var(--modern-user-accent-rgb, 129, 140, 248)), .34);
+    --modern-shadow-sm: 0 2px 10px rgba(var(--modern-user-color-shadow-rgb, 2, 6, 23), calc(.25 * var(--modern-user-shadow-strength, 1)));
+    --modern-shadow-lg: 0 18px 45px rgba(var(--modern-user-color-shadow-rgb, 2, 6, 23), calc(.34 * var(--modern-user-shadow-strength, 1)));
+    --modern-radius-sm: calc(9px * var(--modern-user-radius-scale, 1));
+    --modern-radius: calc(14px * var(--modern-user-radius-scale, 1));
+    --modern-radius-lg: calc(18px * var(--modern-user-radius-scale, 1));
+    --modern-danger: var(--modern-user-color-danger, #f87171);
 
-    --body-background-fill: #0b1020 !important;
-    --body-background-fill-dark: #0b1020 !important;
-    --body-text-color: #eef2ff !important;
-    --body-text-color-dark: #eef2ff !important;
-    --body-text-color-subdued: #9eacc8 !important;
-    --body-text-color-subdued-dark: #9eacc8 !important;
-    --background-fill-primary: #121a2d !important;
-    --background-fill-primary-dark: #121a2d !important;
-    --background-fill-secondary: #18233a !important;
-    --background-fill-secondary-dark: #18233a !important;
-    --panel-background-fill: #121a2d !important;
+    --body-background-fill: var(--modern-user-color-canvas, #0b1020) !important;
+    --body-background-fill-dark: var(--modern-user-color-canvas, #0b1020) !important;
+    --body-text-color: var(--modern-user-color-text, #eef2ff) !important;
+    --body-text-color-dark: var(--modern-user-color-text, #eef2ff) !important;
+    --body-text-color-subdued: var(--modern-user-color-text-muted, #9eacc8) !important;
+    --body-text-color-subdued-dark: var(--modern-user-color-text-muted, #9eacc8) !important;
+    --background-fill-primary: var(--modern-user-color-panel, #121a2d) !important;
+    --background-fill-primary-dark: var(--modern-user-color-panel, #121a2d) !important;
+    --background-fill-secondary: var(--modern-user-color-panel-raised, #18233a) !important;
+    --background-fill-secondary-dark: var(--modern-user-color-panel-raised, #18233a) !important;
+    --panel-background-fill: rgba(var(--modern-user-color-panel-rgb, 18, 26, 45), var(--modern-user-panel-opacity, 1)) !important;
     --block-background-fill: transparent !important;
-    --block-border-color: rgba(148, 163, 184, .18) !important;
-    --border-color-primary: rgba(148, 163, 184, .18) !important;
-    --border-color-primary-dark: rgba(148, 163, 184, .18) !important;
-    --border-color-accent: #818cf8 !important;
-    --border-color-accent-dark: #818cf8 !important;
-    --color-accent: #818cf8 !important;
-    --color-accent-soft: rgba(129, 140, 248, .15) !important;
-    --color-accent-soft-dark: rgba(129, 140, 248, .15) !important;
-    --input-background-fill: #0e1628 !important;
-    --input-border-color: rgba(148, 163, 184, .18) !important;
-    --input-border-color-focus: #818cf8 !important;
-    --input-placeholder-color: #687795 !important;
-    --button-primary-background-fill: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
-    --button-primary-background-fill-hover: linear-gradient(135deg, #818cf8, #a78bfa) !important;
-    --button-primary-text-color: #fff !important;
-    --button-primary-text-color-hover: #fff !important;
+    --block-border-color: rgba(var(--modern-user-color-border-rgb, 148, 163, 184), .18) !important;
+    --border-color-primary: rgba(var(--modern-user-color-border-rgb, 148, 163, 184), .18) !important;
+    --border-color-primary-dark: rgba(var(--modern-user-color-border-rgb, 148, 163, 184), .18) !important;
+    --border-color-accent: var(--modern-user-color-accent-400, var(--modern-user-accent-400, #818cf8)) !important;
+    --border-color-accent-dark: var(--modern-user-color-accent-400, var(--modern-user-accent-400, #818cf8)) !important;
+    --color-accent: var(--modern-user-color-accent-400, var(--modern-user-accent-400, #818cf8)) !important;
+    --color-accent-soft: rgba(var(--modern-user-color-accent-400-rgb, var(--modern-user-accent-rgb, 129, 140, 248)), .15) !important;
+    --color-accent-soft-dark: rgba(var(--modern-user-color-accent-400-rgb, var(--modern-user-accent-rgb, 129, 140, 248)), .15) !important;
+    --input-background-fill: var(--modern-user-color-input, #0e1628) !important;
+    --input-border-color: rgba(var(--modern-user-color-border-rgb, 148, 163, 184), .18) !important;
+    --input-border-color-focus: var(--modern-user-color-accent-400, var(--modern-user-accent-400, #818cf8)) !important;
+    --input-placeholder-color: var(--modern-user-color-placeholder-native, #687795) !important;
+    --button-primary-background-fill: linear-gradient(135deg, var(--modern-user-color-primary-start, var(--modern-user-color-accent-500, var(--modern-user-accent-500, #6366f1))), var(--modern-user-color-primary-end, var(--modern-user-color-accent-violet, var(--modern-user-accent-violet, #8b5cf6)))) !important;
+    --button-primary-background-fill-hover: linear-gradient(135deg, var(--modern-user-color-primary-hover-start, var(--modern-user-color-accent-400, var(--modern-user-accent-400, #818cf8))), var(--modern-user-color-primary-hover-end, var(--modern-user-color-accent-violet-light, var(--modern-user-accent-violet-light, #a78bfa)))) !important;
+    --button-primary-text-color: var(--modern-user-color-primary-text, var(--modern-user-accent-text, #fff)) !important;
+    --button-primary-text-color-hover: var(--modern-user-color-primary-hover-text, var(--modern-user-accent-hover-text, #fff)) !important;
     --button-primary-border-color: transparent !important;
-    --button-secondary-background-fill: #18233a !important;
-    --button-secondary-background-fill-hover: #202e49 !important;
-    --button-secondary-text-color: #eef2ff !important;
-    --button-secondary-text-color-hover: #fff !important;
-    --block-title-text-color: #eef2ff !important;
-    --block-label-text-color: #eef2ff !important;
-    --block-label-text-color-dark: #eef2ff !important;
-    --neutral-50: #0e1628 !important;
-    --neutral-100: #121a2d !important;
-    --neutral-200: #18233a !important;
-    --neutral-300: #253551 !important;
-    --neutral-400: #64748b !important;
-    --neutral-500: #94a3b8 !important;
-    --neutral-600: #b4c1d6 !important;
-    --neutral-700: #d0d9e9 !important;
-    --neutral-800: #e4eaf5 !important;
-    --neutral-900: #f8fafc !important;
-    --neutral-950: #fff !important;
-    --primary-50: #eef2ff !important;
-    --primary-100: #e0e7ff !important;
-    --primary-200: #c7d2fe !important;
-    --primary-300: #a5b4fc !important;
-    --primary-400: #818cf8 !important;
-    --primary-500: #6366f1 !important;
-    --primary-600: #4f46e5 !important;
-    --primary-700: #4338ca !important;
-    --primary-800: #3730a3 !important;
-    --primary-900: #312e81 !important;
-    --checkbox-background-color: #0e1628 !important;
-    --checkbox-background-color-dark: #0e1628 !important;
-    --checkbox-background-color-focus: #172239 !important;
-    --checkbox-background-color-focus-dark: #172239 !important;
-    --checkbox-background-color-hover: #172239 !important;
-    --checkbox-background-color-hover-dark: #172239 !important;
-    --checkbox-background-color-selected: #818cf8 !important;
-    --checkbox-background-color-selected-dark: #818cf8 !important;
-    --checkbox-border-color: rgba(148, 163, 184, .18) !important;
-    --checkbox-border-color-dark: rgba(148, 163, 184, .18) !important;
-    --checkbox-border-color-focus: #818cf8 !important;
-    --checkbox-border-color-focus-dark: #818cf8 !important;
-    --checkbox-border-color-hover: rgba(165,180,252,.48) !important;
-    --checkbox-border-color-hover-dark: rgba(165,180,252,.48) !important;
-    --checkbox-border-color-selected: #818cf8 !important;
-    --checkbox-border-color-selected-dark: #818cf8 !important;
-    --checkbox-label-background-fill: #18233a !important;
-    --checkbox-label-background-fill-dark: #18233a !important;
-    --checkbox-label-background-fill-hover: #202e49 !important;
-    --checkbox-label-background-fill-hover-dark: #202e49 !important;
-    --checkbox-label-background-fill-selected: rgba(129,140,248,.20) !important;
-    --checkbox-label-background-fill-selected-dark: rgba(129,140,248,.20) !important;
-    --checkbox-label-border-color: rgba(148, 163, 184, .18) !important;
-    --checkbox-label-border-color-dark: rgba(148, 163, 184, .18) !important;
-    --checkbox-label-border-color-hover: rgba(165,180,252,.48) !important;
-    --checkbox-label-border-color-hover-dark: rgba(165,180,252,.48) !important;
-    --checkbox-label-text-color: #eef2ff !important;
-    --checkbox-label-text-color-dark: #eef2ff !important;
-    --checkbox-label-text-color-selected: #fff !important;
-    --checkbox-label-text-color-selected-dark: #fff !important;
-    --error-text-color: #f87171 !important;
-    --error-background-fill: #211a2b !important;
-    --error-background-fill-dark: #211a2b !important;
-    --error-border-color: rgba(251, 113, 133, .4) !important;
-    --error-border-color-dark: rgba(251, 113, 133, .4) !important;
+    --button-secondary-background-fill: var(--modern-user-color-secondary, var(--modern-user-color-panel-raised, #18233a)) !important;
+    --button-secondary-background-fill-hover: var(--modern-user-color-secondary-hover, var(--modern-user-color-panel-hover, #202e49)) !important;
+    --button-secondary-text-color: var(--modern-user-color-secondary-text, var(--modern-user-color-text, #eef2ff)) !important;
+    --button-secondary-text-color-hover: var(--modern-user-color-secondary-hover-text, var(--modern-user-color-text-bright, #fff)) !important;
+    --block-title-text-color: var(--modern-user-color-text, #eef2ff) !important;
+    --block-label-text-color: var(--modern-user-color-text, #eef2ff) !important;
+    --block-label-text-color-dark: var(--modern-user-color-text, #eef2ff) !important;
+    --neutral-50: var(--modern-user-color-neutral-50, #0e1628) !important;
+    --neutral-100: var(--modern-user-color-neutral-100, #121a2d) !important;
+    --neutral-200: var(--modern-user-color-neutral-200, #18233a) !important;
+    --neutral-300: var(--modern-user-color-neutral-300, #253551) !important;
+    --neutral-400: var(--modern-user-color-neutral-400, #64748b) !important;
+    --neutral-500: var(--modern-user-color-neutral-500, #94a3b8) !important;
+    --neutral-600: var(--modern-user-color-neutral-600, #b4c1d6) !important;
+    --neutral-700: var(--modern-user-color-neutral-700, #d0d9e9) !important;
+    --neutral-800: var(--modern-user-color-neutral-800, #e4eaf5) !important;
+    --neutral-900: var(--modern-user-color-neutral-900, #f8fafc) !important;
+    --neutral-950: var(--modern-user-color-neutral-950, #fff) !important;
+    --primary-50: var(--modern-user-color-accent-50, var(--modern-user-accent-50, #eef2ff)) !important;
+    --primary-100: var(--modern-user-color-accent-100, var(--modern-user-accent-100, #e0e7ff)) !important;
+    --primary-200: var(--modern-user-color-accent-200, var(--modern-user-accent-200, #c7d2fe)) !important;
+    --primary-300: var(--modern-user-color-accent-300, var(--modern-user-accent-300, #a5b4fc)) !important;
+    --primary-400: var(--modern-user-color-accent-400, var(--modern-user-accent-400, #818cf8)) !important;
+    --primary-500: var(--modern-user-color-accent-500, var(--modern-user-accent-500, #6366f1)) !important;
+    --primary-600: var(--modern-user-color-accent-600, var(--modern-user-accent-600, #4f46e5)) !important;
+    --primary-700: var(--modern-user-color-accent-700, var(--modern-user-accent-700, #4338ca)) !important;
+    --primary-800: var(--modern-user-color-accent-800, var(--modern-user-accent-800, #3730a3)) !important;
+    --primary-900: var(--modern-user-color-accent-900, var(--modern-user-accent-900, #312e81)) !important;
+    --checkbox-background-color: var(--modern-user-color-input, #0e1628) !important;
+    --checkbox-background-color-dark: var(--modern-user-color-input, #0e1628) !important;
+    --checkbox-background-color-focus: var(--modern-user-color-checkbox-hover, #172239) !important;
+    --checkbox-background-color-focus-dark: var(--modern-user-color-checkbox-hover, #172239) !important;
+    --checkbox-background-color-hover: var(--modern-user-color-checkbox-hover, #172239) !important;
+    --checkbox-background-color-hover-dark: var(--modern-user-color-checkbox-hover, #172239) !important;
+    --checkbox-background-color-selected: var(--modern-user-color-accent-400, var(--modern-user-accent-400, #818cf8)) !important;
+    --checkbox-background-color-selected-dark: var(--modern-user-color-accent-400, var(--modern-user-accent-400, #818cf8)) !important;
+    --checkbox-border-color: rgba(var(--modern-user-color-border-rgb, 148, 163, 184), .18) !important;
+    --checkbox-border-color-dark: rgba(var(--modern-user-color-border-rgb, 148, 163, 184), .18) !important;
+    --checkbox-border-color-focus: var(--modern-user-color-accent-400, var(--modern-user-accent-400, #818cf8)) !important;
+    --checkbox-border-color-focus-dark: var(--modern-user-color-accent-400, var(--modern-user-accent-400, #818cf8)) !important;
+    --checkbox-border-color-hover: rgba(var(--modern-user-color-accent-300-rgb, var(--modern-user-accent-strong-rgb, 165, 180, 252)), .48) !important;
+    --checkbox-border-color-hover-dark: rgba(var(--modern-user-color-accent-300-rgb, var(--modern-user-accent-strong-rgb, 165, 180, 252)), .48) !important;
+    --checkbox-border-color-selected: var(--modern-user-color-accent-400, var(--modern-user-accent-400, #818cf8)) !important;
+    --checkbox-border-color-selected-dark: var(--modern-user-color-accent-400, var(--modern-user-accent-400, #818cf8)) !important;
+    --checkbox-label-background-fill: var(--modern-user-color-panel-raised, #18233a) !important;
+    --checkbox-label-background-fill-dark: var(--modern-user-color-panel-raised, #18233a) !important;
+    --checkbox-label-background-fill-hover: var(--modern-user-color-panel-hover, #202e49) !important;
+    --checkbox-label-background-fill-hover-dark: var(--modern-user-color-panel-hover, #202e49) !important;
+    --checkbox-label-background-fill-selected: rgba(var(--modern-user-color-accent-400-rgb, var(--modern-user-accent-rgb, 129, 140, 248)), .20) !important;
+    --checkbox-label-background-fill-selected-dark: rgba(var(--modern-user-color-accent-400-rgb, var(--modern-user-accent-rgb, 129, 140, 248)), .20) !important;
+    --checkbox-label-border-color: rgba(var(--modern-user-color-border-rgb, 148, 163, 184), .18) !important;
+    --checkbox-label-border-color-dark: rgba(var(--modern-user-color-border-rgb, 148, 163, 184), .18) !important;
+    --checkbox-label-border-color-hover: rgba(var(--modern-user-color-accent-300-rgb, var(--modern-user-accent-strong-rgb, 165, 180, 252)), .48) !important;
+    --checkbox-label-border-color-hover-dark: rgba(var(--modern-user-color-accent-300-rgb, var(--modern-user-accent-strong-rgb, 165, 180, 252)), .48) !important;
+    --checkbox-label-text-color: var(--modern-user-color-text, #eef2ff) !important;
+    --checkbox-label-text-color-dark: var(--modern-user-color-text, #eef2ff) !important;
+    --checkbox-label-text-color-selected: var(--modern-user-color-text-bright, #fff) !important;
+    --checkbox-label-text-color-selected-dark: var(--modern-user-color-text-bright, #fff) !important;
+    --error-text-color: var(--modern-user-color-danger, #f87171) !important;
+    --error-background-fill: var(--modern-user-color-error-background, #211a2b) !important;
+    --error-background-fill-dark: var(--modern-user-color-error-background, #211a2b) !important;
+    --error-border-color: rgba(var(--modern-user-color-error-accent-rgb, 251, 113, 133), .4) !important;
+    --error-border-color-dark: rgba(var(--modern-user-color-error-accent-rgb, 251, 113, 133), .4) !important;
 }
 
 .sd-modern-ui body,
 .sd-modern-ui .gradio-container {
-    background: radial-gradient(circle at 80% -12%, rgba(99, 102, 241, .14), transparent 32rem), #0b1020 !important;
-    color: #eef2ff !important;
-    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif !important;
+    background: radial-gradient(circle at 80% -12%, rgba(var(--modern-user-color-accent-500-rgb, var(--modern-user-accent-start-rgb, 99, 102, 241)), .14), transparent 32rem), var(--modern-user-color-canvas, #0b1020) !important;
+    color: var(--modern-user-color-text, #eef2ff) !important;
+    font-family: var(--modern-user-font-family, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif) !important;
     letter-spacing: .005em;
 }
 
@@ -135,7 +135,7 @@
 .sd-modern-ui .extra-network-cards,
 .sd-modern-ui .extra-network-tree,
 .sd-modern-ui #settings > .tab-nav {
-    scrollbar-color: #475569 transparent;
+    scrollbar-color: var(--modern-user-color-scrollbar, #475569) transparent;
     scrollbar-width: thin;
 }
 .sd-modern-ui .gradio-container::-webkit-scrollbar,
@@ -149,32 +149,32 @@
 .sd-modern-ui textarea::-webkit-scrollbar-thumb,
 .sd-modern-ui .extra-network-cards::-webkit-scrollbar-thumb,
 .sd-modern-ui #settings > .tab-nav::-webkit-scrollbar-thumb {
-    background: #384862;
-    border: 3px solid #0b1020;
+    background: var(--modern-user-color-scrollbar-webkit, #384862);
+    border: 3px solid var(--modern-user-color-canvas, #0b1020);
     border-radius: 99px;
 }
 
 .sd-modern-ui ::selection {
-    background: rgba(129, 140, 248, .35);
-    color: #fff;
+    background: rgba(var(--modern-user-color-accent-400-rgb, var(--modern-user-accent-rgb, 129, 140, 248)), .35);
+    color: var(--modern-user-color-text-bright, #fff);
 }
 
 .sd-modern-ui .tabs > .tab-nav,
 .sd-modern-ui #settings > .tab-nav {
     gap: 5px;
-    border: 1px solid rgba(148, 163, 184, .18) !important;
-    background: rgba(18, 26, 45, .82) !important;
-    border-radius: 18px !important;
+    border: 1px solid rgba(var(--modern-user-color-tab-border-rgb, var(--modern-user-color-border-rgb, 148, 163, 184)), .18) !important;
+    background: rgba(var(--modern-user-color-tab-surface-rgb, var(--modern-user-color-panel-rgb, 18, 26, 45)), calc(.82 * var(--modern-user-panel-opacity, 1))) !important;
+    border-radius: calc(18px * var(--modern-user-radius-scale, 1)) !important;
     padding: 6px !important;
-    box-shadow: 0 2px 10px rgba(2, 6, 23, .25);
+    box-shadow: 0 2px 10px rgba(var(--modern-user-color-shadow-rgb, 2, 6, 23), calc(.25 * var(--modern-user-shadow-strength, 1)));
     backdrop-filter: blur(16px);
 }
 .sd-modern-ui .tabs > .tab-nav { margin: 12px 0 20px; }
 .sd-modern-ui .tabs > .tab-nav button,
 .sd-modern-ui #settings > .tab-nav button {
-    color: #9eacc8 !important;
+    color: var(--modern-user-color-tab-text, var(--modern-user-color-text-muted, #9eacc8)) !important;
     border: 0 !important;
-    border-radius: 9px !important;
+    border-radius: calc(9px * var(--modern-user-radius-scale, 1)) !important;
     font-size: .9rem !important;
     font-weight: 650 !important;
     min-height: 38px;
@@ -182,31 +182,31 @@
 }
 .sd-modern-ui .tabs > .tab-nav button:hover,
 .sd-modern-ui #settings > .tab-nav button:hover {
-    background: #202e49 !important;
-    color: #eef2ff !important;
+    background: var(--modern-user-color-tab-hover, var(--modern-user-color-panel-hover, #202e49)) !important;
+    color: var(--modern-user-color-tab-hover-text, var(--modern-user-color-text, #eef2ff)) !important;
 }
 .sd-modern-ui .tabs > .tab-nav button.selected,
 .sd-modern-ui #settings > .tab-nav button.selected,
 .sd-modern-ui .tabs > .tab-nav button[aria-selected="true"] {
-    background: linear-gradient(135deg, rgba(99,102,241,.28), rgba(139,92,246,.24)) !important;
-    color: #fff !important;
-    box-shadow: inset 0 0 0 1px rgba(165,180,252,.25);
+    background: linear-gradient(135deg, rgba(var(--modern-user-color-tab-active-start-rgb, var(--modern-user-color-accent-500-rgb, var(--modern-user-accent-start-rgb, 99, 102, 241))), .28), rgba(var(--modern-user-color-tab-active-end-rgb, var(--modern-user-color-accent-violet-rgb, var(--modern-user-accent-end-rgb, 139, 92, 246))), .24)) !important;
+    color: var(--modern-user-color-tab-active-text, var(--modern-user-color-text-bright, #fff)) !important;
+    box-shadow: inset 0 0 0 1px rgba(var(--modern-user-color-tab-active-border-rgb, var(--modern-user-color-accent-300-rgb, var(--modern-user-accent-strong-rgb, 165, 180, 252))), calc(.25 * var(--modern-user-shadow-strength, 1)));
 }
 
 .sd-modern-ui button,
 .sd-modern-ui .gradio-button,
 .sd-modern-ui button.custom-button {
-    border: 1px solid rgba(148, 163, 184, .18) !important;
-    border-radius: 9px !important;
+    border: 1px solid rgba(var(--modern-user-color-button-border-rgb, var(--modern-user-color-border-rgb, 148, 163, 184)), .18) !important;
+    border-radius: calc(9px * var(--modern-user-radius-scale, 1)) !important;
     box-shadow: none !important;
     font-weight: 650 !important;
-    color: #eef2ff;
+    color: var(--modern-user-color-secondary-text, var(--modern-user-color-text, #eef2ff));
     transition: background .16s ease, border-color .16s ease, color .16s ease, box-shadow .16s ease !important;
 }
 .sd-modern-ui button:hover:not(:disabled),
 .sd-modern-ui .gradio-button:hover:not(:disabled) {
-    border-color: rgba(165, 180, 252, .45) !important;
-    box-shadow: 0 5px 16px rgba(2,6,23,.24) !important;
+    border-color: rgba(var(--modern-user-color-button-hover-border-rgb, var(--modern-user-color-accent-300-rgb, var(--modern-user-accent-strong-rgb, 165, 180, 252))), .45) !important;
+    box-shadow: 0 5px 16px rgba(var(--modern-user-color-shadow-rgb, 2, 6, 23), calc(.24 * var(--modern-user-shadow-strength, 1))) !important;
 }
 .sd-modern-ui button:disabled,
 .sd-modern-ui .gradio-button:disabled {
@@ -218,31 +218,31 @@
 .sd-modern-ui input:focus-visible,
 .sd-modern-ui textarea:focus-visible,
 .sd-modern-ui select:focus-visible {
-    outline: 3px solid rgba(129, 140, 248, .34) !important;
+    outline: 3px solid rgba(var(--modern-user-color-focus-ring-rgb, var(--modern-user-color-accent-400-rgb, var(--modern-user-accent-rgb, 129, 140, 248))), .34) !important;
     outline-offset: 2px;
 }
 
 .sd-modern-ui input:not([type="range"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]),
 .sd-modern-ui textarea,
 .sd-modern-ui select {
-    color: #eef2ff !important;
-    background: #0e1628 !important;
-    border: 1px solid rgba(148, 163, 184, .18) !important;
-    border-radius: 9px !important;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,.025) !important;
+    color: var(--modern-user-color-text, #eef2ff) !important;
+    background: var(--modern-user-color-input, #0e1628) !important;
+    border: 1px solid rgba(var(--modern-user-color-border-rgb, 148, 163, 184), .18) !important;
+    border-radius: calc(9px * var(--modern-user-radius-scale, 1)) !important;
+    box-shadow: inset 0 1px 0 rgba(var(--modern-user-color-surface-highlight-rgb, 255, 255, 255), calc(.025 * var(--modern-user-shadow-strength, 1))) !important;
 }
 
 .sd-modern-ui .gradio-dropdown .wrap,
 .sd-modern-ui .gradio-dropdown div.wrap.wrap.wrap.wrap {
-    color: #eef2ff !important;
-    background: #0e1628 !important;
+    color: var(--modern-user-color-text, #eef2ff) !important;
+    background: var(--modern-user-color-input, #0e1628) !important;
     border: 0 !important;
-    border-radius: 9px !important;
+    border-radius: calc(9px * var(--modern-user-radius-scale, 1)) !important;
     box-shadow: none !important;
 }
 
 .sd-modern-ui .gradio-dropdown input:not([type="range"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]) {
-    color: #eef2ff !important;
+    color: var(--modern-user-color-text, #eef2ff) !important;
     background: transparent !important;
     border: 0 !important;
     border-radius: 0 !important;
@@ -251,38 +251,38 @@
 
 .sd-modern-ui textarea { line-height: 1.55 !important; }
 .sd-modern-ui input::placeholder,
-.sd-modern-ui textarea::placeholder { color: #6f7e99 !important; }
+.sd-modern-ui textarea::placeholder { color: var(--modern-user-color-placeholder, #6f7e99) !important; }
 .sd-modern-ui .gradio-container label,
 .sd-modern-ui .gradio-container label span,
 .sd-modern-ui .gradio-container .label-wrap span,
 .sd-modern-ui .gradio-container .block-title,
 .sd-modern-ui .gradio-container .prose,
-.sd-modern-ui .gradio-container .prose p { color: #eef2ff !important; }
+.sd-modern-ui .gradio-container .prose p { color: var(--modern-user-color-text, #eef2ff) !important; }
 .sd-modern-ui .gradio-container .secondary-wrap,
 .sd-modern-ui .gradio-container .settings-comment,
-.sd-modern-ui .gradio-container small { color: #9eacc8 !important; }
+.sd-modern-ui .gradio-container small { color: var(--modern-user-color-text-muted, #9eacc8) !important; }
 
 .sd-modern-ui .gradio-dropdown ul.options {
-    background: #172239 !important;
-    border: 1px solid rgba(148, 163, 184, .18) !important;
-    border-radius: 12px !important;
-    box-shadow: 0 18px 45px rgba(2, 6, 23, .34) !important;
+    background: var(--modern-user-color-dropdown, #172239) !important;
+    border: 1px solid rgba(var(--modern-user-color-border-rgb, 148, 163, 184), .18) !important;
+    border-radius: calc(12px * var(--modern-user-radius-scale, 1)) !important;
+    box-shadow: 0 18px 45px rgba(var(--modern-user-color-shadow-rgb, 2, 6, 23), calc(.34 * var(--modern-user-shadow-strength, 1))) !important;
     z-index: 1000 !important;
 }
-.sd-modern-ui .gradio-dropdown ul.options li.item { color: #eef2ff !important; border-radius: 7px !important; }
+.sd-modern-ui .gradio-dropdown ul.options li.item { color: var(--modern-user-color-text, #eef2ff) !important; border-radius: calc(7px * var(--modern-user-radius-scale, 1)) !important; }
 .sd-modern-ui .gradio-dropdown ul.options li.item:hover,
-.sd-modern-ui .gradio-dropdown ul.options li.item.selected { background: rgba(129,140,248,.24) !important; color: #fff !important; }
+.sd-modern-ui .gradio-dropdown ul.options li.item.selected { background: rgba(var(--modern-user-color-accent-400-rgb, var(--modern-user-accent-rgb, 129, 140, 248)), .24) !important; color: var(--modern-user-color-text-bright, #fff) !important; }
 
 .sd-modern-ui #txt2img_generate,
 .sd-modern-ui #img2img_generate,
 .sd-modern-ui #extras_generate {
     min-height: 4.3em !important;
     border: 0 !important;
-    border-radius: 14px !important;
-    background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
-    background-image: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
-    color: #fff !important;
-    box-shadow: 0 10px 28px rgba(99,102,241,.28) !important;
+    border-radius: calc(14px * var(--modern-user-radius-scale, 1)) !important;
+    background: linear-gradient(135deg, var(--modern-user-color-primary-start, var(--modern-user-color-accent-500, var(--modern-user-accent-500, #6366f1))), var(--modern-user-color-primary-end, var(--modern-user-color-accent-violet, var(--modern-user-accent-violet, #8b5cf6)))) !important;
+    background-image: linear-gradient(135deg, var(--modern-user-color-primary-start, var(--modern-user-color-accent-500, var(--modern-user-accent-500, #6366f1))), var(--modern-user-color-primary-end, var(--modern-user-color-accent-violet, var(--modern-user-accent-violet, #8b5cf6)))) !important;
+    color: var(--modern-user-color-primary-text, var(--modern-user-accent-text, #fff)) !important;
+    box-shadow: 0 10px 28px rgba(var(--modern-user-color-accent-500-rgb, var(--modern-user-accent-start-rgb, 99, 102, 241)), calc(.28 * var(--modern-user-shadow-strength, 1))) !important;
     letter-spacing: .035em;
     text-transform: uppercase;
     font-size: .93rem !important;
@@ -290,7 +290,7 @@
 .sd-modern-ui #txt2img_generate:hover,
 .sd-modern-ui #img2img_generate:hover,
 .sd-modern-ui #extras_generate:hover {
-    box-shadow: 0 14px 34px rgba(124,58,237,.42) !important;
+    box-shadow: 0 14px 34px rgba(var(--modern-user-color-accent-glow-hover-rgb, var(--modern-user-accent-hover-rgb, 124, 58, 237)), calc(.42 * var(--modern-user-shadow-strength, 1))) !important;
 }
 .sd-modern-ui .generate-box-compact #txt2img_generate,
 .sd-modern-ui .generate-box-compact #img2img_generate { min-height: 3.2em !important; }
@@ -300,13 +300,13 @@
 .sd-modern-ui .extra-network-tree,
 .sd-modern-ui .extra-network-cards,
 .sd-modern-ui .settings-info {
-    background: linear-gradient(145deg, rgba(24,35,58,.9), rgba(18,26,45,.94)) !important;
-    border: 1px solid rgba(148, 163, 184, .18) !important;
-    border-radius: 14px !important;
-    box-shadow: 0 2px 10px rgba(2, 6, 23, .25) !important;
+    background: linear-gradient(145deg, rgba(var(--modern-user-color-panel-raised-rgb, 24, 35, 58), calc(.9 * var(--modern-user-panel-opacity, 1))), rgba(var(--modern-user-color-panel-rgb, 18, 26, 45), calc(.94 * var(--modern-user-panel-opacity, 1)))) !important;
+    border: 1px solid rgba(var(--modern-user-color-border-rgb, 148, 163, 184), .18) !important;
+    border-radius: calc(14px * var(--modern-user-radius-scale, 1)) !important;
+    box-shadow: 0 2px 10px rgba(var(--modern-user-color-shadow-rgb, 2, 6, 23), calc(.25 * var(--modern-user-shadow-strength, 1))) !important;
 }
 .sd-modern-ui .block.gradio-accordion { padding: 12px 14px !important; margin: 8px 0 !important; }
-.sd-modern-ui .block.gradio-accordion > label { color: #eef2ff !important; font-weight: 650; }
+.sd-modern-ui .block.gradio-accordion > label { color: var(--modern-user-color-text, #eef2ff) !important; font-weight: 650; }
 .sd-modern-ui .gradio-accordion > button.label-wrap,
 .sd-modern-ui #settings .gradio-accordion > button.label-wrap {
     min-height: 0 !important;
@@ -315,7 +315,7 @@
     border-radius: 0 !important;
     background: transparent !important;
     box-shadow: none !important;
-    color: #eef2ff !important;
+    color: var(--modern-user-color-text, #eef2ff) !important;
     text-align: left;
 }
 .sd-modern-ui .gradio-accordion > button.label-wrap:hover:not(:disabled),
@@ -349,18 +349,18 @@
     border: 0 !important;
     box-shadow: none !important;
 }
-.sd-modern-ui .gradio-gallery .thumbnail-item { border-radius: 10px !important; overflow: hidden; border-color: transparent !important; }
-.sd-modern-ui .gradio-gallery .thumbnail-item.selected { box-shadow: 0 0 0 2px #818cf8 !important; }
+.sd-modern-ui .gradio-gallery .thumbnail-item { border-radius: calc(10px * var(--modern-user-radius-scale, 1)) !important; overflow: hidden; border-color: transparent !important; }
+.sd-modern-ui .gradio-gallery .thumbnail-item.selected { box-shadow: 0 0 0 2px var(--modern-user-color-accent-400, var(--modern-user-accent-400, #818cf8)) !important; }
 .sd-modern-ui .gradio-gallery .icon-buttons {
     top: 8px !important;
     right: 8px !important;
     align-items: center;
     gap: 6px;
     padding: 4px;
-    border: 1px solid rgba(148, 163, 184, .28);
-    border-radius: 12px;
-    background: rgba(11, 16, 32, .94);
-    box-shadow: 0 4px 14px rgba(2, 6, 23, .35);
+    border: 1px solid rgba(var(--modern-user-color-border-rgb, 148, 163, 184), .28);
+    border-radius: calc(12px * var(--modern-user-radius-scale, 1));
+    background: rgba(var(--modern-user-color-gallery-toolbar-rgb, 11, 16, 32), .94);
+    box-shadow: 0 4px 14px rgba(var(--modern-user-color-shadow-rgb, 2, 6, 23), calc(.35 * var(--modern-user-shadow-strength, 1)));
 }
 .sd-modern-ui .gradio-gallery .icon-buttons > a,
 .sd-modern-ui .gradio-gallery .icon-buttons > .download-button-container,
@@ -382,18 +382,18 @@
     min-height: 32px !important;
     margin: 0 !important;
     padding: 6px !important;
-    border: 1px solid rgba(165, 180, 252, .38) !important;
-    border-radius: 8px !important;
-    background: #202e49 !important;
-    color: #eef2ff !important;
+    border: 1px solid rgba(var(--modern-user-color-accent-300-rgb, var(--modern-user-accent-strong-rgb, 165, 180, 252)), .38) !important;
+    border-radius: calc(8px * var(--modern-user-radius-scale, 1)) !important;
+    background: var(--modern-user-color-gallery-button, #202e49) !important;
+    color: var(--modern-user-color-text, #eef2ff) !important;
     box-shadow: none !important;
     line-height: 1;
 }
 .sd-modern-ui .gradio-gallery .icon-buttons button:hover:not(:disabled) {
-    border-color: #a5b4fc !important;
-    background: #304366 !important;
-    color: #fff !important;
-    box-shadow: 0 0 0 1px rgba(165, 180, 252, .18) !important;
+    border-color: var(--modern-user-color-accent-300, var(--modern-user-accent-300, #a5b4fc)) !important;
+    background: var(--modern-user-color-gallery-button-hover, #304366) !important;
+    color: var(--modern-user-color-text-bright, #fff) !important;
+    box-shadow: 0 0 0 1px rgba(var(--modern-user-color-accent-300-rgb, var(--modern-user-accent-strong-rgb, 165, 180, 252)), calc(.18 * var(--modern-user-shadow-strength, 1))) !important;
 }
 .sd-modern-ui .gradio-gallery .icon-buttons button > div {
     display: flex;
@@ -412,7 +412,7 @@
     height: 18px;
 }
 .sd-modern-ui .gallery-item,
-.sd-modern-ui .gradio-image { border-radius: 14px !important; overflow: hidden; }
+.sd-modern-ui .gradio-image { border-radius: calc(14px * var(--modern-user-radius-scale, 1)) !important; overflow: hidden; }
 
 .sd-modern-ui input[type="checkbox"]:not(.input-accordion-checkbox),
 .sd-modern-ui input[type="radio"] {
@@ -424,36 +424,36 @@
     margin: 0 8px 0 0 !important;
     padding: 0 !important;
     box-sizing: border-box !important;
-    border: 1px solid rgba(148,163,184,.42) !important;
-    background: #0b1324 !important;
+    border: 1px solid rgba(var(--modern-user-color-border-rgb, 148, 163, 184), .42) !important;
+    background: var(--modern-user-color-checkbox, #0b1324) !important;
     background-image: none !important;
-    box-shadow: inset 0 1px 2px rgba(0,0,0,.22) !important;
+    box-shadow: inset 0 1px 2px rgba(var(--modern-user-color-inset-shadow-rgb, 0, 0, 0), calc(.22 * var(--modern-user-shadow-strength, 1))) !important;
     cursor: pointer !important;
     position: relative !important;
     clip: auto !important;
     clip-path: none !important;
     overflow: visible !important;
     opacity: 1 !important;
-    accent-color: #818cf8 !important;
+    accent-color: var(--modern-user-color-accent-400, var(--modern-user-accent-400, #818cf8)) !important;
 }
-.sd-modern-ui input[type="checkbox"]:not(.input-accordion-checkbox) { border-radius: 5px !important; }
+.sd-modern-ui input[type="checkbox"]:not(.input-accordion-checkbox) { border-radius: calc(5px * var(--modern-user-radius-scale, 1)) !important; }
 .sd-modern-ui input[type="radio"] { border-radius: 50% !important; }
 .sd-modern-ui input[type="checkbox"]:not(.input-accordion-checkbox):checked {
-    background-color: #818cf8 !important;
-    border-color: #a5b4fc !important;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.4 8.2 6.4 11.1 12.6 4.8' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+    background-color: var(--modern-user-color-accent-400, var(--modern-user-accent-400, #818cf8)) !important;
+    border-color: var(--modern-user-color-accent-300, var(--modern-user-accent-300, #a5b4fc)) !important;
+    background-image: var(--modern-user-color-checkmark-image, var(--modern-user-checkmark-image, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.4 8.2 6.4 11.1 12.6 4.8' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"))) !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
     background-size: 12px 12px !important;
 }
 .sd-modern-ui input[type="radio"]:checked {
-    background: #818cf8 !important;
-    border-color: #a5b4fc !important;
-    box-shadow: inset 0 0 0 4px #18233a !important;
+    background: var(--modern-user-color-accent-400, var(--modern-user-accent-400, #818cf8)) !important;
+    border-color: var(--modern-user-color-accent-300, var(--modern-user-accent-300, #a5b4fc)) !important;
+    box-shadow: inset 0 0 0 4px var(--modern-user-color-panel-raised, #18233a) !important;
 }
 .sd-modern-ui input[type="checkbox"]:focus-visible,
 .sd-modern-ui input[type="radio"]:focus-visible {
-    outline: 2px solid rgba(129, 140, 248, .34) !important;
+    outline: 2px solid rgba(var(--modern-user-color-focus-ring-rgb, var(--modern-user-color-accent-400-rgb, var(--modern-user-accent-rgb, 129, 140, 248))), .34) !important;
     outline-offset: 2px !important;
 }
 
@@ -461,7 +461,7 @@
 .sd-modern-ui .gradio-radio,
 .sd-modern-ui .gradio-checkbox {
     background: transparent !important;
-    border-color: rgba(148, 163, 184, .18) !important;
+    border-color: rgba(var(--modern-user-color-border-rgb, 148, 163, 184), .18) !important;
 }
 .sd-modern-ui .gradio-checkboxgroup label,
 .sd-modern-ui .gradio-radio label,
@@ -473,16 +473,16 @@
     min-height: 36px !important;
     padding: 7px 12px !important;
     box-sizing: border-box !important;
-    border: 1px solid rgba(148, 163, 184, .18) !important;
-    border-radius: 8px !important;
-    background: #18233a !important;
-    color: #eef2ff !important;
+    border: 1px solid rgba(var(--modern-user-color-border-rgb, 148, 163, 184), .18) !important;
+    border-radius: calc(8px * var(--modern-user-radius-scale, 1)) !important;
+    background: var(--modern-user-color-panel-raised, #18233a) !important;
+    color: var(--modern-user-color-text, #eef2ff) !important;
 }
 .sd-modern-ui .gradio-checkboxgroup label:hover,
 .sd-modern-ui .gradio-radio label:hover,
 .sd-modern-ui .gradio-checkbox label:hover {
-    background: #202e49 !important;
-    border-color: rgba(165,180,252,.42) !important;
+    background: var(--modern-user-color-panel-hover, #202e49) !important;
+    border-color: rgba(var(--modern-user-color-accent-300-rgb, var(--modern-user-accent-strong-rgb, 165, 180, 252)), .42) !important;
 }
 .sd-modern-ui .gradio-checkboxgroup label.selected,
 .sd-modern-ui .gradio-radio label.selected,
@@ -490,9 +490,9 @@
 .sd-modern-ui .gradio-checkboxgroup label:has(input:checked),
 .sd-modern-ui .gradio-radio label:has(input:checked),
 .sd-modern-ui .gradio-checkbox label:has(input:checked) {
-    background: rgba(129,140,248,.20) !important;
-    border-color: rgba(129,140,248,.48) !important;
-    color: #fff !important;
+    background: rgba(var(--modern-user-color-accent-400-rgb, var(--modern-user-accent-rgb, 129, 140, 248)), .20) !important;
+    border-color: rgba(var(--modern-user-color-accent-400-rgb, var(--modern-user-accent-rgb, 129, 140, 248)), .48) !important;
+    color: var(--modern-user-color-text-bright, #fff) !important;
 }
 
 .sd-modern-ui :is(#txt2img_seed_row, #img2img_seed_row),
@@ -544,7 +544,7 @@
     padding: 0 10px !important;
     gap: 8px !important;
     justify-content: center !important;
-    border-radius: 9px !important;
+    border-radius: calc(9px * var(--modern-user-radius-scale, 1)) !important;
     white-space: nowrap;
 }
 .sd-modern-ui :is(#txt2img_seed_row, #img2img_seed_row) [id$="_subseed_show"] input[type="checkbox"] {
@@ -589,34 +589,34 @@
     row-gap: 8px !important;
 }
 .sd-modern-ui button.modern-icon-button[data-modern-icon="delete"] {
-    color: #fda4af !important;
+    color: var(--modern-user-color-delete-text, #fda4af) !important;
 }
 .sd-modern-ui button.modern-icon-button[data-modern-icon="delete"]:hover:not(:disabled) {
-    border-color: rgba(251, 113, 133, .5) !important;
-    background: rgba(127, 29, 29, .24) !important;
+    border-color: rgba(var(--modern-user-color-delete-border-rgb, 251, 113, 133), .5) !important;
+    background: rgba(var(--modern-user-color-delete-background-rgb, 127, 29, 29), .24) !important;
 }
-.sd-modern-ui .gradio-button.tool { background: #18233a !important; color: #9eacc8 !important; }
-.sd-modern-ui .gradio-button.tool:hover { color: #fff !important; background: #202e49 !important; }
+.sd-modern-ui .gradio-button.tool { background: var(--modern-user-color-secondary, var(--modern-user-color-panel-raised, #18233a)) !important; color: var(--modern-user-color-tool-text, var(--modern-user-color-text-muted, #9eacc8)) !important; }
+.sd-modern-ui .gradio-button.tool:hover { color: var(--modern-user-color-secondary-hover-text, var(--modern-user-color-text-bright, #fff)) !important; background: var(--modern-user-color-secondary-hover, var(--modern-user-color-panel-hover, #202e49)) !important; }
 .sd-modern-ui .token-counter span {
-    background: #121a2d !important;
-    border-color: rgba(129,140,248,.46) !important;
-    color: #a5b4fc !important;
-    box-shadow: 0 0 0 .22em rgba(99,102,241,.11) !important;
+    background: var(--modern-user-color-panel, #121a2d) !important;
+    border-color: rgba(var(--modern-user-color-accent-400-rgb, var(--modern-user-accent-rgb, 129, 140, 248)), .46) !important;
+    color: var(--modern-user-color-accent-300, var(--modern-user-accent-300, #a5b4fc)) !important;
+    box-shadow: 0 0 0 .22em rgba(var(--modern-user-color-accent-500-rgb, var(--modern-user-accent-start-rgb, 99, 102, 241)), calc(.11 * var(--modern-user-shadow-strength, 1))) !important;
 }
 .sd-modern-ui .html-log .performance,
 .sd-modern-ui .html-log .performance p.time,
-.sd-modern-ui .html-log .performance p.vram { color: #9eacc8 !important; }
+.sd-modern-ui .html-log .performance p.vram { color: var(--modern-user-color-text-muted, #9eacc8) !important; }
 
 .sd-modern-ui input[type="range"] {
     appearance: none !important;
     -webkit-appearance: none !important;
     background: transparent !important;
     height: 22px !important;
-    accent-color: #818cf8 !important;
+    accent-color: var(--modern-user-color-accent-400, var(--modern-user-accent-400, #818cf8)) !important;
 }
 .sd-modern-ui input[type="range"]::-webkit-slider-runnable-track {
     height: 6px !important;
-    background: #1e2a42 !important;
+    background: var(--modern-user-color-slider-track, #1e2a42) !important;
     border-radius: 99px !important;
     border: 0 !important;
 }
@@ -627,14 +627,14 @@
     height: 16px !important;
     margin-top: -5px !important;
     border-radius: 50% !important;
-    background: #a5b4fc !important;
-    border: 2px solid #eef2ff !important;
-    box-shadow: 0 0 0 3px rgba(129,140,248,.22) !important;
+    background: var(--modern-user-color-slider-thumb, var(--modern-user-color-accent-300, var(--modern-user-accent-300, #a5b4fc))) !important;
+    border: 2px solid var(--modern-user-color-slider-thumb-border, var(--modern-user-color-text, #eef2ff)) !important;
+    box-shadow: 0 0 0 3px rgba(var(--modern-user-color-accent-400-rgb, var(--modern-user-accent-rgb, 129, 140, 248)), calc(.22 * var(--modern-user-shadow-strength, 1))) !important;
     cursor: pointer !important;
 }
 .sd-modern-ui input[type="range"]::-moz-range-track {
     height: 6px !important;
-    background: #1e2a42 !important;
+    background: var(--modern-user-color-slider-track, #1e2a42) !important;
     border-radius: 99px !important;
     border: 0 !important;
 }
@@ -642,9 +642,9 @@
     width: 16px !important;
     height: 16px !important;
     border-radius: 50% !important;
-    background: #a5b4fc !important;
-    border: 2px solid #eef2ff !important;
-    box-shadow: 0 0 0 3px rgba(129,140,248,.22) !important;
+    background: var(--modern-user-color-slider-thumb, var(--modern-user-color-accent-300, var(--modern-user-accent-300, #a5b4fc))) !important;
+    border: 2px solid var(--modern-user-color-slider-thumb-border, var(--modern-user-color-text, #eef2ff)) !important;
+    box-shadow: 0 0 0 3px rgba(var(--modern-user-color-accent-400-rgb, var(--modern-user-accent-rgb, 129, 140, 248)), calc(.22 * var(--modern-user-shadow-strength, 1))) !important;
     cursor: pointer !important;
 }
 
@@ -693,32 +693,32 @@
     overflow-wrap: anywhere !important;
     transform: none !important;
     border: 1px solid transparent !important;
-    border-radius: 9px !important;
+    border-radius: calc(9px * var(--modern-user-radius-scale, 1)) !important;
     background: transparent !important;
     box-shadow: none !important;
-    color: #9eacc8 !important;
+    color: var(--modern-user-color-tab-text, var(--modern-user-color-text-muted, #9eacc8)) !important;
     font-size: .88rem !important;
     line-height: 1.35 !important;
 }
 .sd-modern-ui #settings > .tab-nav button:hover:not(:disabled) {
-    background: rgba(129,140,248,.10) !important;
-    border-color: rgba(129,140,248,.18) !important;
-    color: #eef2ff !important;
+    background: rgba(var(--modern-user-color-settings-tab-hover-rgb, var(--modern-user-color-accent-400-rgb, var(--modern-user-accent-rgb, 129, 140, 248))), .10) !important;
+    border-color: rgba(var(--modern-user-color-settings-tab-hover-border-rgb, var(--modern-user-color-accent-400-rgb, var(--modern-user-accent-rgb, 129, 140, 248))), .18) !important;
+    color: var(--modern-user-color-tab-hover-text, var(--modern-user-color-text, #eef2ff)) !important;
     box-shadow: none !important;
     transform: none !important;
 }
 .sd-modern-ui #settings > .tab-nav button.selected,
 .sd-modern-ui #settings > .tab-nav button[aria-selected="true"] {
-    background: linear-gradient(135deg, rgba(99,102,241,.34), rgba(139,92,246,.26)) !important;
-    border-color: rgba(165,180,252,.24) !important;
-    color: #fff !important;
+    background: linear-gradient(135deg, rgba(var(--modern-user-color-tab-active-start-rgb, var(--modern-user-color-accent-500-rgb, var(--modern-user-accent-start-rgb, 99, 102, 241))), .34), rgba(var(--modern-user-color-tab-active-end-rgb, var(--modern-user-color-accent-violet-rgb, var(--modern-user-accent-end-rgb, 139, 92, 246))), .26)) !important;
+    border-color: rgba(var(--modern-user-color-accent-300-rgb, var(--modern-user-accent-strong-rgb, 165, 180, 252)), .24) !important;
+    color: var(--modern-user-color-tab-active-text, var(--modern-user-color-text-bright, #fff)) !important;
 }
 .sd-modern-ui #settings > .tab-nav .settings-category {
     display: block !important;
     width: 100% !important;
     margin: 10px 0 2px !important;
     padding: 8px 9px 3px !important;
-    color: #9eacc8 !important;
+    color: var(--modern-user-color-text-muted, #9eacc8) !important;
     font-size: .67rem !important;
     font-weight: 700 !important;
     letter-spacing: .08em !important;
@@ -750,17 +750,17 @@
     margin: 0 !important;
     flex-direction: column !important;
 }
-.sd-modern-ui #settings .settings-info { color: #9eacc8 !important; padding: 13px 15px !important; }
-.sd-modern-ui #settings_result { color: #a5b4fc !important; }
+.sd-modern-ui #settings .settings-info { color: var(--modern-user-color-text-muted, #9eacc8) !important; padding: 13px 15px !important; }
+.sd-modern-ui #settings_result { color: var(--modern-user-color-accent-300, var(--modern-user-accent-300, #a5b4fc)) !important; }
 .sd-modern-ui #settings .gradio-button,
 .sd-modern-ui #settings button {
-    color: #eef2ff !important;
-    background: #18233a !important;
+    color: var(--modern-user-color-secondary-text, var(--modern-user-color-text, #eef2ff)) !important;
+    background: var(--modern-user-color-secondary, var(--modern-user-color-panel-raised, #18233a)) !important;
     background-image: none !important;
-    border-color: rgba(148, 163, 184, .18) !important;
+    border-color: rgba(var(--modern-user-color-border-rgb, 148, 163, 184), .18) !important;
 }
 .sd-modern-ui #settings .gradio-button:hover,
-.sd-modern-ui #settings button:hover { background: #202e49 !important; }
+.sd-modern-ui #settings button:hover { background: var(--modern-user-color-secondary-hover, var(--modern-user-color-panel-hover, #202e49)) !important; }
 
 .sd-modern-ui #settings_submit,
 .sd-modern-ui #settings_restart_gradio,
@@ -792,13 +792,13 @@ html.sd-modern-ui body .gradio-container button[id^="settings_refresh"],
 html.sd-modern-ui body .gradio-container button[id^="reload_ui"],
 html.sd-modern-ui body .gradio-container button[id^="restart_gradio"],
 html.sd-modern-ui body .gradio-container button[id^="reload_script"] {
-    background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
-    background-color: #6366f1 !important;
-    background-image: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
-    color: #fff !important;
+    background: linear-gradient(135deg, var(--modern-user-color-primary-start, var(--modern-user-color-accent-500, var(--modern-user-accent-500, #6366f1))), var(--modern-user-color-primary-end, var(--modern-user-color-accent-violet, var(--modern-user-accent-violet, #8b5cf6)))) !important;
+    background-color: var(--modern-user-color-primary-start, var(--modern-user-color-accent-500, var(--modern-user-accent-500, #6366f1))) !important;
+    background-image: linear-gradient(135deg, var(--modern-user-color-primary-start, var(--modern-user-color-accent-500, var(--modern-user-accent-500, #6366f1))), var(--modern-user-color-primary-end, var(--modern-user-color-accent-violet, var(--modern-user-accent-violet, #8b5cf6)))) !important;
+    color: var(--modern-user-color-primary-text, var(--modern-user-accent-text, #fff)) !important;
     border: 0 !important;
-    border-radius: 9px !important;
-    box-shadow: 0 6px 18px rgba(99, 102, 241, .28) !important;
+    border-radius: calc(9px * var(--modern-user-radius-scale, 1)) !important;
+    box-shadow: 0 6px 18px rgba(var(--modern-user-color-accent-500-rgb, var(--modern-user-accent-start-rgb, 99, 102, 241)), calc(.28 * var(--modern-user-shadow-strength, 1))) !important;
     text-transform: none !important;
     letter-spacing: normal !important;
     font-weight: 650 !important;
@@ -823,7 +823,7 @@ html.sd-modern-ui body .gradio-container button[id^="reload_script"] {
 .sd-modern-ui button[id^="reload_ui"]:hover,
 .sd-modern-ui button[id^="restart_gradio"]:hover,
 .sd-modern-ui button[id^="reload_script"]:hover {
-    box-shadow: 0 10px 26px rgba(124, 58, 237, .42) !important;
+    box-shadow: 0 10px 26px rgba(var(--modern-user-color-accent-glow-hover-rgb, var(--modern-user-accent-hover-rgb, 124, 58, 237)), calc(.42 * var(--modern-user-shadow-strength, 1))) !important;
     filter: brightness(1.05);
 }
 
@@ -831,30 +831,30 @@ html.sd-modern-ui body .gradio-container button[id^="reload_script"] {
 .sd-modern-ui .gradio-container button[variant="primary"],
 .sd-modern-ui .gradio-container button[variant="primary"]:hover,
 .sd-modern-ui .gradio-container button.primary:hover {
-    background-image: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
-    background-color: #6366f1 !important;
-    color: #fff !important;
+    background-image: linear-gradient(135deg, var(--modern-user-color-primary-start, var(--modern-user-color-accent-500, var(--modern-user-accent-500, #6366f1))), var(--modern-user-color-primary-end, var(--modern-user-color-accent-violet, var(--modern-user-accent-violet, #8b5cf6)))) !important;
+    background-color: var(--modern-user-color-primary-start, var(--modern-user-color-accent-500, var(--modern-user-accent-500, #6366f1))) !important;
+    color: var(--modern-user-color-primary-text, var(--modern-user-accent-text, #fff)) !important;
     border: 0 !important;
 }
 
 .sd-modern-ui .gradio-dropdown .token,
 .sd-modern-ui .multiselect .token {
-    background: #1b2945 !important;
-    color: #eef2ff !important;
-    border: 1px solid rgba(129,140,248,.34) !important;
-    border-radius: 8px !important;
+    background: var(--modern-user-color-dropdown-tag, #1b2945) !important;
+    color: var(--modern-user-color-text, #eef2ff) !important;
+    border: 1px solid rgba(var(--modern-user-color-accent-400-rgb, var(--modern-user-accent-rgb, 129, 140, 248)), .34) !important;
+    border-radius: calc(8px * var(--modern-user-radius-scale, 1)) !important;
     box-shadow: none !important;
 }
 .sd-modern-ui .gradio-dropdown .token button:hover,
 .sd-modern-ui .multiselect .token button:hover,
 .sd-modern-ui .gradio-dropdown .token-remove[role="button"]:hover {
-    background: rgba(239,68,68,.18) !important;
-    color: #fecaca !important;
+    background: rgba(var(--modern-user-color-tag-remove-background-rgb, 239, 68, 68), .18) !important;
+    color: var(--modern-user-color-tag-remove-text, #fecaca) !important;
 }
 
 .sd-modern-ui .forge-container .forge-btn {
     border: 0 !important;
-    border-radius: 5px !important;
+    border-radius: calc(5px * var(--modern-user-radius-scale, 1)) !important;
     box-shadow: none !important;
     font-weight: 400 !important;
 }
@@ -881,10 +881,10 @@ html.sd-modern-ui body .gradio-container button[id^="reload_script"] {
     margin: 0 8px 0 0 !important;
     padding: 0 !important;
     box-sizing: border-box !important;
-    border: 1px solid rgba(148,163,184,.48) !important;
+    border: 1px solid rgba(var(--modern-user-color-border-rgb, 148, 163, 184), .48) !important;
     border-radius: 50% !important;
-    background: #0b1324 !important;
-    box-shadow: inset 0 1px 2px rgba(0,0,0,.22) !important;
+    background: var(--modern-user-color-checkbox, #0b1324) !important;
+    box-shadow: inset 0 1px 2px rgba(var(--modern-user-color-inset-shadow-rgb, 0, 0, 0), calc(.22 * var(--modern-user-shadow-strength, 1))) !important;
     cursor: pointer !important;
     opacity: 1 !important;
     clip: auto !important;
@@ -893,9 +893,9 @@ html.sd-modern-ui body .gradio-container button[id^="reload_script"] {
     overflow: visible !important;
 }
 .sd-modern-ui .input-accordion .input-accordion-checkbox:checked {
-    border-color: #a5b4fc !important;
-    background-color: #818cf8 !important;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M4 9.2 7.4 12.5 14 5.8' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") !important;
+    border-color: var(--modern-user-color-accent-300, var(--modern-user-accent-300, #a5b4fc)) !important;
+    background-color: var(--modern-user-color-accent-400, var(--modern-user-accent-400, #818cf8)) !important;
+    background-image: var(--modern-user-color-checkmark-image, var(--modern-user-checkmark-image, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath d='M4 9.2 7.4 12.5 14 5.8' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"))) !important;
     background-repeat: no-repeat !important;
     background-position: center !important;
     background-size: 13px 13px !important;
@@ -907,29 +907,29 @@ html.sd-modern-ui body .gradio-container button[id^="reload_script"] {
 .sd-modern-ui #img2img_skip,
 .sd-modern-ui .generate-box-interrupt,
 .sd-modern-ui .generate-box-skip {
-    border: 1px solid rgba(148,163,184,.34) !important;
-    background: linear-gradient(180deg, #1b2942, #152138) !important;
-    background-image: linear-gradient(180deg, #1b2942, #152138) !important;
-    color: #f8fafc !important;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,.045), 0 5px 16px rgba(2,6,23,.18) !important;
+    border: 1px solid rgba(var(--modern-user-color-border-rgb, 148, 163, 184), .34) !important;
+    background: linear-gradient(180deg, var(--modern-user-color-stop-start, #1b2942), var(--modern-user-color-stop-end, #152138)) !important;
+    background-image: linear-gradient(180deg, var(--modern-user-color-stop-start, #1b2942), var(--modern-user-color-stop-end, #152138)) !important;
+    color: var(--modern-user-color-text-strong, #f8fafc) !important;
+    box-shadow: inset 0 1px 0 rgba(var(--modern-user-color-surface-highlight-rgb, 255, 255, 255), calc(.045 * var(--modern-user-shadow-strength, 1))), 0 5px 16px rgba(var(--modern-user-color-shadow-rgb, 2, 6, 23), calc(.18 * var(--modern-user-shadow-strength, 1))) !important;
 }
 .sd-modern-ui #txt2img_interrupt:hover,
 .sd-modern-ui #txt2img_skip:hover,
 .sd-modern-ui #img2img_interrupt:hover,
 .sd-modern-ui #img2img_skip:hover {
-    background: linear-gradient(180deg, #243653, #1b2942) !important;
-    background-image: linear-gradient(180deg, #243653, #1b2942) !important;
-    border-color: rgba(165,180,252,.48) !important;
+    background: linear-gradient(180deg, var(--modern-user-color-stop-hover, #243653), var(--modern-user-color-stop-start, #1b2942)) !important;
+    background-image: linear-gradient(180deg, var(--modern-user-color-stop-hover, #243653), var(--modern-user-color-stop-start, #1b2942)) !important;
+    border-color: rgba(var(--modern-user-color-accent-300-rgb, var(--modern-user-accent-strong-rgb, 165, 180, 252)), .48) !important;
 }
 .sd-modern-ui #txt2img_interrupt,
 .sd-modern-ui #img2img_interrupt,
 .sd-modern-ui .generate-box-interrupt {
-    border-radius: 14px 0 0 14px !important;
+    border-radius: calc(14px * var(--modern-user-radius-scale, 1)) 0 0 calc(14px * var(--modern-user-radius-scale, 1)) !important;
 }
 .sd-modern-ui #txt2img_skip,
 .sd-modern-ui #img2img_skip,
 .sd-modern-ui .generate-box-skip {
-    border-radius: 0 14px 14px 0 !important;
+    border-radius: 0 calc(14px * var(--modern-user-radius-scale, 1)) calc(14px * var(--modern-user-radius-scale, 1)) 0 !important;
 }
 
 .progressDiv > .modern-progress-label {
@@ -945,10 +945,10 @@ html.sd-modern-ui body .gradio-container button[id^="reload_script"] {
     padding: 0 !important;
     overflow: hidden !important;
     box-sizing: border-box !important;
-    border: 1px solid rgba(148, 163, 184, .18) !important;
-    border-radius: 10px !important;
-    background: #0e1628 !important;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,.02), 0 2px 10px rgba(2, 6, 23, .25) !important;
+    border: 1px solid rgba(var(--modern-user-color-border-rgb, 148, 163, 184), .18) !important;
+    border-radius: calc(10px * var(--modern-user-radius-scale, 1)) !important;
+    background: var(--modern-user-color-input, #0e1628) !important;
+    box-shadow: inset 0 0 0 1px rgba(var(--modern-user-color-surface-highlight-rgb, 255, 255, 255), calc(.02 * var(--modern-user-shadow-strength, 1))), 0 2px 10px rgba(var(--modern-user-color-shadow-rgb, 2, 6, 23), calc(.25 * var(--modern-user-shadow-strength, 1))) !important;
 }
 .sd-modern-ui .progressDiv .progress {
     position: absolute !important;
@@ -960,9 +960,9 @@ html.sd-modern-ui body .gradio-container button[id^="reload_script"] {
     padding: 0 !important;
     overflow: hidden !important;
     box-sizing: border-box !important;
-    border-radius: 9px !important;
-    background: linear-gradient(90deg, #6366f1, #8b5cf6) !important;
-    background-image: linear-gradient(90deg, #6366f1, #8b5cf6) !important;
+    border-radius: calc(9px * var(--modern-user-radius-scale, 1)) !important;
+    background: linear-gradient(90deg, var(--modern-user-color-accent-500, var(--modern-user-accent-500, #6366f1)), var(--modern-user-color-accent-violet, var(--modern-user-accent-violet, #8b5cf6))) !important;
+    background-image: linear-gradient(90deg, var(--modern-user-color-accent-500, var(--modern-user-accent-500, #6366f1)), var(--modern-user-color-accent-violet, var(--modern-user-accent-violet, #8b5cf6))) !important;
     color: transparent !important;
     font-size: 0 !important;
     line-height: 0 !important;
@@ -977,8 +977,8 @@ html.sd-modern-ui body .gradio-container button[id^="reload_script"] {
     align-items: center !important;
     justify-content: center !important;
     padding: 0 12px !important;
-    color: #fff !important;
-    text-shadow: 0 1px 3px rgba(0,0,0,.72) !important;
+    color: var(--modern-user-color-text-bright, #fff) !important;
+    text-shadow: 0 1px 3px rgba(var(--modern-user-color-text-shadow-rgb, 0, 0, 0), .72) !important;
     font-size: 13px !important;
     font-weight: 700 !important;
     line-height: 1 !important;
@@ -991,41 +991,41 @@ html.sd-modern-ui body .gradio-container button[id^="reload_script"] {
 
 .sd-modern-ui .extra-network-pane .extra-network-tree,
 .sd-modern-ui .extra-network-pane .extra-network-cards {
-    background: #121a2d !important;
-    border-color: rgba(148, 163, 184, .18) !important;
+    background: rgba(var(--modern-user-color-model-pane-rgb, 18, 26, 45), var(--modern-user-panel-opacity, 1)) !important;
+    border-color: rgba(var(--modern-user-color-border-rgb, 148, 163, 184), .18) !important;
 }
 .sd-modern-ui .extra-network-tree div.tree-list-content:hover,
-.sd-modern-ui .extra-network-tree div.tree-list-content[data-selected] { background: rgba(129,140,248,.18) !important; }
+.sd-modern-ui .extra-network-tree div.tree-list-content[data-selected] { background: rgba(var(--modern-user-color-accent-400-rgb, var(--modern-user-accent-rgb, 129, 140, 248)), .18) !important; }
 .sd-modern-ui .extra-network-cards .card {
-    border-radius: 12px !important;
-    border: 1px solid rgba(148, 163, 184, .18) !important;
-    background: #121a2d !important;
+    border-radius: calc(12px * var(--modern-user-radius-scale, 1)) !important;
+    border: 1px solid rgba(var(--modern-user-color-border-rgb, 148, 163, 184), .18) !important;
+    background: rgba(var(--modern-user-color-model-card-rgb, 18, 26, 45), var(--modern-user-panel-opacity, 1)) !important;
 }
 .sd-modern-ui .extra-network-cards .card:hover {
-    border-color: #818cf8 !important;
-    box-shadow: 0 8px 24px rgba(2,6,23,.35) !important;
+    border-color: var(--modern-user-color-accent-400, var(--modern-user-accent-400, #818cf8)) !important;
+    box-shadow: 0 8px 24px rgba(var(--modern-user-color-shadow-rgb, 2, 6, 23), calc(.35 * var(--modern-user-shadow-strength, 1))) !important;
 }
 .sd-modern-ui .popup,
 .sd-modern-ui .modal-wrap,
 .sd-modern-ui #lightboxModal {
     backdrop-filter: blur(9px);
 }
-.sd-modern-ui #lightboxModal { background: rgba(2, 6, 23, .88) !important; }
+.sd-modern-ui #lightboxModal { background: rgba(var(--modern-user-color-lightbox-rgb, 2, 6, 23), .88) !important; }
 .sd-modern-ui table.popup-table {
-    background: #121a2d !important;
-    color: #eef2ff !important;
-    border-color: #121a2d !important;
+    background: var(--modern-user-color-panel, #121a2d) !important;
+    color: var(--modern-user-color-text, #eef2ff) !important;
+    border-color: var(--modern-user-color-panel, #121a2d) !important;
 }
 .sd-modern-ui .context-menu-items {
-    background: #18233a !important;
-    color: #eef2ff !important;
-    border: 1px solid rgba(148, 163, 184, .18) !important;
-    border-radius: 9px !important;
-    box-shadow: 0 18px 45px rgba(2, 6, 23, .34) !important;
+    background: var(--modern-user-color-panel-raised, #18233a) !important;
+    color: var(--modern-user-color-text, #eef2ff) !important;
+    border: 1px solid rgba(var(--modern-user-color-border-rgb, 148, 163, 184), .18) !important;
+    border-radius: calc(9px * var(--modern-user-radius-scale, 1)) !important;
+    box-shadow: 0 18px 45px rgba(var(--modern-user-color-shadow-rgb, 2, 6, 23), calc(.34 * var(--modern-user-shadow-strength, 1))) !important;
 }
 .sd-modern-ui a,
-.sd-modern-ui .gradio-container .prose a { color: #a5b4fc !important; }
-.sd-modern-ui a:hover { color: #c4b5fd !important; }
+.sd-modern-ui .gradio-container .prose a { color: var(--modern-user-color-link, var(--modern-user-color-accent-300, var(--modern-user-accent-300, #a5b4fc))) !important; }
+.sd-modern-ui a:hover { color: var(--modern-user-color-link-hover, var(--modern-user-color-accent-violet-pale, var(--modern-user-accent-violet-pale, #c4b5fd))) !important; }
 
 .sd-modern-ui #quicksettings {
     gap: 8px;
@@ -1061,15 +1061,15 @@ html.sd-modern-ui body .gradio-container button[id^="reload_script"] {
     max-width: calc(100% - 24px);
     box-sizing: border-box;
     padding: 8px 12px;
-    border: 1px solid rgba(251, 113, 133, .4) !important;
-    border-radius: 9px !important;
-    background: #211a2b !important;
-    color: #fecdd3 !important;
+    border: 1px solid rgba(var(--modern-user-color-error-accent-rgb, 251, 113, 133), .4) !important;
+    border-radius: calc(9px * var(--modern-user-radius-scale, 1)) !important;
+    background: var(--modern-user-color-error-background, #211a2b) !important;
+    color: var(--modern-user-color-error-text, #fecdd3) !important;
     font-size: 14px;
     line-height: 1.5;
     white-space: pre-wrap;
     overflow-wrap: anywhere;
-    box-shadow: 0 4px 14px rgba(2, 6, 23, .25);
+    box-shadow: 0 4px 14px rgba(var(--modern-user-color-shadow-rgb, 2, 6, 23), calc(.25 * var(--modern-user-shadow-strength, 1)));
 }
 .sd-modern-ui .html-log .error,
 .sd-modern-ui [id^="html_log_"] .error,
@@ -1078,11 +1078,11 @@ html.sd-modern-ui body .gradio-container button[id^="reload_script"] {
     box-sizing: border-box;
     margin: 10px 0;
     padding: 12px 14px;
-    border: 1px solid rgba(251, 113, 133, .3);
-    border-left: 3px solid #fb7185;
-    border-radius: 12px;
-    background: linear-gradient(145deg, #211a2b, #161a2b);
-    color: #fecdd3 !important;
+    border: 1px solid rgba(var(--modern-user-color-error-accent-rgb, 251, 113, 133), .3);
+    border-left: 3px solid var(--modern-user-color-error-accent, #fb7185);
+    border-radius: calc(12px * var(--modern-user-radius-scale, 1));
+    background: linear-gradient(145deg, var(--modern-user-color-error-background, #211a2b), var(--modern-user-color-error-gradient-end, #161a2b));
+    color: var(--modern-user-color-error-text, #fecdd3) !important;
     font-size: 14px;
     font-weight: 400;
     line-height: 1.55;
@@ -1101,28 +1101,28 @@ html.sd-modern-ui body .gradio-container button[id^="reload_script"] {
     gap: 12px !important;
 }
 .sd-modern-ui .toast-body {
-    --modern-toast-accent: #a5b4fc;
-    --modern-toast-icon-fill: rgba(129, 140, 248, .14);
+    --modern-toast-accent: var(--modern-user-color-accent-300, var(--modern-user-accent-300, #a5b4fc));
+    --modern-toast-icon-fill: rgba(var(--modern-user-color-accent-400-rgb, var(--modern-user-accent-rgb, 129, 140, 248)), .14);
     width: 100%;
     box-sizing: border-box;
     align-items: flex-start !important;
     gap: 10px;
     margin: 0 !important;
     padding: 14px 12px 15px !important;
-    border: 1px solid rgba(148, 163, 184, .24) !important;
+    border: 1px solid rgba(var(--modern-user-color-border-rgb, 148, 163, 184), .24) !important;
     border-left: 3px solid var(--modern-toast-accent) !important;
-    border-radius: 14px !important;
-    background: linear-gradient(145deg, #18233a, #10192c) !important;
-    color: #eef2ff !important;
-    box-shadow: 0 12px 36px rgba(2, 6, 23, .5) !important;
+    border-radius: calc(14px * var(--modern-user-radius-scale, 1)) !important;
+    background: linear-gradient(145deg, var(--modern-user-color-toast-start, #18233a), var(--modern-user-color-toast-end, #10192c)) !important;
+    color: var(--modern-user-color-toast-text, #eef2ff) !important;
+    box-shadow: 0 12px 36px rgba(var(--modern-user-color-shadow-rgb, 2, 6, 23), calc(.5 * var(--modern-user-shadow-strength, 1))) !important;
 }
 .sd-modern-ui .toast-body.error {
-    --modern-toast-accent: #fb7185;
-    --modern-toast-icon-fill: rgba(251, 113, 133, .12);
+    --modern-toast-accent: var(--modern-user-color-error-accent, #fb7185);
+    --modern-toast-icon-fill: rgba(var(--modern-user-color-error-accent-rgb, 251, 113, 133), .12);
 }
 .sd-modern-ui .toast-body.warning {
-    --modern-toast-accent: #fbbf24;
-    --modern-toast-icon-fill: rgba(251, 191, 36, .12);
+    --modern-toast-accent: var(--modern-user-color-warning, #fbbf24);
+    --modern-toast-icon-fill: rgba(var(--modern-user-color-warning-rgb, 251, 191, 36), .12);
 }
 .sd-modern-ui .toast-body .toast-icon {
     flex: 0 0 32px !important;
@@ -1131,7 +1131,7 @@ html.sd-modern-ui body .gradio-container button[id^="reload_script"] {
     margin: 0 !important;
     padding: 6px !important;
     box-sizing: border-box;
-    border-radius: 10px !important;
+    border-radius: calc(10px * var(--modern-user-radius-scale, 1)) !important;
     background: var(--modern-toast-icon-fill) !important;
     color: var(--modern-toast-accent) !important;
 }
@@ -1159,14 +1159,14 @@ html.sd-modern-ui body .gradio-container button[id^="reload_script"] {
     overflow-y: auto;
     overflow-wrap: anywhere;
     white-space: pre-wrap;
-    color: #eef2ff !important;
+    color: var(--modern-user-color-toast-text, #eef2ff) !important;
     font-size: 14px !important;
     line-height: 1.5 !important;
     scrollbar-width: thin;
-    scrollbar-color: #475569 transparent;
+    scrollbar-color: var(--modern-user-color-toast-scrollbar, #475569) transparent;
 }
 .sd-modern-ui .toast-body .toast-text a {
-    color: #c7d2fe !important;
+    color: var(--modern-user-color-accent-200, var(--modern-user-accent-200, #c7d2fe)) !important;
     text-decoration: underline;
 }
 .sd-modern-ui .toast-body .toast-close {
@@ -1181,16 +1181,16 @@ html.sd-modern-ui body .gradio-container button[id^="reload_script"] {
     margin: 0 !important;
     padding: 0 !important;
     border: 0 !important;
-    border-radius: 8px !important;
+    border-radius: calc(8px * var(--modern-user-radius-scale, 1)) !important;
     background: transparent !important;
-    color: #9eacc8 !important;
+    color: var(--modern-user-color-toast-muted, #9eacc8) !important;
     box-shadow: none !important;
     font-size: 18px;
     line-height: 1;
 }
 .sd-modern-ui .toast-body .toast-close:hover:not(:disabled) {
-    background: #253551 !important;
-    color: #fff !important;
+    background: var(--modern-user-color-toast-close-hover, #253551) !important;
+    color: var(--modern-user-color-text-bright, #fff) !important;
     box-shadow: none !important;
 }
 .sd-modern-ui .toast-body .timer {
@@ -1212,12 +1212,12 @@ html.sd-modern-ui body .gradio-container button[id^="reload_script"] {
     max-height: calc(100vh - 24px);
     overflow: auto;
     padding: 10px 12px;
-    border: 1px solid rgba(165, 180, 252, .3);
-    border-radius: 10px;
-    background: #111a2c;
-    color: #eef2ff;
-    box-shadow: 0 8px 26px rgba(2, 6, 23, .46);
-    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    border: 1px solid rgba(var(--modern-user-color-accent-300-rgb, var(--modern-user-accent-strong-rgb, 165, 180, 252)), .3);
+    border-radius: calc(10px * var(--modern-user-radius-scale, 1));
+    background: var(--modern-user-color-tooltip, #111a2c);
+    color: var(--modern-user-color-tooltip-text, #eef2ff);
+    box-shadow: 0 8px 26px rgba(var(--modern-user-color-shadow-rgb, 2, 6, 23), calc(.46 * var(--modern-user-shadow-strength, 1)));
+    font-family: var(--modern-user-font-family, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif);
     font-size: 12px;
     font-weight: 400;
     line-height: 1.5;
@@ -1228,23 +1228,23 @@ html.sd-modern-ui body .gradio-container button[id^="reload_script"] {
     pointer-events: auto;
 }
 .sd-modern-ui .modern-module.modern-module-active {
-    border-color: rgba(165, 180, 252, .54) !important;
-    box-shadow: inset 3px 0 0 #818cf8, var(--modern-shadow-sm) !important;
+    border-color: rgba(var(--modern-user-color-accent-300-rgb, var(--modern-user-accent-strong-rgb, 165, 180, 252)), .54) !important;
+    box-shadow: inset 3px 0 0 var(--modern-user-color-accent-400, var(--modern-user-accent-400, #818cf8)), var(--modern-shadow-sm) !important;
 }
 .sd-modern-ui .modern-module > .modern-module-heading {
     position: relative;
 }
 .sd-modern-ui .modern-module.modern-module-active > .modern-module-heading,
 .sd-modern-ui .modern-module.modern-module-active > .modern-module-heading:hover:not(:disabled) {
-    background: rgba(129, 140, 248, .08) !important;
+    background: rgba(var(--modern-user-color-accent-400-rgb, var(--modern-user-accent-rgb, 129, 140, 248)), .08) !important;
 }
 .sd-modern-ui :is(#txt2img_controlnet_tabs, #img2img_controlnet_tabs) > .tab-nav > button.modern-unit-active {
-    border-color: rgba(165, 180, 252, .5) !important;
-    box-shadow: inset 0 -2px 0 #a5b4fc !important;
+    border-color: rgba(var(--modern-user-color-accent-300-rgb, var(--modern-user-accent-strong-rgb, 165, 180, 252)), .5) !important;
+    box-shadow: inset 0 -2px 0 var(--modern-user-color-accent-300, var(--modern-user-accent-300, #a5b4fc)) !important;
 }
 .sd-modern-ui .extra-network-cards .card.modern-lora-active {
-    border-color: #a5b4fc !important;
-    box-shadow: 0 0 0 2px rgba(129, 140, 248, .5), 0 5px 18px rgba(2, 6, 23, .3) !important;
+    border-color: var(--modern-user-color-accent-300, var(--modern-user-accent-300, #a5b4fc)) !important;
+    box-shadow: 0 0 0 2px rgba(var(--modern-user-color-accent-400-rgb, var(--modern-user-accent-rgb, 129, 140, 248)), calc(.5 * var(--modern-user-shadow-strength, 1))), 0 5px 18px rgba(var(--modern-user-color-shadow-rgb, 2, 6, 23), calc(.3 * var(--modern-user-shadow-strength, 1))) !important;
 }
 .sd-modern-ui .extra-network-cards .card.modern-lora-active > .modern-lora-mark:not([hidden]) {
     display: block !important;
@@ -1256,17 +1256,17 @@ html.sd-modern-ui body .gradio-container button[id^="reload_script"] {
     width: 24px;
     height: 24px;
     padding: 4px;
-    border: 1px solid rgba(224, 231, 255, .65);
-    border-radius: 9px;
-    background: #4f46e5;
-    color: #fff;
-    box-shadow: 0 2px 8px rgba(2, 6, 23, .45);
+    border: 1px solid rgba(var(--modern-user-color-accent-100-rgb, var(--modern-user-accent-pale-rgb, 224, 231, 255)), .65);
+    border-radius: calc(9px * var(--modern-user-radius-scale, 1));
+    background: var(--modern-user-color-accent-600, var(--modern-user-accent-600, #4f46e5));
+    color: var(--modern-user-color-text-bright, #fff);
+    box-shadow: 0 2px 8px rgba(var(--modern-user-color-shadow-rgb, 2, 6, 23), calc(.45 * var(--modern-user-shadow-strength, 1)));
     pointer-events: none;
 }
 
 @media (max-width: 760px) {
     .sd-modern-ui .gradio-container { padding: 0 10px 18px !important; }
-    .sd-modern-ui .tabs > .tab-nav { overflow-x: auto; flex-wrap: nowrap !important; border-radius: 12px !important; }
+    .sd-modern-ui .tabs > .tab-nav { overflow-x: auto; flex-wrap: nowrap !important; border-radius: calc(12px * var(--modern-user-radius-scale, 1)) !important; }
     .sd-modern-ui .tabs > .tab-nav button { white-space: nowrap; flex: 0 0 auto; }
     .sd-modern-ui #settings { display: block !important; }
     .sd-modern-ui #settings > .tab-nav {
@@ -1304,5 +1304,946 @@ html.sd-modern-ui body .gradio-container button[id^="reload_script"] {
     .sd-modern-ui *::after {
         transition-duration: .01ms !important;
         animation-duration: .01ms !important;
+    }
+}
+
+#modern-appearance-wallpaper,
+.modern-appearance-backdrop[hidden] {
+    display: none !important;
+}
+.sd-modern-ui.sd-modern-ui-wallpaper body {
+    background: var(--modern-user-color-wallpaper-base, #0b1020) !important;
+}
+.sd-modern-ui.sd-modern-ui-wallpaper .gradio-container {
+    position: relative;
+    z-index: 1;
+    background: transparent !important;
+}
+.sd-modern-ui.sd-modern-ui-wallpaper #modern-appearance-wallpaper {
+    display: block !important;
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    user-select: none;
+}
+#modern-appearance-wallpaper .modern-appearance-wallpaper-image {
+    position: absolute;
+    inset: -80px;
+    background-image: var(--modern-user-background-image, none);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: blur(var(--modern-user-background-blur, 8px));
+}
+#modern-appearance-wallpaper .modern-appearance-wallpaper-shade {
+    position: absolute;
+    inset: 0;
+    background: rgba(var(--modern-user-color-wallpaper-shade-rgb, 2, 6, 23), var(--modern-user-background-dim, .65));
+}
+.sd-modern-ui .modern-appearance-launcher {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    gap: 8px;
+    padding: 8px 12px !important;
+    border: 1px solid rgba(var(--modern-user-color-accent-300-rgb, var(--modern-user-accent-strong-rgb, 165, 180, 252)), .3) !important;
+    background: var(--modern-user-color-editor-icon, #18233a) !important;
+    color: var(--modern-user-color-editor-text, #eef2ff) !important;
+    cursor: pointer;
+    font: inherit;
+}
+.sd-modern-ui #modern-appearance-quick-open {
+    flex: 0 0 38px;
+    width: 38px;
+    min-width: 38px;
+    height: 38px;
+    margin: 0 0 0 2px;
+    align-self: flex-end;
+    padding: 9px !important;
+}
+.modern-appearance-launcher svg {
+    display: block;
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+    pointer-events: none;
+}
+#modern-appearance-settings-open {
+    margin-top: 10px;
+}
+.sd-modern-ui .modern-appearance-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 2147482000;
+    display: flex;
+    justify-content: flex-end;
+    overflow: hidden;
+    background: rgba(var(--modern-user-color-editor-overlay-rgb, 2, 6, 23), .22);
+    color: var(--modern-user-color-editor-text, #eef2ff);
+    font-family: var(--modern-user-font-family, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif);
+    font-size: 13px;
+    line-height: 1.5;
+    color-scheme: dark;
+}
+.sd-modern-ui .modern-appearance-drawer {
+    display: flex;
+    flex: 0 1 440px;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: min(440px, 100%);
+    max-width: 100%;
+    height: 100%;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-left: 1px solid rgba(var(--modern-user-color-accent-300-rgb, var(--modern-user-accent-strong-rgb, 165, 180, 252)), .25);
+    border-radius: 0;
+    background: var(--modern-user-color-editor-surface, #10182a);
+    box-shadow: -12px 0 48px rgba(var(--modern-user-color-editor-shadow-rgb, 2, 6, 23), .5);
+    color: var(--modern-user-color-editor-text, #eef2ff);
+    outline: 0;
+}
+.sd-modern-ui .modern-appearance-header {
+    display: flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 20px 22px 16px;
+    border-bottom: 1px solid rgba(var(--modern-user-color-editor-border-rgb, 148, 163, 184), .16);
+}
+.sd-modern-ui .modern-appearance-header h2 {
+    margin: 0;
+    padding: 0;
+    color: var(--modern-user-color-editor-heading, #f8fafc);
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: normal;
+}
+.sd-modern-ui #modern-appearance-close {
+    display: grid;
+    flex: 0 0 32px;
+    place-items: center;
+    width: 32px;
+    min-width: 32px;
+    height: 32px;
+    padding: 7px !important;
+    border: 1px solid rgba(var(--modern-user-color-editor-border-rgb, 148, 163, 184), .22) !important;
+    border-radius: 8px !important;
+    background: var(--modern-user-color-editor-icon, #18233a) !important;
+    color: var(--modern-user-color-accent-200, var(--modern-user-accent-200, #c7d2fe)) !important;
+    cursor: pointer;
+}
+.modern-appearance-header svg {
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
+}
+.sd-modern-ui .modern-appearance-body {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+    padding: 18px 22px 20px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--modern-user-color-editor-scrollbar, #475569) transparent;
+}
+.sd-modern-ui .modern-appearance-intro {
+    margin: 0 0 18px;
+    color: var(--modern-user-color-editor-muted, #aab7d0);
+    font-size: 12px;
+    line-height: 1.6;
+}
+.sd-modern-ui .modern-appearance-help {
+    margin: 0 0 12px;
+    color: var(--modern-user-color-editor-muted, #aab7d0);
+    font-size: 12px;
+    line-height: 1.6;
+}
+.sd-modern-ui .modern-appearance-field {
+    min-width: 0;
+    margin: 0 0 20px;
+}
+.sd-modern-ui .modern-appearance-field > label,
+.sd-modern-ui .modern-appearance-background > label {
+    display: block;
+    margin: 0 0 8px;
+    padding: 0;
+    color: var(--modern-user-color-editor-label, #e4eaf5);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+.sd-modern-ui .modern-appearance-control {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+.sd-modern-ui .modern-appearance-control input[type="range"] {
+    flex: 1 1 0;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+}
+.sd-modern-ui .modern-appearance-control output {
+    display: block;
+    flex: 0 0 54px;
+    box-sizing: border-box;
+    min-width: 54px;
+    padding: 4px 6px;
+    border: 1px solid rgba(var(--modern-user-color-editor-border-rgb, 148, 163, 184), .18);
+    border-radius: 6px;
+    background: var(--modern-user-color-editor-value, #0e1628);
+    color: var(--modern-user-color-accent-200, var(--modern-user-accent-200, #c7d2fe));
+    font-family: ui-monospace, Consolas, monospace;
+    font-size: 12px;
+    line-height: 1.4;
+    text-align: center;
+    white-space: nowrap;
+}
+.sd-modern-ui .modern-appearance-control input[type="color"] + output {
+    flex-basis: 88px;
+    min-width: 88px;
+    text-align: left;
+    text-transform: uppercase;
+}
+.sd-modern-ui .modern-appearance-control input[type="color"] {
+    flex: 0 0 48px;
+    box-sizing: border-box;
+    width: 48px;
+    min-width: 48px;
+    height: 38px;
+    padding: 4px !important;
+    border-radius: 8px !important;
+    cursor: pointer;
+}
+.modern-appearance-control input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+.modern-appearance-control input[type="color"]::-webkit-color-swatch {
+    border: 0;
+    border-radius: 4px;
+}
+.sd-modern-ui .modern-appearance-control input[type="text"],
+.sd-modern-ui .modern-appearance-control select {
+    flex: 1 1 0;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    height: 38px;
+    margin: 0;
+    padding: 8px 10px !important;
+    border-radius: 8px !important;
+    font: inherit;
+}
+.sd-modern-ui .modern-appearance-background {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(var(--modern-user-color-editor-border-rgb, 148, 163, 184), .18);
+}
+.sd-modern-ui .modern-appearance-background h3,
+.sd-modern-ui .modern-appearance-preview h3 {
+    margin: 0 0 12px;
+    color: var(--modern-user-color-accent-200, var(--modern-user-accent-200, #c7d2fe));
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: .02em;
+}
+.sd-modern-ui .modern-appearance-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+.sd-modern-ui .modern-appearance-drawer button:not(#modern-appearance-close) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    min-height: 36px;
+    margin: 0;
+    padding: 8px 12px !important;
+    border: 1px solid rgba(var(--modern-user-color-editor-border-rgb, 148, 163, 184), .25) !important;
+    border-radius: 8px !important;
+    background: var(--modern-user-color-editor-button, #1b2941) !important;
+    color: var(--modern-user-color-editor-text, #eef2ff) !important;
+    box-shadow: none !important;
+    font: inherit;
+    font-weight: 600 !important;
+    line-height: 1.35;
+    cursor: pointer;
+}
+.sd-modern-ui .modern-appearance-drawer button:not(#modern-appearance-close):hover:not(:disabled) {
+    border-color: rgba(var(--modern-user-color-accent-300-rgb, var(--modern-user-accent-strong-rgb, 165, 180, 252)), .6) !important;
+    background: var(--modern-user-color-editor-button-hover, #263958) !important;
+    box-shadow: none !important;
+}
+.sd-modern-ui .modern-appearance-drawer button.modern-appearance-primary:not(#modern-appearance-close),
+.sd-modern-ui .modern-appearance-drawer button.modern-appearance-primary:not(#modern-appearance-close):hover:not(:disabled) {
+    border-color: transparent !important;
+    background: linear-gradient(135deg, var(--modern-user-color-primary-start, var(--modern-user-color-accent-500, var(--modern-user-accent-500, #6366f1))), var(--modern-user-color-primary-end, var(--modern-user-color-accent-violet, var(--modern-user-accent-violet, #8b5cf6)))) !important;
+    color: var(--modern-user-color-primary-text, var(--modern-user-accent-text, #fff)) !important;
+}
+.sd-modern-ui .modern-appearance-image-preview {
+    overflow: hidden;
+    margin-top: 12px;
+    border: 1px solid rgba(var(--modern-user-color-editor-border-rgb, 148, 163, 184), .22);
+    border-radius: 10px;
+    background: var(--modern-user-color-editor-preview-background, #0b1020);
+}
+.modern-appearance-image-preview img {
+    display: block;
+    width: 100%;
+    max-height: 140px;
+    object-fit: cover;
+}
+.sd-modern-ui .modern-appearance-image-info {
+    margin: 8px 0 18px;
+    color: var(--modern-user-color-text-muted, #9eacc8);
+    font-size: 11px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+.sd-modern-ui .modern-appearance-footer {
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px 22px 18px;
+    border-top: 1px solid rgba(var(--modern-user-color-editor-border-rgb, 148, 163, 184), .18);
+    background: var(--modern-user-color-editor-surface, #10182a);
+}
+.modern-appearance-footer > .modern-appearance-actions:last-child {
+    justify-content: flex-end;
+}
+.sd-modern-ui .modern-appearance-status {
+    min-height: 0;
+    margin: 8px 0 0;
+    padding: 0;
+    color: var(--modern-user-color-editor-muted, #aab7d0);
+    font-size: 12px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+.modern-appearance-status:empty {
+    display: none;
+}
+.sd-modern-ui .modern-appearance-status.is-error {
+    padding: 10px 12px;
+    border: 1px solid rgba(var(--modern-user-color-error-accent-rgb, 251, 113, 133), .35);
+    border-radius: 8px;
+    background: var(--modern-user-color-editor-error-background, #281b2b);
+    color: var(--modern-user-color-editor-error-text, #fecdd3);
+}
+.sd-modern-ui .modern-appearance-status.is-success {
+    color: var(--modern-user-color-editor-success, #a7f3d0);
+}
+.sd-modern-ui .modern-appearance-preview {
+    margin: 0 0 22px;
+    padding: 12px;
+    border: 1px solid rgba(var(--modern-user-color-editor-border-rgb, 148, 163, 184), .15);
+    border-radius: 10px;
+    background: repeating-linear-gradient(135deg, var(--modern-user-color-editor-preview-stripe, #172238) 0, var(--modern-user-color-editor-preview-stripe, #172238) 9px, var(--modern-user-color-editor-preview-stripe-alt, #1e2b43) 9px, var(--modern-user-color-editor-preview-stripe-alt, #1e2b43) 18px);
+}
+.sd-modern-ui .modern-appearance-preview-card {
+    box-sizing: border-box;
+    padding: 14px;
+    border: 1px solid rgba(var(--modern-user-color-editor-border-rgb, 148, 163, 184), .25);
+    border-radius: calc(14px * var(--modern-user-radius-scale, 1));
+    background: rgba(var(--modern-user-color-editor-preview-panel-rgb, 18, 26, 45), calc(.94 * var(--modern-user-panel-opacity, 1)));
+    box-shadow: 0 4px 16px rgba(var(--modern-user-color-editor-shadow-rgb, 2, 6, 23), calc(.3 * var(--modern-user-shadow-strength, 1)));
+}
+.modern-appearance-preview-label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--modern-user-color-text-muted, #9eacc8);
+    font-size: 11px;
+}
+.modern-appearance-preview-line {
+    width: 82%;
+    height: 5px;
+    margin: 0 0 7px;
+    border-radius: 4px;
+    background: var(--modern-user-color-editor-preview-line, #64748b);
+}
+.modern-appearance-preview-line.short {
+    width: 60%;
+    background: var(--modern-user-color-editor-preview-line-short, #475569);
+}
+.modern-appearance-preview-button {
+    display: block;
+    margin-top: 14px;
+    padding: 9px 12px;
+    border-radius: calc(9px * var(--modern-user-radius-scale, 1));
+    background: linear-gradient(135deg, var(--modern-user-color-primary-start, var(--modern-user-color-accent-500, var(--modern-user-accent-500, #6366f1))), var(--modern-user-color-primary-end, var(--modern-user-color-accent-violet, var(--modern-user-accent-violet, #8b5cf6))));
+    color: var(--modern-user-color-primary-text, var(--modern-user-accent-text, #fff));
+    font-weight: 650;
+    text-align: center;
+}
+@media (max-width: 480px) {
+    .sd-modern-ui .modern-appearance-drawer {
+        flex-basis: 100%;
+        width: 100%;
+        border-left: 0;
+    }
+    .sd-modern-ui .modern-appearance-header {
+        padding: 16px;
+    }
+    .sd-modern-ui .modern-appearance-body {
+        padding: 16px;
+    }
+    .sd-modern-ui .modern-appearance-footer {
+        padding: 14px 16px;
+    }
+}
+
+.modern-appearance-colors [hidden] {
+    display: none !important;
+}
+.sd-modern-ui .modern-appearance-colors {
+    margin: 4px 0 24px;
+    padding: 18px 0 0;
+    border-top: 1px solid rgba(var(--modern-user-color-editor-border-rgb, 148, 163, 184), .18);
+}
+.sd-modern-ui .modern-appearance-colors > h3 {
+    margin: 0 0 10px;
+    color: var(--modern-user-color-editor-label, #e4eaf5);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+.sd-modern-ui #modern-appearance-color-search {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    height: 38px;
+    margin: 0 0 12px;
+    padding: 8px 10px !important;
+    border: 1px solid rgba(var(--modern-user-color-editor-border-rgb, 148, 163, 184), .28) !important;
+    border-radius: 8px !important;
+    background: var(--modern-user-color-editor-value, #0e1628) !important;
+    color: var(--modern-user-color-editor-text, #eef2ff) !important;
+    font: inherit;
+}
+.sd-modern-ui #modern-appearance-color-search::placeholder {
+    color: var(--modern-user-color-editor-muted, #aab7d0) !important;
+}
+.sd-modern-ui .modern-appearance-color-groups {
+    display: grid;
+    gap: 8px;
+}
+.sd-modern-ui .modern-appearance-color-group {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid rgba(var(--modern-user-color-editor-border-rgb, 148, 163, 184), .22);
+    border-radius: 10px;
+    background: var(--modern-user-color-editor-value, #0e1628);
+    color: var(--modern-user-color-editor-text, #eef2ff);
+}
+.sd-modern-ui .modern-appearance-color-group > summary {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 40px;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 10px 12px;
+    cursor: pointer;
+    list-style: none;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: inherit;
+}
+.modern-appearance-color-group > summary::-webkit-details-marker {
+    display: none;
+}
+.modern-appearance-color-group > summary::after {
+    content: "";
+    display: block;
+    flex: 0 0 6px;
+    width: 6px;
+    height: 6px;
+    margin-left: 3px;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    transform: rotate(45deg);
+}
+.modern-appearance-color-group[open] > summary::after {
+    transform: rotate(225deg);
+}
+.sd-modern-ui .modern-appearance-color-group > summary:hover {
+    background: var(--modern-user-color-editor-icon, #18233a);
+}
+.sd-modern-ui .modern-appearance-color-group > summary:focus-visible {
+    outline: 2px solid var(--modern-user-color-accent-300, var(--modern-user-accent-300, #a5b4fc));
+    outline-offset: -3px;
+}
+.modern-appearance-color-group-label {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+.sd-modern-ui .modern-appearance-color-count {
+    flex: 0 0 auto;
+    min-width: 20px;
+    padding: 1px 5px;
+    border-radius: 5px;
+    background: var(--modern-user-color-editor-icon, #18233a);
+    color: var(--modern-user-color-editor-muted, #aab7d0);
+    font-family: ui-monospace, Consolas, monospace;
+    font-size: 10px;
+    font-weight: 400;
+    text-align: center;
+}
+.sd-modern-ui .modern-appearance-color-fields {
+    padding: 0 12px 8px;
+    border-top: 1px solid rgba(var(--modern-user-color-editor-border-rgb, 148, 163, 184), .12);
+}
+.sd-modern-ui .modern-appearance-drawer button.modern-appearance-color-group-reset:not(#modern-appearance-close) {
+    min-height: 28px;
+    margin: 10px 0 2px;
+    padding: 5px 8px !important;
+    font-size: 11px;
+}
+.sd-modern-ui .modern-appearance-color-field {
+    min-width: 0;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(var(--modern-user-color-editor-border-rgb, 148, 163, 184), .12);
+}
+.modern-appearance-color-field:last-child {
+    border-bottom: 0;
+}
+.sd-modern-ui .modern-appearance-color-field > label {
+    display: block;
+    margin: 0 0 7px;
+    color: var(--modern-user-color-editor-label, #e4eaf5);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+.sd-modern-ui .modern-appearance-color-control {
+    display: grid;
+    grid-template-columns: 42px minmax(86px, 1fr) 32px auto;
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+.sd-modern-ui #modern-appearance-color-groups .modern-appearance-color-control input[type="color"] {
+    box-sizing: border-box;
+    width: 42px;
+    min-width: 42px;
+    height: 34px;
+    min-height: 34px;
+    margin: 0;
+    padding: 3px !important;
+    border: 1px solid rgba(var(--modern-user-color-editor-border-rgb, 148, 163, 184), .3) !important;
+    border-radius: 7px !important;
+    background: var(--modern-user-color-editor-icon, #18233a) !important;
+    cursor: pointer;
+}
+.modern-appearance-color-control input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+.modern-appearance-color-control input[type="color"]::-webkit-color-swatch {
+    border: 0;
+    border-radius: 4px;
+}
+.sd-modern-ui #modern-appearance-color-groups .modern-appearance-color-control .modern-appearance-hex,
+.sd-modern-ui #modern-appearance-accent-hex {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    height: 34px;
+    margin: 0;
+    padding: 7px 9px !important;
+    border: 1px solid rgba(var(--modern-user-color-editor-border-rgb, 148, 163, 184), .3) !important;
+    border-radius: 7px !important;
+    background: var(--modern-user-color-editor-value, #0e1628) !important;
+    color: var(--modern-user-color-editor-text, #eef2ff) !important;
+    font-family: ui-monospace, Consolas, monospace;
+    font-size: 12px;
+    line-height: 1.3;
+    text-transform: uppercase;
+}
+.sd-modern-ui #modern-appearance-accent-hex {
+    flex: 0 1 116px;
+    max-width: 130px;
+    height: 38px;
+}
+.sd-modern-ui .modern-appearance-drawer input[aria-invalid="true"] {
+    border-color: var(--modern-user-color-error-accent, #fb7185) !important;
+}
+.sd-modern-ui .modern-appearance-drawer button.modern-appearance-color-reset:not(#modern-appearance-close) {
+    width: 32px;
+    min-width: 32px;
+    height: 32px;
+    min-height: 32px;
+    margin: 0;
+    padding: 7px !important;
+    background: var(--modern-user-color-editor-button, #1b2941) !important;
+    color: var(--modern-user-color-editor-text, #eef2ff) !important;
+}
+.modern-appearance-color-reset svg {
+    display: block;
+    width: 16px;
+    height: 16px;
+    pointer-events: none;
+}
+.sd-modern-ui .modern-appearance-color-mode {
+    max-width: 80px;
+    padding: 3px 5px;
+    overflow: hidden;
+    border-radius: 5px;
+    background: var(--modern-user-color-editor-icon, #18233a);
+    color: var(--modern-user-color-editor-muted, #aab7d0);
+    font-size: 10px;
+    line-height: 1.3;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.sd-modern-ui .modern-appearance-color-mode.is-custom {
+    color: var(--modern-user-color-editor-text, #eef2ff);
+}
+.sd-modern-ui .modern-appearance-color-error,
+.sd-modern-ui .modern-appearance-color-empty {
+    margin: 7px 0 0;
+    color: var(--modern-user-color-editor-error-text, #fecdd3);
+    font-size: 11px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+.modern-appearance-color-error[hidden] {
+    display: none !important;
+}
+.sd-modern-ui .modern-appearance-drawer button#modern-appearance-reset,
+.sd-modern-ui .modern-appearance-drawer button#modern-appearance-reset:hover:not(:disabled) {
+    background: #1b2941 !important;
+    color: #eef2ff !important;
+    border: 1px solid rgba(148, 163, 184, .25) !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+}
+.sd-modern-ui .modern-appearance-drawer button#modern-appearance-reset:focus-visible {
+    outline: 2px solid #eef2ff !important;
+    outline-offset: 2px;
+}
+@media (max-width: 360px) {
+    .sd-modern-ui .modern-appearance-color-control {
+        grid-template-columns: 38px minmax(80px, 1fr) 32px;
+        gap: 7px;
+    }
+    .sd-modern-ui #modern-appearance-color-groups .modern-appearance-color-control input[type="color"] {
+        width: 38px;
+        min-width: 38px;
+    }
+    .sd-modern-ui .modern-appearance-color-mode {
+        grid-column: 2;
+        justify-self: start;
+    }
+}
+
+.sd-modern-ui #modern-appearance-accent {
+    border-color: rgba(var(--modern-user-color-editor-border-rgb, 148, 163, 184), .3) !important;
+    background: var(--modern-user-color-editor-icon, #18233a) !important;
+}
+
+.sd-modern-ui .modern-appearance-font-select {
+    position: relative;
+    flex: 1 1 0;
+    width: 100%;
+    min-width: 0;
+}
+.sd-modern-ui .modern-appearance-drawer button#modern-appearance-font {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    gap: 12px;
+    width: 100%;
+    min-width: 0;
+    height: 38px;
+    margin: 0;
+    padding: 8px 11px !important;
+    border: 1px solid rgba(var(--modern-user-color-editor-border-rgb, 148, 163, 184), .3) !important;
+    border-radius: 8px !important;
+    background: var(--modern-user-color-editor-value, #0e1628) !important;
+    color: var(--modern-user-color-editor-text, #eef2ff) !important;
+    box-shadow: none !important;
+    font: inherit;
+    font-weight: 400 !important;
+    line-height: 1.5;
+    text-align: left;
+    cursor: pointer;
+}
+.sd-modern-ui .modern-appearance-drawer button#modern-appearance-font:hover,
+.sd-modern-ui .modern-appearance-drawer button#modern-appearance-font[aria-expanded="true"] {
+    border-color: var(--modern-user-color-button-hover-border, var(--modern-user-color-accent-300, var(--modern-user-accent-300, #a5b4fc))) !important;
+    background: var(--modern-user-color-editor-value, #0e1628) !important;
+    box-shadow: none !important;
+}
+.sd-modern-ui .modern-appearance-font-value {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    color: inherit;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.modern-appearance-font-chevron {
+    display: block;
+    flex: 0 0 16px;
+    width: 16px;
+    height: 16px;
+    color: inherit;
+    pointer-events: none;
+}
+.modern-appearance-font-trigger[aria-expanded="true"] .modern-appearance-font-chevron {
+    transform: rotate(180deg);
+}
+.modern-appearance-font-listbox[hidden] {
+    display: none !important;
+}
+.sd-modern-ui .modern-appearance-font-listbox {
+    position: fixed;
+    z-index: 20;
+    box-sizing: border-box;
+    min-width: 0;
+    max-width: calc(100vw - 16px);
+    overflow: auto;
+    overscroll-behavior: contain;
+    margin: 0;
+    padding: 5px;
+    border: 1px solid rgba(var(--modern-user-color-editor-border-rgb, 148, 163, 184), .36);
+    border-radius: 10px;
+    background: var(--modern-user-color-editor-value, #0e1628);
+    color: var(--modern-user-color-editor-text, #eef2ff);
+    box-shadow: 0 10px 28px rgba(var(--modern-user-color-editor-shadow-rgb, 2, 6, 23), .45);
+    font-family: var(--modern-user-font-family, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif);
+    font-size: 13px;
+    line-height: 1.5;
+    scrollbar-width: thin;
+    scrollbar-color: var(--modern-user-color-editor-scrollbar, #475569) transparent;
+}
+.sd-modern-ui .modern-appearance-font-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    gap: 12px;
+    min-height: 34px;
+    margin: 0;
+    padding: 7px 9px;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: inherit;
+    line-height: 1.5;
+    cursor: pointer;
+    user-select: none;
+}
+.sd-modern-ui .modern-appearance-font-option[aria-selected="true"] {
+    background: var(--modern-user-color-editor-icon, #18233a);
+    color: var(--modern-user-color-editor-text, #eef2ff);
+}
+.sd-modern-ui .modern-appearance-font-option.is-active,
+.sd-modern-ui .modern-appearance-font-option:hover {
+    background: var(--modern-user-color-editor-button-hover, #263958);
+    color: var(--modern-user-color-editor-text, #eef2ff);
+    box-shadow: inset 0 0 0 1px rgba(var(--modern-user-color-editor-border-rgb, 148, 163, 184), .3);
+}
+.modern-appearance-font-option-label {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+.modern-appearance-font-check {
+    display: block;
+    flex: 0 0 16px;
+    width: 16px;
+    height: 16px;
+    color: inherit;
+    opacity: 0;
+    pointer-events: none;
+}
+.modern-appearance-font-option[aria-selected="true"] .modern-appearance-font-check {
+    opacity: 1;
+}
+
+.sd-modern-ui .modern-appearance-color-replace {
+    display: grid;
+    grid-template-columns: 44px minmax(100px, 1fr);
+    align-items: center;
+    gap: 8px;
+    margin: 12px 0;
+    padding: 12px;
+    border: 1px solid rgba(var(--modern-user-color-editor-border-rgb, 148, 163, 184), .22);
+    border-radius: 9px;
+    background: var(--modern-user-color-editor-value, #0e1628);
+}
+.sd-modern-ui .modern-appearance-color-replace > :not(input) {
+    grid-column: 1 / -1;
+}
+.sd-modern-ui #modern-appearance-color-match-count {
+    color: var(--modern-user-color-editor-label, #e4eaf5);
+    font-weight: 600;
+}
+.sd-modern-ui .modern-appearance-color-replace-control {
+    display: grid;
+    grid-template-columns: 44px minmax(100px, 1fr);
+    align-items: center;
+    gap: 8px;
+    min-width: 0;
+}
+.sd-modern-ui #modern-appearance-replace-colors {
+    grid-column: 1 / -1;
+}
+.sd-modern-ui #modern-appearance-replacement-color {
+    box-sizing: border-box;
+    width: 44px;
+    min-width: 44px;
+    height: 38px;
+    margin: 0;
+    padding: 3px !important;
+    border: 1px solid rgba(var(--modern-user-color-editor-border-rgb, 148, 163, 184), .3) !important;
+    border-radius: 7px !important;
+    background: var(--modern-user-color-editor-icon, #18233a) !important;
+    cursor: pointer;
+}
+.sd-modern-ui #modern-appearance-replacement-hex {
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    height: 38px;
+    margin: 0;
+    padding: 7px 9px !important;
+    border: 1px solid rgba(var(--modern-user-color-editor-border-rgb, 148, 163, 184), .3) !important;
+    border-radius: 7px !important;
+    background: var(--modern-user-color-editor-value, #0e1628) !important;
+    color: var(--modern-user-color-editor-text, #eef2ff) !important;
+    font-family: ui-monospace, Consolas, monospace;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+.sd-modern-ui .modern-appearance-color-replace-help {
+    margin: 0;
+    color: var(--modern-user-color-editor-muted, #aab7d0);
+    font-size: 11px;
+    line-height: 1.5;
+}
+html.sd-modern-ui,
+html.sd-modern-ui body {
+    scrollbar-width: thin;
+    scrollbar-color: var(--modern-user-color-page-scrollbar-thumb, var(--modern-user-color-scrollbar-webkit, #384862)) var(--modern-user-color-page-scrollbar-track, var(--modern-user-color-canvas, #0b1020));
+}
+@supports selector(::-webkit-scrollbar) {
+    html.sd-modern-ui,
+    html.sd-modern-ui body {
+        scrollbar-width: auto;
+        scrollbar-color: auto;
+    }
+    html.sd-modern-ui::-webkit-scrollbar,
+    html.sd-modern-ui body::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+        background: var(--modern-user-color-page-scrollbar-track, var(--modern-user-color-canvas, #0b1020));
+    }
+    html.sd-modern-ui::-webkit-scrollbar-track,
+    html.sd-modern-ui body::-webkit-scrollbar-track,
+    html.sd-modern-ui::-webkit-scrollbar-corner,
+    html.sd-modern-ui body::-webkit-scrollbar-corner {
+        background: var(--modern-user-color-page-scrollbar-track, var(--modern-user-color-canvas, #0b1020));
+    }
+    html.sd-modern-ui::-webkit-scrollbar-thumb,
+    html.sd-modern-ui body::-webkit-scrollbar-thumb {
+        min-height: 32px;
+        border: 2px solid var(--modern-user-color-page-scrollbar-track, var(--modern-user-color-canvas, #0b1020));
+        border-radius: 10px;
+        background: var(--modern-user-color-page-scrollbar-thumb, var(--modern-user-color-scrollbar-webkit, #384862));
+    }
+    html.sd-modern-ui::-webkit-scrollbar-thumb:hover,
+    html.sd-modern-ui body::-webkit-scrollbar-thumb:hover {
+        background: var(--modern-user-color-page-scrollbar-hover, var(--modern-user-color-scrollbar, #475569));
+    }
+    html.sd-modern-ui::-webkit-scrollbar-button,
+    html.sd-modern-ui body::-webkit-scrollbar-button {
+        display: none;
+        width: 0;
+        height: 0;
+    }
+}
+@media (pointer: coarse), (max-width: 600px) {
+    .sd-modern-ui .modern-appearance-drawer button:not(#modern-appearance-close),
+    .sd-modern-ui .modern-appearance-drawer button#modern-appearance-font {
+        min-height: 44px;
+    }
+    .sd-modern-ui #modern-appearance-close {
+        flex-basis: 44px;
+        width: 44px;
+        min-width: 44px;
+        height: 44px;
+    }
+    .sd-modern-ui .modern-appearance-font-option {
+        min-height: 44px;
+        padding-top: 11px;
+        padding-bottom: 11px;
+    }
+    .sd-modern-ui .modern-appearance-color-control {
+        grid-template-columns: 44px minmax(90px, 1fr) 44px;
+    }
+    .sd-modern-ui .modern-appearance-color-mode {
+        grid-column: 2;
+        justify-self: start;
+    }
+    .sd-modern-ui #modern-appearance-color-groups .modern-appearance-color-control input[type="color"],
+    .sd-modern-ui .modern-appearance-drawer button.modern-appearance-color-reset:not(#modern-appearance-close) {
+        width: 44px;
+        min-width: 44px;
+        height: 44px;
+        min-height: 44px;
+    }
+    .sd-modern-ui #modern-appearance-color-groups .modern-appearance-color-control .modern-appearance-hex,
+    .sd-modern-ui #modern-appearance-accent-hex,
+    .sd-modern-ui #modern-appearance-replacement-hex,
+    .sd-modern-ui #modern-appearance-color-search,
+    .sd-modern-ui .modern-appearance-control input[type="text"] {
+        min-height: 44px;
+        font-size: 16px;
+    }
+    .sd-modern-ui #modern-appearance-replacement-color,
+    .sd-modern-ui .modern-appearance-control input[type="color"] {
+        height: 44px;
+        min-height: 44px;
+    }
+    .sd-modern-ui .modern-appearance-control input[type="range"] {
+        min-height: 44px;
+        touch-action: pan-y;
+    }
+    .sd-modern-ui .modern-appearance-footer {
+        padding-bottom: max(14px, env(safe-area-inset-bottom));
+    }
+}
+@media (max-height: 450px) {
+    .sd-modern-ui .modern-appearance-header {
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+    .sd-modern-ui .modern-appearance-footer {
+        gap: 6px;
+        padding-top: 8px;
+        padding-bottom: max(8px, env(safe-area-inset-bottom));
     }
 }

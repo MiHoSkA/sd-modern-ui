@@ -7,6 +7,7 @@
     const tooltipId = `sd-modern-tooltip-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 9)}`;
     const dialogSelector = "[role='dialog'], [aria-modal='true'], dialog[open], .popup-dialog, .global-popup, #lightboxModal";
     const ownTitleWrites = new WeakMap();
+    const titleLeases = new Map();
     const removers = [];
     let root = null;
     let panel = null;
@@ -17,6 +18,9 @@
     let focused = null;
     let focusTarget = null;
     let pointerFocusScope = null;
+    let pointerPosition = null;
+    let restoringFocus = null;
+    let hoverSuppressed = null;
     let dismissed = null;
     let panelHovered = false;
     let showTimer = 0;
@@ -30,6 +34,22 @@
     const meaningful = value => typeof value === "string" && value.trim().length > 0;
     const contains = (parent, node) => !!parent && !!node && (parent === node || parent.contains(node));
     const ownNode = node => !!panel && contains(panel, node);
+
+    const trackPointer = event => {
+        if (event.pointerType === "touch" || event.type.startsWith("touch")) pointerPosition = null;
+        else if (Number.isFinite(event.clientX) && Number.isFinite(event.clientY)) pointerPosition = { x: event.clientX, y: event.clientY };
+    };
+
+    const pointerOverElement = element => {
+        if (!pointerPosition || typeof document.elementFromPoint !== "function") return false;
+        let target = document.elementFromPoint(pointerPosition.x, pointerPosition.y);
+        while (target && target.shadowRoot && typeof target.shadowRoot.elementFromPoint === "function") {
+            const inner = target.shadowRoot.elementFromPoint(pointerPosition.x, pointerPosition.y);
+            if (!inner || inner === target) break;
+            target = inner;
+        }
+        return contains(element, target);
+    };
 
     const eventElement = event => {
         const path = typeof event.composedPath === "function" ? event.composedPath() : [event.target];
@@ -80,6 +100,7 @@
         if (showTimer) clearTimeout(showTimer);
         showTimer = 0;
         pending = null;
+        releaseTitles();
     };
 
     const cancelHide = () => {
@@ -113,7 +134,30 @@
         }
     };
 
-    const hide = () => {
+    const releaseTitles = (all = false) => {
+        for (const [element, state] of titleLeases) {
+            if (!all && enabled() && contains(root, element) && visible(element) && (state === active || element === pending || element === hovered || element === focused || element === hoverSuppressed)) continue;
+            if (element.getAttribute("title") === "") writeTitle(element, state.title);
+            restoreDescription(state);
+            state.description = null;
+            titleLeases.delete(element);
+        }
+    };
+
+    const leaseTitle = element => {
+        flushObserver();
+        let state = titleLeases.get(element);
+        if (!state) {
+            const title = element.getAttribute("title");
+            if (!meaningful(title)) return null;
+            state = { element, title, description: null, visible: false };
+            titleLeases.set(element, state);
+        }
+        writeTitle(element, "");
+        return state;
+    };
+
+    const hide = (all = false) => {
         flushObserver();
         cancelShow();
         cancelHide();
@@ -121,10 +165,13 @@
         active = null;
         dismissed = null;
         if (state) {
-            if (state.element.getAttribute("title") === "") writeTitle(state.element, state.title);
             restoreDescription(state);
+            state.description = null;
+            state.visible = false;
         }
         closePanel();
+        if (all) hoverSuppressed = null;
+        releaseTitles(all);
     };
 
     const hold = element => {
@@ -134,14 +181,15 @@
             hide();
             return;
         }
-        const title = getTitle(element);
-        if (!meaningful(title)) {
+        const state = leaseTitle(element);
+        if (!state) {
             hide();
             return;
         }
-        if (!active || active.element !== element) {
+        if (active !== state) {
             hide();
-            active = { element, title, description: null, visible: false };
+            titleLeases.set(element, state);
+            active = state;
         }
         active.visible = false;
         restoreDescription(active);
@@ -167,13 +215,13 @@
         positionFrame = 0;
         if (!active || !panel) return;
         if (!enabled() || !contains(root, active.element) || !visible(active.element)) {
-            hide();
+            hide(true);
             return;
         }
         const bounds = viewBounds();
         const anchor = active.element.getBoundingClientRect();
         if (anchor.bottom <= bounds.top || anchor.top >= bounds.bottom || anchor.right <= bounds.left || anchor.left >= bounds.right) {
-            hide();
+            hide(true);
             return;
         }
         if (popupBlocked(active.element, focusTarget || hovered || active.element)) {
@@ -210,19 +258,23 @@
 
     const getTitle = element => {
         flushObserver();
-        return active && active.element === element ? active.title : element.getAttribute("title");
+        return titleLeases.has(element) ? titleLeases.get(element).title : element.getAttribute("title");
     };
 
     const setTitle = (element, value) => {
         flushObserver();
         const title = String(value);
-        if (active && active.element === element) {
-            active.title = title;
+        const state = titleLeases.get(element);
+        if (state) {
+            state.title = title;
             if (!meaningful(title)) {
-                hide();
+                if (active === state) hide();
+                if (pending === element) cancelShow();
+                titleLeases.delete(element);
+                writeTitle(element, title);
                 return;
             }
-            if (active.visible) {
+            if (active === state && active.visible) {
                 panel.textContent = title;
                 addDescription(active);
             }
@@ -250,16 +302,18 @@
         cancelShow();
         cancelHide();
         if (!enabled() || element === dismissed || !contains(root, element) || !visible(element) || popupBlocked(element)) return;
-        const title = getTitle(element);
-        if (!meaningful(title)) return;
+        const state = leaseTitle(element);
+        if (!state) return;
         if (active && active.element === element) {
-            panel.textContent = title;
+            panel.textContent = state.title;
             schedulePosition();
             return;
         }
         hide();
-        active = { element, title, description: null, visible: true };
-        panel.textContent = title;
+        titleLeases.set(element, state);
+        active = state;
+        active.visible = true;
+        panel.textContent = state.title;
         panel.hidden = false;
         panel.setAttribute("aria-hidden", "false");
         panel.classList.add("modern-tooltip-visible");
@@ -279,6 +333,8 @@
         cancelShow();
         if (immediate) show(element);
         else {
+            if (active && active.element !== element) hide();
+            if (!leaseTitle(element)) return;
             pending = element;
             showTimer = setTimeout(() => show(element), 350);
         }
@@ -294,7 +350,7 @@
     };
 
     const releaseDismissed = () => {
-        if (dismissed && dismissed !== hovered && dismissed !== focused) {
+        if (dismissed && dismissed !== hovered && dismissed !== focused && dismissed !== hoverSuppressed) {
             if (active && active.element === dismissed && !active.visible) hide();
             dismissed = null;
         }
@@ -318,15 +374,30 @@
     };
 
     const pointerOver = event => {
+        trackPointer(event);
         if (event.pointerType === "touch" || ownNode(event.target)) return;
         const element = findAnchor(event);
-        if (!element) return;
+        if (!element) {
+            const previousHovered = hovered;
+            hovered = null;
+            cancelShow();
+            releaseDismissed();
+            if (active && active.element === previousHovered) hide();
+            else scheduleHide();
+            releaseTitles();
+            return;
+        }
+        if (hoverSuppressed && contains(hoverSuppressed, eventElement(event))) {
+            hovered = hoverSuppressed;
+            return;
+        }
         releaseDismissed();
         hovered = element;
         scheduleShow(element);
     };
 
     const pointerOut = event => {
+        if (hoverSuppressed && contains(hoverSuppressed, event.target) && !contains(hoverSuppressed, event.relatedTarget)) hoverSuppressed = null;
         if (pointerFocusScope && contains(pointerFocusScope, event.target) && !contains(pointerFocusScope, event.relatedTarget)) pointerFocusScope = null;
         if (!hovered || !contains(hovered, event.target) || contains(hovered, event.relatedTarget)) return;
         hovered = null;
@@ -334,11 +405,16 @@
         releaseDismissed();
         if (ownNode(event.relatedTarget)) cancelHide();
         else scheduleHide();
+        releaseTitles();
     };
 
     const focusIn = event => {
         if (ownNode(event.target)) return;
         focusTarget = eventElement(event);
+        if (restoringFocus && contains(restoringFocus, focusTarget)) {
+            focused = null;
+            return;
+        }
         const fromPointer = pointerFocusScope && (contains(pointerFocusScope, focusTarget) || contains(focusTarget, pointerFocusScope));
         pointerFocusScope = null;
         const element = findAnchor(event, true);
@@ -358,9 +434,39 @@
         focused = null;
         releaseDismissed();
         scheduleHide();
+        releaseTitles();
+    };
+
+    const restoreFocus = (element, options = { preventScroll: true }) => {
+        if (!element || typeof element.focus !== "function") return;
+        hide(true);
+        focused = null;
+        focusTarget = null;
+        pointerFocusScope = null;
+        hovered = null;
+        const anchor = findAnchor({ target: element, composedPath: () => [element] }, true);
+        if (enabled() && anchor && pointerOverElement(anchor)) {
+            hovered = anchor;
+            hold(anchor);
+            hoverSuppressed = anchor;
+        }
+        const previousFocus = restoringFocus;
+        restoringFocus = element;
+        try { element.focus(options); } finally { restoringFocus = previousFocus; }
+    };
+
+    const pointerMove = event => {
+        trackPointer(event);
+        if (hoverSuppressed && !contains(hoverSuppressed, eventElement(event))) {
+            hoverSuppressed = null;
+            hovered = null;
+            releaseDismissed();
+            releaseTitles();
+        }
     };
 
     const interact = event => {
+        trackPointer(event);
         const origin = eventElement(event);
         if (ownNode(origin)) return;
         if (event.type === "pointerdown" || event.type === "touchstart") {
@@ -381,11 +487,12 @@
     };
 
     const leaveWindow = () => {
-        hide();
+        hide(true);
         hovered = null;
         focused = null;
         focusTarget = null;
         pointerFocusScope = null;
+        pointerPosition = null;
     };
 
     const keyDown = event => {
@@ -399,9 +506,11 @@
         if (event.key === "Tab") {
             pointerFocusScope = null;
             hide();
-            hovered = null;
+            hoverSuppressed = null;
+            hovered = hovered && pointerOverElement(hovered) ? hovered : null;
             focused = null;
             focusTarget = null;
+            releaseTitles();
             return;
         }
         if (event.key !== "Escape") {
@@ -433,7 +542,7 @@
     function processRecords(records) {
         if (disposed || processing) return;
         processing = true;
-        let external = null;
+        const external = new Map();
         let relevant = false;
         try {
             for (let index = 0; index < records.length; index++) {
@@ -444,7 +553,7 @@
                     continue;
                 }
                 const writes = ownTitleWrites.get(record.target);
-                if ((!writes || !writes.length) && (!active || record.target !== active.element)) continue;
+                if ((!writes || !writes.length) && !titleLeases.has(record.target)) continue;
                 let value = record.target.getAttribute("title");
                 for (let next = index + 1; next < records.length; next++) {
                     if (records[next].type === "attributes" && records[next].attributeName === "title" && records[next].target === record.target) {
@@ -456,25 +565,32 @@
                     writes.shift();
                     continue;
                 }
-                if (!active || record.target !== active.element) continue;
-                external = { state: active, value };
+                const state = titleLeases.get(record.target);
+                if (!state) continue;
+                external.set(state, value);
                 relevant = true;
             }
             if (!relevant) return;
-            if (external && active === external.state) {
-                active.title = external.value;
-                if (!meaningful(external.value)) hide();
+            for (const [state, value] of external) {
+                if (titleLeases.get(state.element) !== state) continue;
+                state.title = value;
+                if (!meaningful(value)) {
+                    if (active === state) hide();
+                    if (pending === state.element) cancelShow();
+                    titleLeases.delete(state.element);
+                    writeTitle(state.element, value);
+                }
                 else {
-                    if (active.visible) {
-                        panel.textContent = external.value;
+                    if (active === state && active.visible) {
+                        panel.textContent = value;
                         addDescription(active);
                     }
-                    writeTitle(active.element, "");
+                    writeTitle(state.element, "");
                     schedulePosition();
                 }
             }
             if (!enabled()) {
-                hide();
+                hide(true);
                 hovered = null;
                 focused = null;
                 focusTarget = null;
@@ -487,6 +603,7 @@
             } else if (pending && popupBlocked(pending)) {
                 hold(pending);
             }
+            releaseTitles();
         } finally {
             processing = false;
         }
@@ -494,7 +611,7 @@
 
     const destroy = () => {
         flushObserver();
-        hide();
+        hide(true);
         disposed = true;
         if (positionFrame) window.cancelAnimationFrame(positionFrame);
         positionFrame = 0;
@@ -505,7 +622,7 @@
         panel = null;
     };
 
-    window.sdModernUiTooltipTitles = { get: getTitle, set: setTitle, destroy };
+    window.sdModernUiTooltipTitles = { get: getTitle, set: setTitle, restoreFocus, destroy };
 
     const bind = () => {
         if (disposed) return;
@@ -514,7 +631,7 @@
         if (!mount || !mount.appendChild) return;
         if (root === next && panel && contains(mount, panel)) return;
         flushObserver();
-        hide();
+        hide(true);
         if (observer) observer.disconnect();
         while (removers.length) removers.pop()();
         if (panel) panel.remove();
@@ -528,6 +645,7 @@
         mount.appendChild(panel);
         listen(root, "pointerover", pointerOver);
         listen(root, "pointerout", pointerOut);
+        listen(document, "pointermove", pointerMove, { capture: true, passive: true });
         listen(root, "focusin", focusIn);
         listen(root, "focusout", focusOut);
         listen(document, "keydown", keyDown, true);
@@ -563,14 +681,14 @@
     const update = () => {
         if (disposed) return;
         bind();
-        if (!enabled()) hide();
+        if (!enabled()) hide(true);
         else schedulePosition();
     };
 
     const optionsChanged = () => {
         if (disposed) return;
         flushObserver();
-        hide();
+        hide(true);
         hovered = null;
         focused = null;
         focusTarget = null;

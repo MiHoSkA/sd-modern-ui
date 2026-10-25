@@ -6,107 +6,77 @@
 
 ## Русский
 
-Тёмное оформление для **Stable Diffusion WebUI reForge** и **Forge Neo**: аккуратные панели, читаемые элементы управления и единые SVG-значки инструментов.
+Тёмное оформление для **Stable Diffusion WebUI reForge** и **Forge Neo** с удобными панелями, читаемыми элементами управления и настройкой под свой вкус.
 
 ### Возможности
 
-- Тёмная палитра с фиолетовыми акцентами, едиными отступами и скруглёнными панелями.
-- Встроенные SVG-значки для известных кнопок сохранения, ZIP, папки, отправки изображения, зерна, размеров и работы с промптами. Кнопки компактные, без текстовых подписей; назначение доступно в подсказках и названиях для средств доступности.
-- Кастомные подсказки в стиле темы: наведение мыши, клавиатурный фокус и размещение в пределах экрана. Они скрываются при вводе, выборе, клике и прокрутке, не перекрывают открытые списки и не мешают штатному закрытию окон по Escape.
-- Акцентные заголовки включённых Hires, ADetailer и ControlNet, заметные и в свёрнутом состоянии.
-- Рамка и галочка на карточках LoRA, которые уже используются в промптах выбранной вкладки.
-- Контрастная панель скачивания и закрытия предпросмотра галереи, выровненные границы изображения и строки зерна.
-- Оформление ошибок, предупреждений и информационных уведомлений со штатными кнопками закрытия и таймерами.
-- Оформленный индикатор прогресса, видимый фокус клавиатуры, адаптация для узких экранов и учёт настройки уменьшения анимации в системе.
-- Быстрое включение и отключение через существующий раздел настроек интерфейса.
+- Единая тёмная палитра, аккуратные отступы и скруглённые панели.
+- Контрастные значки инструментов и подсказки при наведении или работе с клавиатуры.
+- Удобная галерея с заметными кнопками скачивания и закрытия изображения.
+- Оформленные уведомления, ошибки и индикатор прогресса.
+- Выделение включённых Hires, ADetailer и ControlNet, а также используемых LoRA.
+- Редактор цветов, прозрачности, теней, скруглений, шрифта и фонового изображения.
+- Предпросмотр изменений, сохранение оформления и перенос профиля между браузерами и сборками.
+- Оформленная полоса прокрутки и собственный значок вкладки браузера. При отключении темы возвращается штатная иконка.
+- Управление мышью, клавиатурой и на сенсорном экране.
 
-Значки сохраняют штатные действия кнопок. Например, кнопка удаления использует поведение установленного `sd_delete_button`. Неизвестные кнопки сторонних расширений и их собственные SVG не заменяются.
-
-### Совместимость
-
-| Сборка | Проверенная версия Gradio | Статус |
-| --- | --- | --- |
-| reForge | 3.41.2 | Проверено |
-| Forge Neo | 4.40.0 | Проверено |
-
-Для обеих сборок используется один комплект файлов. Дополнительные Python-пакеты, npm-пакеты и отдельный установщик расширению не требуются.
-
-WebUI самостоятельно загружает файлы расширения. `install.py` предназначен для установки дополнительных зависимостей, поэтому в этом пакете он отсутствует. Подробнее: [структура расширений в документации AUTOMATIC1111](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Developing-extensions).
+Штатные действия кнопок сохраняются. Дополнительные библиотеки для установки не нужны.
 
 ### Установка
 
-#### Через Extensions → Install from URL
+**По ссылке на репозиторий**
 
-Этот способ доступен после публикации расширения в Git-репозитории.
+1. Откройте **Extensions → Install from URL**.
+2. Вставьте адрес репозитория расширения и нажмите **Install**.
+3. Перезапустите WebUI и обновите страницу с очисткой кеша: **Ctrl+F5**.
 
-1. Откройте в WebUI **Extensions → Install from URL** — «Расширения → Установить по URL».
-2. Вставьте URL репозитория **SD Modern UI**. Используйте адрес страницы опубликованного репозитория на GitHub.
-3. Нажмите **Install** и дождитесь окончания установки.
-4. Перезапустите WebUI. Если используете кнопку **Apply and quit**, запустите WebUI снова.
-5. Обновите страницу сочетанием **Ctrl+F5**.
+**Из ZIP**
 
-#### Из ZIP-архива
+1. Остановите WebUI.
+2. Распакуйте папку `sd-modern-ui` из архива в папку `extensions` вашей сборки. Файл `style.css` должен находиться прямо в `extensions/sd-modern-ui`, без лишней вложенной папки.
+3. Запустите WebUI и нажмите **Ctrl+F5**.
 
-1. Распакуйте архив расширения.
-2. Найдите папку, непосредственно внутри которой находятся `style.css`, `scripts` и `javascript`. Поместите эту папку в `extensions` вашей установки WebUI и назовите её `sd-modern-ui`. Если файлы архива лежат без общей папки, сначала создайте для них папку `sd-modern-ui`.
-3. Проверьте, что файл темы находится непосредственно по пути `extensions/sd-modern-ui/style.css`, а рядом расположены папки `scripts` и `javascript`.
-4. Перезапустите WebUI, затем нажмите **Ctrl+F5** в браузере.
-
-Правильная структура установки:
-
-```text
-extensions/
-└── sd-modern-ui/
-    ├── README.md
-    ├── style.css
-    ├── javascript/
-    │   ├── modern_icons.js
-    │   ├── modern_states.js
-    │   ├── modern_tooltips.js
-    │   └── modern_ui.js
-    └── scripts/
-        └── modern_ui.py
-```
+При обновлении из ZIP предварительно сохраните копию старой папки и замените её целиком новой.
 
 ### Включение и отключение
 
-В **Settings → User Interface** — «Настройки → Пользовательский интерфейс» — найдите **Enable SD Modern UI / Включить SD Modern UI**.
+В **Settings → User Interface** найдите **Enable SD Modern UI / Включить SD Modern UI**. Переключатель меняет оформление сразу. Чтобы сохранить его состояние после перезапуска, нажмите **Apply settings / Применить настройки** в WebUI.
 
-Переключатель меняет оформление сразу. Нажмите штатную кнопку **Apply settings / Применить настройки**, чтобы сохранить выбор после перезапуска. При отключении возвращается исходное оформление WebUI.
+### Настройка оформления
 
-### Обновление
+Откройте редактор кнопкой с палитрой в верхней панели быстрых настроек или кнопкой **Настроить оформление** в настройках интерфейса.
 
-- **Установка через Git:** откройте **Extensions → Installed**, нажмите **Check for updates**, выберите обновление SD Modern UI и примените его штатной кнопкой WebUI. Затем перезапустите WebUI и нажмите **Ctrl+F5**.
-- **Установка из ZIP:** остановите WebUI и сохраните резервную копию папки `extensions/sd-modern-ui`. Замените эту папку целиком папкой из нового архива, сохранив правильную структуру установки. Запустите WebUI и нажмите **Ctrl+F5**.
+Все изменения сначала показываются в предпросмотре:
+
+| Действие | Результат |
+| --- | --- |
+| **Сохранить** | Сохраняет оформление для этого браузера. |
+| **Отмена**, закрытие окна или **Esc** | Возвращает ранее сохранённое оформление. |
+| **Сброс** | Показывает исходное оформление. Для сохранения сброса нажмите «Сохранить». |
+| **Экспорт / Импорт** | Сохраняет профиль в JSON или открывает ранее сохранённый файл. |
+
+Если открыт список шрифтов, первое **Esc** закрывает список. В непустом поле поиска первое **Esc** очищает запрос. Следующее **Esc** закрывает редактор без сохранения.
+
+**Цвета.** Раскрывайте группы или ищите параметр по названию. Для поиска по цвету введите HEX-код: например, `#818CF8`, `818cf8` или `#fff`. Поиск учитывает текущие цвета, в том числе автоматические. Чтобы изменить несколько совпадений сразу, выберите новый цвет и нажмите **Заменить найденные цвета**. Основной акцентный цвет при такой замене сохраняется. Проверьте предпросмотр и сохраните результат.
+
+У каждого цвета есть палитра, поле HEX и круговая стрелка возврата в **Авто**. В автоматическом режиме цвет следует акценту и связанным настройкам темы. Сброс группы возвращает в «Авто» только её цвета. Некорректный HEX подсвечивается; исправьте его или сбросьте поле перед сохранением.
+
+**Шрифт.** Выберите вариант в оформленном списке. С клавиатуры доступны стрелки, **Home / End**, поиск по первым буквам, **Enter** или пробел для выбора.
+
+**Фон.** Можно выбрать PNG, JPEG или WebP, отрегулировать затемнение и размытие или убрать изображение. Исходный файл должен занимать до **8 МиБ** и содержать до **32 мегапикселей**.
+
+**Перенос профиля.** Нажмите **Экспорт**, затем откройте JSON через **Импорт** в другом браузере или другой сборке. Фон включается в профиль. Импорт сначала показывает предпросмотр; нажмите **Сохранить**, чтобы применить его постоянно. Поддерживаются прежние профили редактора. Максимальный размер JSON — **3 МиБ**.
+
+Оформление хранится отдельно в каждом браузере. Сохранённый JSON пригодится для переноса или восстановления после очистки данных сайта.
 
 ### Если что-то выглядит неправильно
 
-| Симптом | Что проверить |
+| Проблема | Что сделать |
 | --- | --- |
-| Тема или новые значки не появились | Включён ли **Enable SD Modern UI**; нет ли лишней вложенной папки; выполнены ли перезапуск WebUI и **Ctrl+F5**. |
-| Цвета или расположение элементов отличаются | Временно отключите другое расширение оформления и сравните результат. Для сообщения об ошибке укажите сборку WebUI, версию Gradio, браузер и приложите скриншот проблемного элемента. |
-
-### Публикация на GitHub
-
-Загрузите в корень репозитория **содержимое** папки `sd-modern-ui`, сохранив подпапки:
-
-```text
-repository-root/
-├── .gitignore
-├── README.md
-├── style.css
-├── javascript/
-│   ├── modern_icons.js
-│   ├── modern_states.js
-│   ├── modern_tooltips.js
-│   └── modern_ui.js
-└── scripts/
-    └── modern_ui.py
-```
-
-`README.md`, `style.css`, `scripts` и `javascript` должны быть видны сразу при открытии репозитория. Не создавайте дополнительный уровень `sd-modern-ui/sd-modern-ui`: установщик WebUI сам создаёт папку расширения внутри `extensions`.
-
-После публикации адрес этого репозитория можно использовать в **Install from URL**.
+| Тема или новые элементы не появились | Проверьте переключатель темы и папку установки, перезапустите WebUI и нажмите **Ctrl+F5**. |
+| Неудачно выбраны цвета | Откройте редактор, нажмите **Сброс**, затем **Сохранить**, либо импортируйте свой профиль. |
+| Не удаётся сохранить цвет | Исправьте выделенный HEX-код или верните поле в «Авто». |
+| Оформление смешивается с другой темой | Временно отключите другое расширение оформления и обновите страницу. |
 
 ---
 
@@ -114,104 +84,74 @@ repository-root/
 
 ## English
 
-A dark theme for **Stable Diffusion WebUI reForge** and **Forge Neo**, with consistent panels, readable controls, and matching SVG tool icons.
+A dark theme for **Stable Diffusion WebUI reForge** and **Forge Neo**, with clear controls, tidy panels, and an appearance you can make your own.
 
 ### Features
 
-- A dark palette with violet accents, consistent spacing, and rounded panels.
-- Embedded SVG icons for known save, ZIP, folder, image transfer, seed, size, and prompt tools. Buttons remain compact and use tooltips and accessible names instead of visible text captions.
-- Themed tooltips with mouse and keyboard support and viewport-aware positioning. They dismiss during typing, selection, clicks, and scrolling, stay clear of open menus, and preserve native Escape handling in dialogs.
-- Accent headers for enabled Hires, ADetailer, and ControlNet blocks, including collapsed panels.
-- An accent border and check mark on LoRA cards already used in the current tab's prompts.
-- A contrasting gallery download/close toolbar, aligned preview boundaries, and a tidy seed row.
-- Styled errors, warnings, and information messages with their native close controls and timers.
-- A styled progress indicator, visible keyboard focus, narrow-screen layouts, and support for the system's reduced-motion preference.
-- An immediate theme toggle in the existing interface settings section.
+- A consistent dark palette, balanced spacing, and rounded panels.
+- Clear tool icons with mouse and keyboard tooltips.
+- A gallery with visible download and close controls.
+- Styled notifications, errors, and progress indicators.
+- Highlighted enabled Hires, ADetailer, and ControlNet panels, plus LoRA cards in use.
+- An editor for colors, opacity, shadows, corner radius, font, and background images.
+- Live preview, saved appearance profiles, and JSON transfer between browsers and WebUI hosts.
+- A themed page scrollbar and browser tab icon. Turning the theme off restores the host icon.
+- Mouse, keyboard, and touch controls.
 
-Icons retain each button's native action. For example, the delete button keeps the behavior of the installed `sd_delete_button` extension. Unknown third-party buttons and their existing SVG controls are left intact.
-
-### Compatibility
-
-| WebUI host | Tested Gradio version | Status |
-| --- | --- | --- |
-| reForge | 3.41.2 | Tested |
-| Forge Neo | 4.40.0 | Tested |
-
-Both hosts use the same files. No additional Python packages, npm packages, or extension installer are required.
-
-WebUI loads the extension's files itself. `install.py` is intended to install additional dependencies, so this package does not include one. See the [AUTOMATIC1111 extension layout documentation](https://github.com/AUTOMATIC1111/stable-diffusion-webui/wiki/Developing-extensions).
+Buttons keep their usual actions. No additional libraries are required.
 
 ### Installation
 
-#### Using Extensions → Install from URL
+**From a repository URL**
 
-This method becomes available once the extension is published in a Git repository.
+1. Open **Extensions → Install from URL**.
+2. Paste the extension repository address and click **Install**.
+3. Restart WebUI and refresh the page with **Ctrl+F5**.
 
-1. Open **Extensions → Install from URL** in WebUI.
-2. Paste the URL of the published **SD Modern UI** repository. Use its repository page address on GitHub.
-3. Click **Install** and wait for installation to finish.
-4. Restart WebUI. If you use **Apply and quit**, start WebUI again afterwards.
-5. Refresh the browser page with **Ctrl+F5**.
+**From a ZIP archive**
 
-#### Using a ZIP archive
+1. Stop WebUI.
+2. Extract the `sd-modern-ui` folder into your WebUI `extensions` folder. The `style.css` file must be directly inside `extensions/sd-modern-ui`, without an extra nested folder.
+3. Start WebUI and press **Ctrl+F5**.
 
-1. Extract the extension archive.
-2. Find the folder that directly contains `style.css`, `scripts`, and `javascript`. Place that folder inside your WebUI installation's `extensions` directory and name it `sd-modern-ui`. If the archive files have no enclosing folder, create a `sd-modern-ui` folder for them first.
-3. Check that `style.css` is directly inside `extensions/sd-modern-ui`, alongside the `scripts` and `javascript` directories.
-4. Restart WebUI, then refresh the browser with **Ctrl+F5**.
+When updating from ZIP, back up the existing folder and replace it entirely with the new one.
 
-The installation layout should be:
+### Turning the theme on or off
 
-```text
-extensions/
-└── sd-modern-ui/
-    ├── README.md
-    ├── style.css
-    ├── javascript/
-    │   ├── modern_icons.js
-    │   ├── modern_states.js
-    │   ├── modern_tooltips.js
-    │   └── modern_ui.js
-    └── scripts/
-        └── modern_ui.py
-```
+Find **Enable SD Modern UI** in **Settings → User Interface**. The switch applies immediately. Click WebUI's **Apply settings** button to keep your choice after a restart.
 
-### Enable or disable
+### Customizing the appearance
 
-Find **Enable SD Modern UI** under **Settings → User Interface**.
+Open the editor with the palette button in the top quick settings bar, or **Customize appearance** in the interface settings.
 
-The checkbox changes the appearance immediately. Click **Apply settings** to preserve your choice after restarting. Turning the theme off restores the original WebUI appearance.
+Changes appear in a live preview first:
 
-### Updating
+| Action | Result |
+| --- | --- |
+| **Save** | Saves the appearance for this browser. |
+| **Cancel**, closing the editor, or **Esc** | Restores the previously saved appearance. |
+| **Reset** | Previews the default appearance. Click Save to keep the reset. |
+| **Export / Import** | Saves a JSON profile or opens an existing one. |
 
-- **Git installation:** open **Extensions → Installed**, click **Check for updates**, select the SD Modern UI update, and apply it using WebUI's native control. Restart WebUI, then refresh with **Ctrl+F5**.
-- **ZIP installation:** stop WebUI and back up `extensions/sd-modern-ui`. Replace that entire directory with the extension folder from the new archive, preserving the correct installation layout. Start WebUI, then refresh with **Ctrl+F5**.
+When the font list is open, the first **Esc** closes the list. In a nonempty color search, the first **Esc** clears the query. Press **Esc** again to close the editor without saving.
+
+**Colors.** Expand a group or search by a setting's name. Enter a HEX code to find colors, such as `#818CF8`, `818cf8`, or `#fff`. Search uses current values, including automatic colors. To change several matches together, choose a replacement and click **Replace matching colors**. The main accent stays unchanged. Check the preview, then save the result.
+
+Each color has a picker, a HEX field, and a circular-arrow button to return it to **Auto**. Automatic colors follow the accent and related theme settings. A group reset affects only that group's colors. An invalid HEX value is highlighted; correct it or reset the field before saving.
+
+**Font.** Choose from the themed list. Keyboard controls include arrows, **Home / End**, first-letter search, and **Enter** or Space to select an option.
+
+**Background.** Choose PNG, JPEG, or WebP, adjust dimming and blur, or remove the image. The original file can be up to **8 MiB** and **32 megapixels**.
+
+**Moving a profile.** Click **Export**, then open the JSON through **Import** in another browser or WebUI host. The background is included. Import shows a preview first; click **Save** to keep it. Earlier editor profiles are supported. The maximum JSON file size is **3 MiB**.
+
+Appearance settings are stored separately in each browser. Keep a JSON export to move or restore your profile after clearing site data.
 
 ### Troubleshooting
 
-| Symptom | What to check |
+| Problem | What to do |
 | --- | --- |
-| The theme or new icons do not appear | Check **Enable SD Modern UI**, remove any extra nested extension folder, restart WebUI, and refresh with **Ctrl+F5**. |
-| Colors or layout look different | Temporarily disable another UI theme extension and compare. When reporting a problem, include the WebUI host, Gradio version, browser, and a screenshot of the affected control. |
-
-### Publishing on GitHub
-
-Upload the **contents** of the `sd-modern-ui` folder to the repository root, preserving its subdirectories:
-
-```text
-repository-root/
-├── .gitignore
-├── README.md
-├── style.css
-├── javascript/
-│   ├── modern_icons.js
-│   ├── modern_states.js
-│   ├── modern_tooltips.js
-│   └── modern_ui.js
-└── scripts/
-    └── modern_ui.py
-```
-
-`README.md`, `style.css`, `scripts`, and `javascript` must be visible directly at the repository root. Avoid an extra `sd-modern-ui/sd-modern-ui` directory level: WebUI's installer creates the extension directory inside `extensions` itself.
-
-Once published, the repository URL can be used in **Install from URL**.
+| The theme or new controls do not appear | Check the theme switch and installation folder, restart WebUI, and press **Ctrl+F5**. |
+| The chosen colors are hard to use | Open the editor, click **Reset**, then **Save**, or import a saved profile. |
+| A color cannot be saved | Correct the highlighted HEX value or return the field to Auto. |
+| Another theme changes the appearance | Temporarily disable the other appearance extension and refresh the page. |
